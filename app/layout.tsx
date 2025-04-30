@@ -15,11 +15,12 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="es" suppressHydrationWarning>
-<body className="overflow-x-hidden">
-  <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+      <body className="overflow-x-hidden">
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           {children}
         </ThemeProvider>
       </body>
     </html>
   )
 }
+

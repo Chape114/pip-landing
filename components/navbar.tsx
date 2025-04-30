@@ -103,11 +103,12 @@ export default function Navbar() {
     <>
       {/* Header fijo */}
       <header
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-40 overflow-x-hidden transition-all duration-300 ${
           scrolled || isOpen ? "bg-[#0F0F0F]/90 backdrop-blur-md py-3" : "py-5"
         }`}
       >
-        <div className="container mx-auto px-6">
+
+        <div className="container mx-auto px-6 max-w-full overflow-x-hidden">
           <div className="flex items-center justify-between">
             <Link href="/#inicio" className="relative z-50" onClick={(e) => handleNavClick(e, "#inicio")}>
               <div className="flex items-center">
@@ -153,7 +154,7 @@ export default function Navbar() {
               animate={isOpen ? "open" : "closed"}
             >
               <motion.div
-                className="w-12 h-12 rounded-full flex items-center justify-center border border-white/10"
+                className="w-10 h-10 max-w-full rounded-full flex items-center justify-center border border-white/10"
                 variants={burgerVariants}
               >
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
