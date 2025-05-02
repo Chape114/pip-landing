@@ -137,7 +137,7 @@ export default function Hero() {
                     document.getElementById("soluciones")?.scrollIntoView({ behavior: "smooth" })
                   }}
                 >
-                  Get Started →
+                  ¡Quiero mi rediseño gratuito 🎁 →
                 </Link>
               </div>
             </motion.div>
