@@ -71,13 +71,13 @@ export default function PricingPlans() {
   ]
 
   const promoCard = {
-    title: "🎁 Mayo exclusivo: rediseño visual sin costo",
+    title: "Rediseño gratuito",
     description: "¿Querés ver cómo se vería tu web con un diseño profesional, moderno y adaptado a tu negocio?",
     details:
       "Durante mayo, estoy ofreciendo a empresas de Sunchales una propuesta visual 100% personalizada y sin costo.",
     benefits: ["Sin compromiso de avanzar", "Entrega en menos de 72 hs", "Acceso privado al demo online"],
-    note: "📍 Ideal si tu web actual ya no representa lo que hacés, o si todavía no tenés sitio.",
-    cta: "👉 Escribime por WhatsApp y pedí la tuya",
+    note: "Ideal si tu web actual ya no representa lo que hacés, o si todavía no tenés sitio.",
+    cta: "Pedí tu rediseño",
     whatsappLink:
       "https://wa.me/5493493415669?text=%C2%A1Hola%20PiP%20Studio!%20Me%20interesa%20el%20redise%C3%B1o%20visual%20sin%20costo%20de%20Mayo%202025.%20%C2%BFMe%20dar%C3%ADas%20m%C3%A1s%20informaci%C3%B3n%3F",
   }
@@ -196,16 +196,16 @@ export default function PricingPlans() {
                 ></motion.div>
 
                 <div className="relative z-10">
-                  <div className="flex items-start gap-4 mb-6">
-                    <motion.div
+                <div className="flex items-start gap-4 mb-6">
+                <motion.div
                       initial={{ scale: 0 }}
                       animate={promoInView ? { scale: 1, rotate: [0, 10, 0] } : { scale: 0 }}
                       transition={{ duration: 0.5, delay: 0.2 }}
                       className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#CCFF00]/20 to-[#9747FF]/20 flex items-center justify-center flex-shrink-0"
-                    >
+                      >
                       <Gift className="w-6 h-6 text-[#CCFF00]" />
                     </motion.div>
-                    <div>
+                    <div className="space-y-1">
                       <motion.h3
                         initial={{ opacity: 0, y: -20 }}
                         animate={promoInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
@@ -218,11 +218,12 @@ export default function PricingPlans() {
                         initial={{ opacity: 0 }}
                         animate={promoInView ? { opacity: 1 } : { opacity: 0 }}
                         transition={{ duration: 0.5, delay: 0.4 }}
-                        className="text-white text-lg"
+                        className="text-white/70 mb-8"
                       >
                         {promoCard.description}
                       </motion.p>
                     </div>
+
                   </div>
 
                   <motion.div
@@ -271,7 +272,7 @@ export default function PricingPlans() {
                       href={promoCard.whatsappLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-full py-4 rounded-xl font-medium transition-all flex items-center justify-center bg-[#CCFF00] text-black hover:bg-white group"
+                      className="w-full py-4 px-4 text-sm sm:text-base text-center break-words whitespace-normal rounded-xl font-medium transition-all flex flex-wrap justify-center items-center bg-[#CCFF00] text-black hover:bg-white group"
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                     >
