@@ -21,7 +21,7 @@ export default function CredibilitySection() {
           >
             <div className="flex items-center justify-center mb-4">
               <div className="h-1 w-10 bg-[#CCFF00] mx-3"></div>
-              <p className="text-sm text-white/70">Casos de éxito</p>
+              <p className="text-sm text-white/70">Confían en PiP Studio</p>
               <div className="h-1 w-10 bg-[#CCFF00] mx-3"></div>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold mb-6">

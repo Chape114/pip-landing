@@ -72,7 +72,7 @@ export default function PricingPlans() {
 
   const promoCard = {
     title: "Rediseño gratuito",
-    description: "¿Querés ver cómo se vería tu web con un diseño profesional, moderno y adaptado a tu negocio?",
+    description: "¿Querés saber cómo se vería tu web con un diseño profesional, moderno y adaptado a tu negocio?",
     details:
       "Durante mayo, estoy ofreciendo a empresas de Sunchales una propuesta visual 100% personalizada y sin costo.",
     benefits: ["Sin compromiso de avanzar", "Entrega en menos de 72 hs", "Acceso privado al demo online"],
