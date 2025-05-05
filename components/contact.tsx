@@ -44,11 +44,11 @@ export default function Contact() {
               </a>
 
               <a
-                href="mailto:contacto@pipstudio.com"
+                href="mailto:hacepip@gmail.com"
                 className="flex items-center bg-[#1A1A1A] border border-white/10 hover:border-[#CCFF00] text-white px-6 py-4 rounded-xl hover:text-[#CCFF00] transition-colors w-full md:w-auto"
               >
                 <Mail className="mr-3 h-5 w-5" />
-                <span className="font-medium">contacto@pipstudio.com</span>
+                <span className="font-medium">hacepip@gmail.com</span>
                 <ArrowUpRight className="ml-auto h-5 w-5" />
               </a>
 

@@ -141,7 +141,7 @@ export default function Navbar() {
                 className="bg-[#CCFF00] text-black px-6 py-2 rounded-full text-sm font-medium hover:bg-white transition-colors"
                 onClick={(e) => handleNavClick(e, "#soluciones")}
               >
-                Get Started →
+                Rediseño gratuito 🎁 →
               </Link>
             </nav>
 
@@ -261,7 +261,7 @@ export default function Navbar() {
                   onClick={(e) => handleNavClick(e, "#soluciones")}
                   className="bg-[#CCFF00] text-black px-6 py-4 rounded-full inline-block font-medium w-full text-center"
                 >
-                  Get Started →
+                  Rediseño gratuito 🎁 →
                 </Link>
               </motion.div>
 
