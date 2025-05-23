@@ -12,69 +12,55 @@ export default function PricingPlans() {
 
   const plans = [
     {
-      name: "Emprendedor",
-      description: "Ideal para negocios que están comenzando y necesitan establecer su presencia digital.",
-      icon: Zap,
+      name: "Sitio Institucional",
+      description: "Tu marca, contada con claridad y profesionalismo.",
+      icon: Globe,
       features: [
-        "Diseño personalizado y a medida",
-        "Estructura optimizada para conversión",
-        "Responsive para todos los dispositivos",
-        "Integración con redes sociales",
-        "Catálogo de productos",
-        "Pedidos por WhatsApp",
-        "Optimización SEO básica",
-        "Soporte post-lanzamiento",
+        "Quiénes somos, Qué hacemos, Cómo lo hacemos",
+        "Contacto directo por formulario o WhatsApp",
+        "Optimización SEO para buscadores",
       ],
       delay: 0.1,
       accent: "#CCFF00",
       whatsappLink:
-        "https://wa.me/5493493415669?text=%C2%A1Hola%20PiP%20Studio!%20Estoy%20interesado%20en%20el%20Plan%20Emprendedor.%20Quisiera%20m%C3%A1s%20informaci%C3%B3n.%20%C2%A1Gracias!",
+        "https://wa.me/5493493415669?text=¡Hola%20PiP%20Studio!%20Estoy%20interesado%20en%20crear%20un%20sitio%20institucional.%20Quisiera%20más%20información.%20¡Gracias!",
     },
     {
-      name: "PyME",
-      description: "Perfecto para empresas en crecimiento que buscan fortalecer su identidad digital.",
+      name: "Sitio de Productos",
+      description: "Convertí tu catálogo en una experiencia simple y efectiva.",
       icon: BarChart,
       features: [
-        "Todo lo del plan Emprendedor",
-        "Catálogo de productos/servicios",
-        "Diseño con presencia institucional",
-        "Animaciones y microinteracciones",
-        "UX Writing estratégico",
-        "Optimización SEO",
-        "Dominio y hosting gratuitos",
-        "Indexación en motores de búsqueda",
+        "Catálogo visual navegable",
+        "Carrito simulado con pedido por WhatsApp/email",
+        "Información de medios de pago, envíos y retiros",
       ],
       delay: 0.2,
       accent: "#9747FF",
-      highlighted: true,
       whatsappLink:
-        "https://wa.me/5493493415669?text=%C2%A1Hola%20PiP%20Studio!%20Estoy%20interesado%20en%20el%20Plan%20PyME.%20Quisiera%20m%C3%A1s%20informaci%C3%B3n.%20%C2%A1Gracias!",
+        "https://wa.me/5493493415669?text=¡Hola%20PiP%20Studio!%20Estoy%20interesado%20en%20crear%20un%20sitio%20de%20productos.%20Quisiera%20más%20información.%20¡Gracias!",
     },
     {
-      name: "Empresarial",
-      description: "Solución completa para empresas establecidas que requieren una presencia digital sofisticada.",
-      icon: Globe,
+      name: "Sitio de Servicios",
+      description: "Diseñado para captar leads y generar consultas de valor.",
+      icon: Zap,
       features: [
-        "Todo lo del plan PyME",
-        "Arquitectura web compleja",
-        "Experiencia de usuario avanzada",
-        "Sin límite de páginas",
-        "Integraciones personalizadas",
-        "Estrategia digital completa",
-        "Soporte prioritario",
+        "Cotizador o formulario conectado a WhatsApp",
+        "Presentación clara de tus servicios",
+        "Enfoque en conversión y captación de leads",
       ],
       delay: 0.3,
       accent: "#CCFF00",
       whatsappLink:
-        "https://wa.me/5493493415669?text=%C2%A1Hola%20PiP%20Studio!%20Estoy%20interesado%20en%20el%20Plan%20Empresarial.%20Quisiera%20m%C3%A1s%20informaci%C3%B3n.%20%C2%A1Gracias!",
+        "https://wa.me/5493493415669?text=¡Hola%20PiP%20Studio!%20Estoy%20interesado%20en%20crear%20un%20sitio%20de%20servicios.%20Quisiera%20más%20información.%20¡Gracias!",
     },
   ]
+  
 
   const promoCard = {
     title: "Rediseño gratuito",
     description: "¿Querés saber cómo se vería tu web con un diseño profesional, moderno y adaptado a tu negocio?",
     details:
-      "Durante mayo, estoy ofreciendo a empresas de Sunchales una propuesta visual 100% personalizada y sin costo.",
+      "Durante junio, estoy ofreciendo a empresas de Sunchales una propuesta visual 100% personalizada y sin costo.",
     benefits: ["Sin compromiso de avanzar", "Entrega en menos de 72 hs", "Acceso privado al demo online"],
     note: "Ideal si tu web actual ya no representa lo que hacés, o si todavía no tenés sitio.",
     cta: "Pedí tu rediseño",
@@ -272,7 +258,7 @@ export default function PricingPlans() {
                       href={promoCard.whatsappLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-full py-4 px-4 text-sm sm:text-base text-center break-words whitespace-normal rounded-xl font-medium transition-all flex flex-wrap justify-center items-center bg-[#CCFF00] text-black hover:bg-white group"
+                      className="w-full py-3 rounded-xl font-medium transition-all flex items-center justify-center bg-white/10 text-white hover:bg-white/20"
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                     >
@@ -312,7 +298,7 @@ export default function PricingPlans() {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.8, delay: plan.delay + 0.3 }}
-              className={`relative ${plan.highlighted ? "md:-mt-4 md:mb-4" : ""}`}
+              className={`relative "md:-mt-4 md:mb-4" : ""}`}
               whileHover={{ y: -10 }}
             >
               <div
@@ -327,9 +313,6 @@ export default function PricingPlans() {
                     animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -10 }}
                     transition={{ duration: 0.5, delay: plan.delay + 0.5 }}
                   >
-                    <div className="bg-[#9747FF] text-white text-xs font-medium px-4 py-1 rounded-full">
-                      Recomendado
-                    </div>
                   </motion.div>
                 )}
 
@@ -363,15 +346,11 @@ export default function PricingPlans() {
                 </div>
 
                 <div className="mt-8 pt-6 border-t border-white/10">
-                  <motion.a
+                <motion.a
                     href={plan.whatsappLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`w-full py-3 rounded-xl font-medium transition-all flex items-center justify-center ${
-                      plan.highlighted
-                        ? "bg-[#CCFF00] text-black hover:bg-white"
-                        : "bg-white/10 text-white hover:bg-white/20"
-                    }`}
+                    className="w-full py-3 rounded-xl font-medium transition-all flex items-center justify-center bg-white/10 text-white hover:bg-white/20"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
