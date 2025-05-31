@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://pipstudio.com.ar
+Host: https://www.pipstudio.com.ar
 
 # Sitemaps
-Sitemap: https://pipstudio.com.ar/sitemap.xml
+Sitemap: https://www.pipstudio.com.ar/sitemap.xml

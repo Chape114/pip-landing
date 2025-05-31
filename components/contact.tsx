@@ -24,7 +24,7 @@ export default function Contact() {
               <p className="text-sm text-white/70">Contacto</p>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Trabajemos <span className="text-[#CCFF00]">juntos</span>
+              Cotizá tu <span className="text-[#CCFF00]">Landing&nbsp;Page</span> en Sunchales
             </h2>
             <p className="text-white/70 text-lg mb-12 max-w-md">
               Estamos listos para convertir tus ideas en una experiencia web excepcional. Contáctanos directamente a
@@ -127,7 +127,7 @@ export default function Contact() {
                             <div className="h-4 w-auto">
                               <Image
                                 src="/logo-black.png"
-                                alt="PiP Studio Logo"
+                                alt="Logo PiP Studio versión oscura"
                                 width={20}
                                 height={10}
                                 className="h-full w-auto"

@@ -108,7 +108,7 @@ export default function Hero() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
           <div className="md:col-span-7 relative">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               className="relative z-10"
@@ -119,10 +119,10 @@ export default function Hero() {
               </div>
 
               <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-6">
-                Sitios web <br />
-                <span className="relative inline-block">hechos a medida</span> para{" "}
-                <span className="text-[#CCFF00]">marcas con propósito</span>
+                Diseño&nbsp;Web en <span className="text-[#CCFF00]">Santa&nbsp;Fe</span><br />
+                <span className="relative inline-block">100 % a medida</span>
               </h1>
+
 
               <p className="text-lg text-white/70 max-w-xl mb-8">
                 Creamos experiencias digitales que rompen esquemas y conectan con tu audiencia de manera única.
@@ -221,7 +221,7 @@ export default function Hero() {
                           <div className="h-5 w-auto">
                             <Image
                               src="/logo-white.png"
-                              alt="PiP Studio Logo"
+                              alt="Logo de PiP Studio"
                               width={25}
                               height={12}
                               className="h-full w-auto"
@@ -249,18 +249,18 @@ export default function Hero() {
                             <div className="h-1 w-6 bg-[#CCFF00] mr-2"></div>
                             <p className="text-[10px] text-white/70">Diseño web profesional</p>
                           </div>
-                          <h1 className="text-xl font-bold leading-tight mb-3">
+                          <h2 className="text-xl font-bold leading-tight mb-3">
                             Sitios web <span className="text-[#CCFF00]">hechos a medida</span> para marcas con propósito
-                          </h1>
+                          </h2>
                           <p className="text-[11px] text-white/70 mb-4">
                             Creamos experiencias digitales que rompen esquemas y conectan con tu audiencia.
                           </p>
                           <div className="flex space-x-2">
                             <div className="bg-[#CCFF00] text-black px-3 py-1.5 rounded-full text-[10px] font-medium">
-                              Get Started →
+                              Empezar ahora →
                             </div>
                             <div className="border border-white/20 text-white px-3 py-1.5 rounded-full text-[10px] font-medium">
-                              Our Services
+                              Servicios
                             </div>
                           </div>
 
@@ -338,7 +338,7 @@ export default function Hero() {
                         <div className="mb-12">
                           <div className="flex items-center mb-3">
                             <div className="h-1 w-6 bg-[#CCFF00] mr-2"></div>
-                            <p className="text-[10px] text-white/70">Our Expertise</p>
+                            <p className="text-[10px] text-white/70">Experiencia</p>
                           </div>
                           <h2 className="text-lg font-bold mb-4">
                             No vendemos sitios web. <span className="text-[#CCFF00]">Creamos presencia</span>
@@ -373,9 +373,10 @@ export default function Hero() {
                             <div className="h-1 w-6 bg-[#CCFF00] mr-2"></div>
                             <p className="text-[10px] text-white/70">Nuestros planes</p>
                           </div>
-                          <h2 className="text-lg font-bold mb-4">
-                            Soluciones <span className="text-[#CCFF00]">a medida</span> para cada etapa
+                          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+                            Soluciones Web para <span className="text-[#CCFF00]">PyMEs y Emprendedores</span>
                           </h2>
+
 
                           {/* Plan Card */}
                           <div className="bg-[#1A1A1A] rounded-xl p-4 border border-[#CCFF00] mb-3 relative">
@@ -417,9 +418,10 @@ export default function Hero() {
                             <div className="h-1 w-6 bg-[#CCFF00] mr-2"></div>
                             <p className="text-[10px] text-white/70">Nuestro Proceso</p>
                           </div>
-                          <h2 className="text-lg font-bold mb-4">
-                            Cómo <span className="text-[#CCFF00]">trabajamos</span> juntos
+                          <h2 className="text-4xl md:text-5xl font-bold">
+                            Paso a Paso:&nbsp;<span className="text-[#CCFF00]">De la Idea al Sitio en 7 días</span>
                           </h2>
+
 
                           {/* Process Step */}
                           <div className="bg-[#1A1A1A] rounded-xl p-4 border border-white/10 mb-3">

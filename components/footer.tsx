@@ -47,7 +47,7 @@ export default function Footer() {
               ></motion.div>
 
               <div className="relative">
-                <Image src="/logo-white.png" alt="PiP Studio Logo" width={80} height={40} className="h-10 w-auto" />
+                <Image src="/logo-white.png" alt="PiP Studio — Diseño web Sunchales" width={80} height={40} className="h-10 w-auto" />
               </div>
             </div>
 
