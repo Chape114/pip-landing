@@ -56,7 +56,7 @@ export default function Navbar() {
     { name: "Contacto", href: "#contacto", id: "contacto" },
   ]
 
-  const handleNavClick = (e, href) => {
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault()
     setIsOpen(false)
 
@@ -113,7 +113,7 @@ export default function Navbar() {
             <Link href="/#inicio" className="relative z-50" onClick={(e) => handleNavClick(e, "#inicio")}>
               <div className="flex items-center">
                 <div className="h-8 w-auto">
-                  <Image src="/logo-white.png" alt="PiP Studio Logo" width={60} height={30} className="h-full w-auto" />
+                  <Image src="/logo-white.png" alt="Logo de PiP Studio" width={60} height={30} className="h-full w-auto" />
                 </div>
               </div>
             </Link>
@@ -275,7 +275,7 @@ export default function Navbar() {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.3, delay: 0.6 }}
             >
-              <p className="text-white/50 text-sm">© 2023 PiP Studio. Todos los derechos reservados.</p>
+              <p className="text-white/50 text-sm">© 2025 PiP Studio. Todos los derechos reservados.</p>
             </motion.div>
           </motion.div>
         )}
