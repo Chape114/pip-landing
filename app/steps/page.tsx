@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { ChevronLeft, ChevronRight } from "lucide-react"
+import { ChevronLeft, ChevronRight, TrendingUp, Heart, Award, BarChart3 } from "lucide-react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons"
 
@@ -39,14 +39,14 @@ const stepsData = [
     id: 3,
     title: "¿Qué puedo hacer como Comunicador para tu empresa?",
     benefits: [
-      "Ordena lo que decís y cómo lo decís",
-      "Mejora la forma en que tu empresa se muestra al mundo",
-      "Ayuda a que tus clientes entiendan qué hacés y por qué elegirte",
-      "Crea materiales profesionales, claros y coherentes",
-      "Fortalece tu identidad como marca sin perder tu esencia",
-      "Optimiza canales de contacto y flujos de venta",
-      "Mejora la experiencia del cliente en cada punto de contacto",
-      "Automatiza procesos de comunicación y seguimiento"
+      "Ordenar lo que decís y cómo lo decís",
+      "Mejorar la forma en que tu empresa se muestra al mundo",
+      "Ayudar a que tus clientes entiendan qué hacés y por qué elegirte",
+      "Crear materiales profesionales, claros y coherentes",
+      "Fortalecer tu identidad como marca sin perder tu esencia",
+      "Optimizar canales de contacto y flujos de venta",
+      "Mejorar la experiencia del cliente en cada punto de contacto",
+      "Automatizar procesos de comunicación y seguimiento"
     ]
   },
   {
@@ -215,7 +215,7 @@ export default function StepsPage() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.3 }}
-              className="text-2xl text-white/70 max-w-5xl mx-auto mb-16 leading-relaxed"
+              className="text-lg md:text-2xl text-white/70 max-w-5xl mx-auto mb-16 leading-relaxed"
               style={{ whiteSpace: 'pre-line' }}
             >
               {currentStepData.content}
@@ -225,7 +225,7 @@ export default function StepsPage() {
             <div className="relative max-w-4xl mx-auto">
               <div className="overflow-hidden">
                 <div 
-                  className="h-48 flex items-center justify-center cursor-grab active:cursor-grabbing"
+                  className="h-32 md:h-48 flex items-center justify-center cursor-grab active:cursor-grabbing"
                   onMouseDown={handleDragStart}
                   onMouseMove={handleDragMove}
                   onMouseUp={handleDragEnd}
@@ -246,16 +246,16 @@ export default function StepsPage() {
                       duration: isDragging ? 0 : 0.8, 
                       ease: "easeInOut" 
                     }}
-                    className="px-8 w-full flex justify-center"
+                    className="px-4 md:px-8 w-full flex justify-center"
                     style={{ userSelect: 'none' }}
                   >
                     <div className="relative group flex items-center justify-center">
                       {/* Texto del conflicto con signo de alerta */}
-                      <div className="flex items-center space-x-4 max-w-3xl">
-                        <div className="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                          <span className="text-white font-bold text-lg">!</span>
+                      <div className="flex flex-col md:flex-row items-center space-y-3 md:space-y-0 md:space-x-4 max-w-4xl mx-auto px-4">
+                        <div className="w-6 h-6 md:w-8 md:h-8 bg-red-500 rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                          <span className="text-white font-bold text-sm md:text-lg">!</span>
                         </div>
-                        <p className="text-2xl text-white/90 font-medium leading-relaxed group-hover:text-white transition-colors duration-300 text-center">
+                        <p className="text-lg md:text-2xl text-white/90 font-medium leading-relaxed group-hover:text-white transition-colors duration-300 text-center max-w-3xl">
                           "{currentStepData.conflicts?.[currentConflict] || ''}"
                         </p>
                       </div>
@@ -390,10 +390,76 @@ export default function StepsPage() {
                 <p className="text-xl text-white/90 leading-relaxed mb-6">
                   {currentStepData.explanation}
                 </p>
-                <p className="text-2xl text-[#CCFF00] font-semibold">
-                  {currentStepData.conclusion}
-                </p>
+                
+                {/* Estadísticas destacadas */}
+                <div className="bg-gradient-to-br from-[#CCFF00]/15 via-[#CCFF00]/10 to-[#CCFF00]/5 border-2 border-[#CCFF00]/40 rounded-2xl p-8 mb-6 relative overflow-hidden">
+                  {/* Efecto de brillo de fondo */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#CCFF00]/5 to-transparent opacity-50"></div>
+                  
+                  {/* Elementos decorativos */}
+                  <div className="absolute top-2 right-2 w-3 h-3 bg-[#CCFF00] rounded-full opacity-60"></div>
+                  <div className="absolute bottom-4 left-4 w-2 h-2 bg-[#CCFF00] rounded-full opacity-40"></div>
+                  
+                  <div className="relative z-10">
+                    <div className="text-center mb-6">
+                      <div className="inline-flex items-center space-x-2 bg-[#CCFF00]/20 rounded-full px-4 py-2 mb-3">
+                        <BarChart3 className="w-5 h-5 text-[#CCFF00]" />
+                        <span className="text-sm text-[#CCFF00] font-bold uppercase tracking-wider">Datos que respaldan esta afirmación</span>
+                      </div>
+                    </div>
+                    
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <motion.div 
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0.2 }}
+                        className="text-center group"
+                      >
+                        <div className="relative">
+                          <div className="text-4xl md:text-5xl font-black text-[#CCFF00] mb-2 group-hover:scale-110 transition-transform duration-300">
+                            23%
+                          </div>
+                          <div className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full flex items-center justify-center">
+                            <TrendingUp className="w-2 h-2 text-white" />
+                          </div>
+                        </div>
+                        <p className="text-sm text-white/90 font-medium mb-2">Aumento promedio en ingresos</p>
+                        <p className="text-xs text-white/60">de marcas con comunicación clara</p>
+                        <div className="mt-3 inline-flex items-center space-x-1 bg-white/10 rounded-full px-3 py-1">
+                          <TrendingUp className="w-3 h-3 text-[#CCFF00]" />
+                          <span className="text-xs text-white/70">Lucidpress</span>
+                        </div>
+                      </motion.div>
+                      
+                      <motion.div 
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0.4 }}
+                        className="text-center group"
+                      >
+                        <div className="relative">
+                          <div className="text-4xl md:text-5xl font-black text-[#CCFF00] mb-2 group-hover:scale-110 transition-transform duration-300">
+                            81%
+                          </div>
+                          <div className="absolute -top-1 -right-1 w-4 h-4 bg-blue-500 rounded-full flex items-center justify-center">
+                            <Heart className="w-2 h-2 text-white fill-current" />
+                          </div>
+                        </div>
+                        <p className="text-sm text-white/90 font-medium mb-2">De clientes necesita confiar</p>
+                        <p className="text-xs text-white/60">en una marca para comprarle</p>
+                        <div className="mt-3 inline-flex items-center space-x-1 bg-white/10 rounded-full px-3 py-1">
+                          <Award className="w-3 h-3 text-[#CCFF00]" />
+                          <span className="text-xs text-white/70">Edelman</span>
+                        </div>
+                      </motion.div>
+                    </div>
+                  </div>
+                </div>
               </div>
+              
+              <p className="text-2xl text-[#CCFF00] font-semibold">
+                {currentStepData.conclusion}
+              </p>
             </motion.div>
           </div>
         )
@@ -445,7 +511,7 @@ export default function StepsPage() {
                     </h3>
                     <div className="space-y-6">
                       <p className="text-2xl text-white/90 leading-relaxed">
-                        Pero llega un momento donde no alcanza con hacer más.
+                        Llega un momento donde no alcanza con hacer más.
                       </p>
                       <p className="text-3xl font-bold text-white">
                         Hay que comunicar mejor.
@@ -531,7 +597,7 @@ export default function StepsPage() {
       case 7:
         return (
           <div className="text-center max-w-6xl mx-auto">
-            <h1 className="text-5xl md:text-7xl font-bold mb-12">
+            <h1 className="text-3xl md:text-5xl lg:text-7xl font-bold mb-12">
               {currentStepData.title}
             </h1>
             
