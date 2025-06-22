@@ -58,7 +58,7 @@ export default function PrePage() {
             transition={{ duration: 0.8, delay: 0.9 }}
           >
             <Link
-              href="/propuesta"
+              href="/steps"
               className="group inline-flex items-center bg-[#CCFF00] text-black px-12 py-6 rounded-full font-bold text-xl hover:bg-[#CCFF00]/90 transition-all duration-300 transform hover:scale-105 shadow-2xl shadow-[#CCFF00]/20"
             >
               <span className="mr-3">Entrá que te enseño</span>
