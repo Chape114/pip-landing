@@ -304,7 +304,7 @@ export default function PricingPlans() {
               <div
                 className={`bg-[#1A1A1A] rounded-2xl p-8 border ${
                   plan.highlighted ? `border-${plan.accent}` : "border-white/10"
-                } h-full group hover:border-[#CCFF00]/50 transition-all duration-300`}
+                } h-full group hover:border-[#CCFF00]/50 transition-all duration-300 flex flex-col`}
               >
                 {plan.highlighted && (
                   <motion.div
@@ -330,7 +330,7 @@ export default function PricingPlans() {
 
                 <p className="text-white/70 mb-8">{plan.description}</p>
 
-                <div className="space-y-4">
+                <div className="space-y-4 flex-grow">
                   {plan.features.map((feature, i) => (
                     <motion.div
                       key={i}
@@ -345,7 +345,7 @@ export default function PricingPlans() {
                   ))}
                 </div>
 
-                <div className="mt-8 pt-6 border-t border-white/10">
+                <div className="mt-8 pt-6 border-t border-white/10 mt-auto">
                 <motion.a
                     href={plan.whatsappLink}
                     target="_blank"
