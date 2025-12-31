@@ -491,7 +491,10 @@ export default function HomePage() {
                     Preguntas frecuentes
                   </motion.span>
                 </motion.a>
-                <motion.button 
+                <motion.a
+                  href="https://wa.me/5493493415669"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="bg-[#CCFF00] text-[#282828] py-1.5 md:py-2 rounded-full font-medium text-xs md:text-sm flex items-center group"
                   initial={{ paddingLeft: "0.75rem", paddingRight: "0" }}
                   whileHover={{ 
@@ -502,7 +505,7 @@ export default function HomePage() {
                 >
                   <span className="whitespace-nowrap">Hablemos!</span>
                   <ArrowUpRight className="w-4 h-4 md:w-5 md:h-5 text-[#282828] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex-shrink-0 ml-1.5" />
-                </motion.button>
+                </motion.a>
               </nav>
               {/* Mobile menu button */}
               <button 
@@ -626,10 +629,15 @@ export default function HomePage() {
                   transition={{ duration: 0.4, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
                   className="flex justify-start mt-6"
                 >
-                  <button className="flex items-center gap-2 border border-white bg-[#2a2a2a] hover:bg-[#333] px-4 md:px-6 py-2.5 md:py-3 rounded-full transition group text-sm md:text-base">
+                  <a 
+                    href="https://wa.me/5493493415669"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 border border-white bg-[#2a2a2a] hover:bg-[#333] px-4 md:px-6 py-2.5 md:py-3 rounded-full transition group text-sm md:text-base"
+                  >
                     <span className="text-white font-medium">Hablemos!</span>
                     <ArrowUpRight className="w-4 h-4 md:w-5 md:h-5 text-[#CCFF00]" />
-                  </button>
+                  </a>
                 </motion.div>
               </div>
             </motion.div>
@@ -646,7 +654,16 @@ export default function HomePage() {
           <p ref={subtitleRef} className="text-lg md:text-xl lg:text-2xl text-white/80 mb-6 md:mb-8 max-w-3xl">
             El área de comunicación y marketing de empresas que deciden profesionalizar su presencia digital.
           </p>
-          <button ref={buttonRef} className="flex items-center gap-2 border border-white bg-[#2a2a2a] hover:bg-[#333] px-4 md:px-6 py-2.5 md:py-3 rounded-full transition group text-sm md:text-base">
+          <button 
+            ref={buttonRef} 
+            onClick={() => {
+              const element = document.getElementById('soluciones-digitales')
+              if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+              }
+            }}
+            className="flex items-center gap-2 border border-white bg-[#2a2a2a] hover:bg-[#333] px-4 md:px-6 py-2.5 md:py-3 rounded-full transition group text-sm md:text-base"
+          >
             <span className="text-white font-medium">Quiero saber más!</span>
             <ArrowUpRight className="w-4 h-4 md:w-5 md:h-5 text-[#CCFF00]" />
           </button>
@@ -726,10 +743,15 @@ export default function HomePage() {
                   <p className="text-sm text-white/80 mb-6">Pensada desde el negocio, no desde la moda.</p>
                 </div>
                 <div className="flex justify-end relative z-10">
-                  <button className="flex items-center gap-2 border border-white bg-[#2a2a2a] hover:bg-[#333] px-4 md:px-6 py-2.5 md:py-3 rounded-full transition group text-sm md:text-base">
+                  <a 
+                    href="https://wa.me/5493493415669"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 border border-white bg-[#2a2a2a] hover:bg-[#333] px-4 md:px-6 py-2.5 md:py-3 rounded-full transition group text-sm md:text-base"
+                  >
                     <span className="text-white font-medium">Hablemos!</span>
                     <ArrowUpRight className="w-4 h-4 md:w-5 md:h-5 text-[#CCFF00]" />
-                  </button>
+                  </a>
                 </div>
               </div>
 
@@ -922,10 +944,15 @@ export default function HomePage() {
                 
                 {/* Botón Hablemos! */}
                 <div className="flex justify-start mt-8 md:mt-10 lg:mt-12">
-                  <button className="flex items-center gap-2 md:gap-3 border border-white bg-[#2a2a2a] hover:bg-[#333] px-4 py-2 md:px-6 md:py-3 lg:px-8 lg:py-4 rounded-full transition group text-sm md:text-base lg:text-lg">
+                  <a 
+                    href="https://wa.me/5493493415669"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 md:gap-3 border border-white bg-[#2a2a2a] hover:bg-[#333] px-4 py-2 md:px-6 md:py-3 lg:px-8 lg:py-4 rounded-full transition group text-sm md:text-base lg:text-lg"
+                  >
                     <span className="text-white font-medium">Hablemos!</span>
                     <ArrowUpRight className="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 text-[#CCFF00]" />
-                  </button>
+                  </a>
                 </div>
               </motion.div>
             </div>
@@ -1782,10 +1809,15 @@ export default function HomePage() {
               <p className="text-lg text-gray-600 mb-8">
                 Comunicación por sobre todo, cercanía y redes.
               </p>
-              <button className="flex items-center gap-2 border border-white bg-[#2a2a2a] hover:bg-[#333] px-4 md:px-6 py-2.5 md:py-3 rounded-full transition group text-sm md:text-base">
+              <a 
+                href="https://wa.me/5493493415669"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 border border-white bg-[#2a2a2a] hover:bg-[#333] px-4 md:px-6 py-2.5 md:py-3 rounded-full transition group text-sm md:text-base"
+              >
                 <span className="text-white font-medium">Hablemos!</span>
                 <ArrowUpRight className="w-4 h-4 md:w-5 md:h-5 text-[#CCFF00]" />
-              </button>
+              </a>
             </motion.div>
             <div className="flex flex-col gap-1 rounded-2xl overflow-hidden bg-[#EBEBEB] p-1">
               {preguntasFrecuentes.map((item, idx) => {
