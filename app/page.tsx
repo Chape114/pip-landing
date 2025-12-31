@@ -102,6 +102,7 @@ const serviciosCards = [
 export default function HomePage() {
   const headerRef = useRef<HTMLDivElement>(null)
   const h1Ref = useRef<HTMLHeadingElement>(null)
+  const subtitleRef = useRef<HTMLParagraphElement>(null)
   const buttonRef = useRef<HTMLButtonElement>(null)
   const ghostRef = useRef<HTMLDivElement>(null)
   const noiseCanvasRef = useRef<HTMLCanvasElement>(null)
@@ -192,6 +193,24 @@ export default function HomePage() {
           duration: 1,
           ease: "power3.out",
           delay: 0.5,
+        }
+      )
+    }
+
+    // Animación de la bajada (subtitle)
+    if (subtitleRef.current) {
+      gsap.fromTo(
+        subtitleRef.current,
+        {
+          opacity: 0,
+          y: 30,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power2.out",
+          delay: 0.75,
         }
       )
     }
@@ -594,7 +613,7 @@ export default function HomePage() {
             <span className="hidden lg:inline"><br /></span>{" "}
             digital para <span className="text-[#CCFF00] font-semibold">PyMEs</span>
           </h1>
-          <p className="text-lg md:text-xl lg:text-2xl text-white/80 mb-6 md:mb-8 max-w-3xl">
+          <p ref={subtitleRef} className="text-lg md:text-xl lg:text-2xl text-white/80 mb-6 md:mb-8 max-w-3xl">
             El área de comunicación y marketing de empresas que deciden profesionalizar su presencia digital.
           </p>
           <button ref={buttonRef} className="flex items-center gap-2 border border-white bg-[#2a2a2a] hover:bg-[#333] px-4 md:px-6 py-2.5 md:py-3 rounded-full transition group text-sm md:text-base">

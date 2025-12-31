@@ -28,7 +28,15 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",              // Next.js resolverá a https://www.pipstudio.com.ar/
   },
-  icons: { icon: "/favicon.png" },
+  icons: { 
+    icon: [
+      { url: "/favicon.png", type: "image/png" },
+      { url: "/favicon.png", type: "image/png", sizes: "32x32" },
+      { url: "/favicon.png", type: "image/png", sizes: "16x16" }
+    ],
+    apple: "/favicon.png",
+    shortcut: "/favicon.png"
+  },
 }
 
 export default function RootLayout({
