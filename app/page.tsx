@@ -305,7 +305,10 @@ export default function HomePage() {
         <header className="fixed top-0 left-0 w-full flex justify-center z-50">
           <motion.div 
             ref={mobileMenuRef}
-            className="w-[98%] md:w-[80%] bg-[#e0e0e0] shadow-lg overflow-hidden px-4 md:px-8"
+            className="w-[98%] md:w-[80%] bg-[#e0e0e0] shadow-lg overflow-hidden px-4 md:px-8 rounded-b-[1.5rem]"
+            initial={{
+              borderRadius: "0 0 1.5rem 1.5rem",
+            }}
             animate={{
               borderRadius: isMobileMenuOpen ? "0 0 1rem 1rem" : "0 0 1.5rem 1.5rem",
             }}
