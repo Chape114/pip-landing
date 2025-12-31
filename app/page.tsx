@@ -927,14 +927,15 @@ export default function HomePage() {
                       >
                         <AccordionContent className="pt-2 md:pt-3 pb-6 md:pb-8">
                             <motion.div 
-                              initial={{ opacity: 0, y: 20 }}
-                              animate={isOpen ? { opacity: 1, y: 0 } : { opacity: 0, y: 0 }}
+                              initial={false}
+                              animate={isOpen ? { opacity: 1, y: 0 } : { opacity: isOpen ? 1 : 0, y: 0 }}
                               transition={{ 
                                 duration: 1.2, 
                                 ease: [0.22, 1, 0.36, 1],
                                 delay: isOpen ? 0.15 : 0
                               }}
                               className="ml-2 md:ml-4 lg:ml-6 xl:ml-8"
+                              style={{ opacity: isOpen ? 1 : 0 }}
                             >
                             <p className="text-white text-sm sm:text-base md:text-lg mb-6 md:mb-8 max-w-3xl leading-relaxed">
                               {item.description}
@@ -1107,8 +1108,8 @@ export default function HomePage() {
       {/* Partnership Section */}
       <section className="bg-white text-black py-16 px-4 md:px-8 w-full">
         <div className="w-[98%] md:w-[80%] mx-auto">
-          <p className="text-sm text-gray-500 mb-4">/Partnership</p>
-          <h2 className="text-4xl sm:text-5xl md:text-4xl lg:text-5xl font-medium mb-12" style={{ letterSpacing: '-0.08em' }}>
+          <p className="text-sm text-gray-500 mb-4" style={{ opacity: 1 }}>/Partnership</p>
+          <h2 className="text-4xl sm:text-5xl md:text-4xl lg:text-5xl font-medium mb-12" style={{ letterSpacing: '-0.08em', opacity: 1 }}>
             Partnership oficial
           </h2>
           
@@ -1117,10 +1118,11 @@ export default function HomePage() {
               <div className="flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-12">
                 <motion.div 
                   className="flex-shrink-0"
-                  initial={{ opacity: 0, scale: 0.9 }}
+                  initial={{ opacity: 1, scale: 1 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+                  style={{ opacity: 1 }}
                 >
                   <div className="rounded-xl p-6 md:p-8 relative">
                     <div className="relative w-full h-full">
@@ -1146,10 +1148,11 @@ export default function HomePage() {
                 
                 <motion.div 
                   className="flex-1 w-full"
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 1, y: 0 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
+                  style={{ opacity: 1 }}
                 >
                   <div className="space-y-4">
                     <div className="flex items-center gap-2 mb-2">
@@ -1815,10 +1818,11 @@ export default function HomePage() {
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 1, y: 0 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
+              style={{ opacity: 1 }}
             >
               <h2 className="text-4xl sm:text-5xl md:text-4xl lg:text-5xl font-medium mb-4" style={{ letterSpacing: '-0.08em' }}>
                 ¿Cómo podemos trabajar juntos?
