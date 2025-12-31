@@ -4,9 +4,9 @@ import { ThemeProvider } from "../components/theme-provider"
 import Script from "next/script"
 
 export const metadata: Metadata = {
-  title: "Diseño Web en Santa Fe | PiP Studio Comunicaciones",
+  title: "PiP Studio | Comunicación y transformación digital para PyMEs",
   description:
-    "Creamos sitios Next.js 100 % a medida para emprendedores y empresas de Sunchales, Rafaela y toda Santa Fe. Rediseño gratuito inicial.",
+    "Ayudo a PyMEs a ordenar y profesionalizar su presencia digital. Estrategia, comunicación y transformación digital con foco en resultados reales.",
   keywords: [
     "diseño web para PyMEs",
     "páginas web Sunchales",
@@ -16,9 +16,9 @@ export const metadata: Metadata = {
   ],
   metadataBase: new URL("https://www.pipstudio.com.ar"),
   openGraph: {
-    title: "PiP Studio Comunicaciones",
+    title: "PiP Studio | Comunicación y transformación digital para PyMEs",
     description:
-      "Webs modernas, escalables y llave en mano para tu negocio en Santa Fe.",
+      "Ayudo a PyMEs a ordenar y profesionalizar su presencia digital. Estrategia, comunicación y transformación digital con foco en resultados reales.",
     url: "https://www.pipstudio.com.ar",
     siteName: "PiP Studio Comunicaciones",
     locale: "es_AR",
