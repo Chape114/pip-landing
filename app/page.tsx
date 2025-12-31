@@ -696,7 +696,7 @@ export default function HomePage() {
         <div className="w-[98%] md:w-[80%] mx-auto flex flex-col">
           <motion.div 
             className="flex justify-between items-start mb-4"
-            initial={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
@@ -707,7 +707,7 @@ export default function HomePage() {
           </motion.div>
           <motion.div 
             className="grid grid-cols-1 md:grid-cols-10 gap-6 mb-4"
-            initial={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
@@ -880,6 +880,7 @@ export default function HomePage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-100px" }}
                   transition={{ duration: 0.6, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
+                  style={{ opacity: 1 }}
                 >
                   <p className="text-xs md:text-sm text-gray-400">/Sistema</p>
                   <p className="text-xs md:text-sm text-gray-400">(03)</p>
@@ -1232,6 +1233,7 @@ export default function HomePage() {
                   ease: [0.22, 1, 0.36, 1],
                 }}
                 style={{
+                  backgroundColor: expandedServiceCards.has(serviciosCards[0].id) ? '#ffffff' : '#2a2a2a',
                   backgroundImage: expandedServiceCards.has(serviciosCards[0].id) ? 'none' : `url('/pipstudio2/Diseño sin título (8).png')`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
@@ -1329,6 +1331,7 @@ export default function HomePage() {
                   ease: [0.22, 1, 0.36, 1],
                 }}
                 style={{
+                  backgroundColor: expandedServiceCards.has(serviciosCards[1].id) ? '#ffffff' : '#2a2a2a',
                   backgroundImage: expandedServiceCards.has(serviciosCards[1].id) ? 'none' : `url('/pipstudio2/Diseño sin título (8).png')`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
@@ -1428,6 +1431,7 @@ export default function HomePage() {
                   ease: [0.22, 1, 0.36, 1],
                 }}
                 style={{
+                  backgroundColor: expandedServiceCards.has(serviciosCards[2].id) ? '#ffffff' : '#2a2a2a',
                   backgroundImage: expandedServiceCards.has(serviciosCards[2].id) ? 'none' : `url('/pipstudio2/Diseño sin título (8).png')`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
@@ -1519,6 +1523,7 @@ export default function HomePage() {
                   ease: [0.22, 1, 0.36, 1],
                 }}
                 style={{
+                  backgroundColor: expandedServiceCards.has(serviciosCards[3].id) ? '#ffffff' : '#2a2a2a',
                   backgroundImage: expandedServiceCards.has(serviciosCards[3].id) ? 'none' : `url('/pipstudio2/Diseño sin título (8).png')`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
@@ -1618,6 +1623,7 @@ export default function HomePage() {
                   ease: [0.22, 1, 0.36, 1],
                 }}
                 style={{
+                  backgroundColor: expandedServiceCards.has(serviciosCards[4].id) ? '#ffffff' : '#2a2a2a',
                   backgroundImage: expandedServiceCards.has(serviciosCards[4].id) ? 'none' : `url('/pipstudio2/Diseño sin título (8).png')`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
@@ -1712,6 +1718,7 @@ export default function HomePage() {
                   ease: [0.22, 1, 0.36, 1],
                 }}
                 style={{
+                  backgroundColor: expandedServiceCards.has(serviciosCards[5].id) ? '#ffffff' : '#2a2a2a',
                   backgroundImage: expandedServiceCards.has(serviciosCards[5].id) ? 'none' : `url('/pipstudio2/Diseño sin título (8).png')`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
@@ -1834,7 +1841,7 @@ export default function HomePage() {
                 href="https://wa.me/5493493415669"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 border border-white bg-[#2a2a2a] hover:bg-[#333] px-4 md:px-6 py-2.5 md:py-3 rounded-full transition group text-sm md:text-base"
+                className="inline-flex items-center gap-2 border border-white bg-[#2a2a2a] hover:bg-[#333] px-4 md:px-6 py-2.5 md:py-3 rounded-full transition group text-sm md:text-base"
               >
                 <span className="text-white font-medium">Hablemos!</span>
                 <ArrowUpRight className="w-4 h-4 md:w-5 md:h-5 text-[#CCFF00]" />
@@ -2108,6 +2115,7 @@ export default function HomePage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
               className="mb-6 md:mb-10"
+              style={{ opacity: 1 }}
             >
               <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2" style={{ letterSpacing: '-0.02em' }}>
                 San Cayetano
@@ -2123,6 +2131,7 @@ export default function HomePage() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
               className="mb-6 md:mb-10"
+              style={{ opacity: 1 }}
             >
               <h3 className="text-base md:text-lg font-semibold text-[#CCFF00] mb-3 md:mb-4 flex items-center gap-2">
                 <span className="w-1 h-5 md:h-6 bg-[#CCFF00] rounded-full"></span>
@@ -2139,6 +2148,7 @@ export default function HomePage() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
               className="mb-6 md:mb-10"
+              style={{ opacity: 1 }}
             >
               <h3 className="text-base md:text-lg font-semibold text-[#CCFF00] mb-3 md:mb-4 flex items-center gap-2">
                 <span className="w-1 h-5 md:h-6 bg-[#CCFF00] rounded-full"></span>
@@ -2163,6 +2173,7 @@ export default function HomePage() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
               className="pt-6 md:pt-8 border-t border-gray-800 mb-6 md:mb-8"
+              style={{ opacity: 1 }}
             >
               <h3 className="text-base md:text-lg font-semibold text-[#CCFF00] mb-3 md:mb-4 flex items-center gap-2">
                 <span className="w-1 h-5 md:h-6 bg-[#CCFF00] rounded-full"></span>
@@ -2179,6 +2190,7 @@ export default function HomePage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
               className="pt-6 md:pt-8 border-t border-gray-800"
+              style={{ opacity: 1 }}
             >
               <h3 className="text-base md:text-lg font-semibold text-[#CCFF00] mb-3 md:mb-4 flex items-center gap-2">
                 <span className="w-1 h-5 md:h-6 bg-[#CCFF00] rounded-full"></span>
@@ -2258,6 +2270,7 @@ export default function HomePage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
               className="mb-6 md:mb-10"
+              style={{ opacity: 1 }}
             >
               <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2" style={{ letterSpacing: '-0.02em' }}>
                 Foglia Válvulas
@@ -2273,6 +2286,7 @@ export default function HomePage() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
               className="mb-6 md:mb-10"
+              style={{ opacity: 1 }}
             >
               <h3 className="text-base md:text-lg font-semibold text-[#CCFF00] mb-3 md:mb-4 flex items-center gap-2">
                 <span className="w-1 h-5 md:h-6 bg-[#CCFF00] rounded-full"></span>
@@ -2289,6 +2303,7 @@ export default function HomePage() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
               className="mb-6 md:mb-10"
+              style={{ opacity: 1 }}
             >
               <h3 className="text-base md:text-lg font-semibold text-[#CCFF00] mb-3 md:mb-4 flex items-center gap-2">
                 <span className="w-1 h-5 md:h-6 bg-[#CCFF00] rounded-full"></span>
@@ -2310,6 +2325,7 @@ export default function HomePage() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
               className="pt-6 md:pt-8 border-t border-gray-800 mb-6 md:mb-8"
+              style={{ opacity: 1 }}
             >
               <h3 className="text-base md:text-lg font-semibold text-[#CCFF00] mb-3 md:mb-4 flex items-center gap-2">
                 <span className="w-1 h-5 md:h-6 bg-[#CCFF00] rounded-full"></span>
@@ -2326,6 +2342,7 @@ export default function HomePage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
               className="pt-6 md:pt-8 border-t border-gray-800"
+              style={{ opacity: 1 }}
             >
               <h3 className="text-base md:text-lg font-semibold text-[#CCFF00] mb-3 md:mb-4 flex items-center gap-2">
                 <span className="w-1 h-5 md:h-6 bg-[#CCFF00] rounded-full"></span>
