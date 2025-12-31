@@ -161,8 +161,15 @@ export default function HomePage() {
     requestAnimationFrame(raf)
 
     // Función para animar elementos cuando entran en viewport
-    const animateOnScroll = (element: HTMLElement | null, animation: () => void) => {
+    const animateOnScroll = (element: HTMLElement | null, animation: () => void, immediate = false) => {
       if (!element) return
+
+      // Si es inmediato (hero section), animar directamente
+      if (immediate) {
+        // Pequeño delay para asegurar que el DOM esté listo
+        setTimeout(() => animation(), 100)
+        return
+      }
 
       const observer = new IntersectionObserver(
         (entries) => {
@@ -173,13 +180,13 @@ export default function HomePage() {
             }
           })
         },
-        { threshold: 0.1 }
+        { threshold: 0.1, rootMargin: '50px' }
       )
 
       observer.observe(element)
     }
 
-    // Animación del header
+    // Animación del header (inmediata ya que está visible desde el inicio)
     animateOnScroll(headerRef.current, () => {
       if (headerRef.current) {
         gsap.fromTo(
@@ -196,9 +203,9 @@ export default function HomePage() {
           }
         )
       }
-    })
+    }, true)
 
-    // Animación del h1
+    // Animación del h1 (inmediata)
     animateOnScroll(h1Ref.current, () => {
       if (h1Ref.current) {
         gsap.fromTo(
@@ -216,9 +223,9 @@ export default function HomePage() {
           }
         )
       }
-    })
+    }, true)
 
-    // Animación de la bajada (subtitle)
+    // Animación de la bajada (subtitle) (inmediata)
     animateOnScroll(subtitleRef.current, () => {
       if (subtitleRef.current) {
         gsap.fromTo(
@@ -236,9 +243,9 @@ export default function HomePage() {
           }
         )
       }
-    })
+    }, true)
 
-    // Animación del botón
+    // Animación del botón (inmediata)
     animateOnScroll(buttonRef.current, () => {
       if (buttonRef.current) {
         gsap.fromTo(
@@ -256,9 +263,9 @@ export default function HomePage() {
           }
         )
       }
-    })
+    }, true)
 
-    // Animación del fantasma
+    // Animación del fantasma (inmediata)
     animateOnScroll(ghostRef.current, () => {
       if (ghostRef.current) {
         gsap.fromTo(
@@ -276,7 +283,7 @@ export default function HomePage() {
           }
         )
       }
-    })
+    }, true)
 
     // Cleanup de Lenis
     return () => {
@@ -646,12 +653,12 @@ export default function HomePage() {
         
         {/* Content - Left aligned */}
         <div className="relative z-10 w-[98%] md:w-[80%] mx-auto px-4 md:px-8 pt-16 md:pt-24">
-          <h1 ref={h1Ref} className="text-5xl sm:text-6xl md:text-5xl lg:text-[70px] xl:text-[95px] font-normal mb-6 md:mb-8 leading-[1.2] md:leading-[1.25] text-left" style={{ letterSpacing: '-0.08em' }}>
+          <h1 ref={h1Ref} className="text-5xl sm:text-6xl md:text-5xl lg:text-[70px] xl:text-[95px] font-normal mb-6 md:mb-8 leading-[1.2] md:leading-[1.25] text-left" style={{ letterSpacing: '-0.08em', opacity: 1 }}>
             Comunicación y transformación{" "}
             <span className="hidden lg:inline"><br /></span>{" "}
             digital para <span className="text-[#CCFF00] font-semibold">PyMEs</span>
           </h1>
-          <p ref={subtitleRef} className="text-lg md:text-xl lg:text-2xl text-white/80 mb-6 md:mb-8 max-w-3xl">
+          <p ref={subtitleRef} className="text-lg md:text-xl lg:text-2xl text-white/80 mb-6 md:mb-8 max-w-3xl" style={{ opacity: 1 }}>
             El área de comunicación y marketing de empresas que deciden profesionalizar su presencia digital.
           </p>
           <button 
@@ -663,6 +670,7 @@ export default function HomePage() {
               }
             }}
             className="flex items-center gap-2 border border-white bg-[#2a2a2a] hover:bg-[#333] px-4 md:px-6 py-2.5 md:py-3 rounded-full transition group text-sm md:text-base"
+            style={{ opacity: 1 }}
           >
             <span className="text-white font-medium">Quiero saber más!</span>
             <ArrowUpRight className="w-4 h-4 md:w-5 md:h-5 text-[#CCFF00]" />
@@ -670,7 +678,7 @@ export default function HomePage() {
         </div>
         
         {/* Ghost silhouette - Bottom right */}
-        <div ref={ghostRef} className="absolute top-1/2 -translate-y-1/2 right-0 w-48 h-64 md:w-64 md:h-80 lg:w-80 lg:h-96 opacity-0 z-0 pointer-events-none">
+        <div ref={ghostRef} className="absolute top-1/2 -translate-y-1/2 right-0 w-48 h-64 md:w-64 md:h-80 lg:w-80 lg:h-96 z-0 pointer-events-none" style={{ opacity: 0.15 }}>
           <div className="relative w-full h-full">
             <Image
               src="/pipstudio2/ccff00.png"
@@ -688,20 +696,22 @@ export default function HomePage() {
         <div className="w-[98%] md:w-[80%] mx-auto flex flex-col">
           <motion.div 
             className="flex justify-between items-start mb-4"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 1, y: 0 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+            style={{ opacity: 1 }}
           >
             <p className="text-sm text-gray-500">/Soluciones digitales</p>
             <p className="text-sm text-gray-500">(02)</p>
           </motion.div>
           <motion.div 
             className="grid grid-cols-1 md:grid-cols-10 gap-6 mb-4"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 1, y: 0 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
+            style={{ opacity: 1 }}
           >
             <div className="md:col-span-7">
               <h2 className="text-4xl sm:text-5xl md:text-4xl lg:text-5xl font-medium" style={{ letterSpacing: '-0.08em' }}>
@@ -714,10 +724,11 @@ export default function HomePage() {
           </motion.div>
           <motion.p 
             className="text-lg md:text-xl text-gray-600 mb-12"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 1, y: 0 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
+            style={{ opacity: 1 }}
           >
             Estrategia, diseño y ejecución alineadas a objetivos reales.
           </motion.p>
@@ -856,10 +867,11 @@ export default function HomePage() {
             <div className="flex-1 flex flex-col justify-center">
               <motion.div 
                 className="bg-[#141414] rounded-xl p-6 md:p-12 lg:p-16 xl:p-20"
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 1, y: 0 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+                style={{ opacity: 1 }}
               >
                 {/* Header */}
                 <motion.div 
@@ -965,18 +977,19 @@ export default function HomePage() {
         <div className="w-[98%] md:w-[80%] mx-auto">
           <motion.div 
             className="flex justify-between items-start mb-4"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 1, y: 0 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+            style={{ opacity: 1 }}
           >
             <p className="text-sm text-gray-500">/Casos de éxito</p>
             <p className="text-sm text-gray-500">(04)</p>
           </motion.div>
           <motion.h2 
             className="text-4xl sm:text-5xl md:text-4xl lg:text-5xl font-medium mb-12" 
-            style={{ letterSpacing: '-0.08em' }}
-            initial={{ opacity: 0, y: 20 }}
+            style={{ letterSpacing: '-0.08em', opacity: 1 }}
+            initial={{ opacity: 1, y: 0 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
@@ -1164,20 +1177,22 @@ export default function HomePage() {
         <div className="w-[98%] md:w-[80%] mx-auto flex flex-col">
           <motion.div 
             className="flex justify-between items-start mb-4"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 1, y: 0 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+            style={{ opacity: 1 }}
           >
             <p className="text-sm text-gray-500">/Servicios</p>
             <p className="text-sm text-gray-500">(05)</p>
           </motion.div>
           <motion.div 
             className="grid grid-cols-1 md:grid-cols-10 gap-6 mb-4"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 1, y: 0 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
+            style={{ opacity: 1 }}
           >
             <div className="md:col-span-7">
               <h2 className="text-4xl sm:text-5xl md:text-4xl lg:text-5xl font-medium" style={{ letterSpacing: '-0.08em' }}>
@@ -1190,10 +1205,11 @@ export default function HomePage() {
           </motion.div>
           <motion.p 
             className="text-lg md:text-xl text-gray-600 mb-12"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 1, y: 0 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
+            style={{ opacity: 1 }}
           >
             Estrategia, diseño y ejecución alineadas a objetivos reales.
           </motion.p>
@@ -1788,10 +1804,11 @@ export default function HomePage() {
         <div className="w-[98%] md:w-[80%] mx-auto">
           <motion.div 
             className="flex justify-between items-start mb-4"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 1, y: 0 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+            style={{ opacity: 1 }}
           >
             <p className="text-sm text-gray-500">/Preguntas frecuentes</p>
             <p className="text-sm text-gray-500">(06)</p>
