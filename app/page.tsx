@@ -160,96 +160,123 @@ export default function HomePage() {
 
     requestAnimationFrame(raf)
 
-    // Animación del header (primero)
-    // Animación del header (primero)
-    if (headerRef.current) {
-      gsap.fromTo(
-        headerRef.current,
-        {
-          opacity: 0,
-          y: -30,
+    // Función para animar elementos cuando entran en viewport
+    const animateOnScroll = (element: HTMLElement | null, animation: () => void) => {
+      if (!element) return
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              animation()
+              observer.unobserve(entry.target)
+            }
+          })
         },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: "power2.out",
-          delay: 0,
-        }
+        { threshold: 0.1 }
       )
+
+      observer.observe(element)
     }
+
+    // Animación del header
+    animateOnScroll(headerRef.current, () => {
+      if (headerRef.current) {
+        gsap.fromTo(
+          headerRef.current,
+          {
+            opacity: 0,
+            y: -30,
+          },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: "power2.out",
+          }
+        )
+      }
+    })
 
     // Animación del h1
-    if (h1Ref.current) {
-      gsap.fromTo(
-        h1Ref.current,
-        {
-          opacity: 0,
-          y: 50,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          ease: "power3.out",
-          delay: 0.5,
-        }
-      )
-    }
+    animateOnScroll(h1Ref.current, () => {
+      if (h1Ref.current) {
+        gsap.fromTo(
+          h1Ref.current,
+          {
+            opacity: 0,
+            y: 50,
+          },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            ease: "power3.out",
+            delay: 0.2,
+          }
+        )
+      }
+    })
 
     // Animación de la bajada (subtitle)
-    if (subtitleRef.current) {
-      gsap.fromTo(
-        subtitleRef.current,
-        {
-          opacity: 0,
-          y: 30,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: "power2.out",
-          delay: 0.75,
-        }
-      )
-    }
+    animateOnScroll(subtitleRef.current, () => {
+      if (subtitleRef.current) {
+        gsap.fromTo(
+          subtitleRef.current,
+          {
+            opacity: 0,
+            y: 30,
+          },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: "power2.out",
+            delay: 0.4,
+          }
+        )
+      }
+    })
 
     // Animación del botón
-    if (buttonRef.current) {
-      gsap.fromTo(
-        buttonRef.current,
-        {
-          opacity: 0,
-          y: 30,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: "power2.out",
-          delay: 1,
-        }
-      )
-    }
+    animateOnScroll(buttonRef.current, () => {
+      if (buttonRef.current) {
+        gsap.fromTo(
+          buttonRef.current,
+          {
+            opacity: 0,
+            y: 30,
+          },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: "power2.out",
+            delay: 0.6,
+          }
+        )
+      }
+    })
 
     // Animación del fantasma
-    if (ghostRef.current) {
-      gsap.fromTo(
-        ghostRef.current,
-        {
-          opacity: 0,
-          scale: 0.8,
-        },
-        {
-          opacity: 0.15,
-          scale: 1,
-          duration: 1.2,
-          ease: "power2.out",
-          delay: 1.4,
-        }
-      )
-    }
+    animateOnScroll(ghostRef.current, () => {
+      if (ghostRef.current) {
+        gsap.fromTo(
+          ghostRef.current,
+          {
+            opacity: 0,
+            scale: 0.8,
+          },
+          {
+            opacity: 0.15,
+            scale: 1,
+            duration: 1.2,
+            ease: "power2.out",
+            delay: 0.8,
+          }
+        )
+      }
+    })
 
     // Cleanup de Lenis
     return () => {
@@ -642,11 +669,23 @@ export default function HomePage() {
       {/* Soluciones digitales Section */}
       <section id="soluciones-digitales" className="bg-white text-black w-full pt-16 pb-16 px-4 md:px-8">
         <div className="w-[98%] md:w-[80%] mx-auto flex flex-col">
-          <div className="flex justify-between items-start mb-4">
+          <motion.div 
+            className="flex justify-between items-start mb-4"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+          >
             <p className="text-sm text-gray-500">/Soluciones digitales</p>
             <p className="text-sm text-gray-500">(02)</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-10 gap-6 mb-4">
+          </motion.div>
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-10 gap-6 mb-4"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
+          >
             <div className="md:col-span-7">
               <h2 className="text-4xl sm:text-5xl md:text-4xl lg:text-5xl font-medium" style={{ letterSpacing: '-0.08em' }}>
                 Soluciones digitales pensadas para ordenar, comunicar y hacer crecer negocios.
@@ -655,10 +694,16 @@ export default function HomePage() {
             <div className="hidden md:block md:col-span-3">
               {/* Columna derecha del h2 - 30% */}
             </div>
-          </div>
-          <p className="text-lg md:text-xl text-gray-600 mb-12">
+          </motion.div>
+          <motion.p 
+            className="text-lg md:text-xl text-gray-600 mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
+          >
             Estrategia, diseño y ejecución alineadas a objetivos reales.
-          </p>
+          </motion.p>
 
           <div className="rounded-2xl overflow-hidden">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -787,12 +832,24 @@ export default function HomePage() {
           <div className="w-[98%] md:w-[80%] flex flex-col justify-between h-full">
             {/* Lista de servicios */}
             <div className="flex-1 flex flex-col justify-center">
-              <div className="bg-[#141414] rounded-xl p-6 md:p-12 lg:p-16 xl:p-20">
+              <motion.div 
+                className="bg-[#141414] rounded-xl p-6 md:p-12 lg:p-16 xl:p-20"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+              >
                 {/* Header */}
-                <div className="flex justify-between items-start mb-8 md:mb-12 lg:mb-16">
+                <motion.div 
+                  className="flex justify-between items-start mb-8 md:mb-12 lg:mb-16"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.6, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
+                >
                   <p className="text-xs md:text-sm text-gray-400">/Sistema</p>
                   <p className="text-xs md:text-sm text-gray-400">(03)</p>
-                </div>
+                </motion.div>
                 <Accordion 
                   type="single" 
                   collapsible 
@@ -870,7 +927,7 @@ export default function HomePage() {
                     <ArrowUpRight className="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 text-[#CCFF00]" />
                   </button>
                 </div>
-              </div>
+              </motion.div>
             </div>
           </div>
         </div>
@@ -879,13 +936,26 @@ export default function HomePage() {
       {/* Casos de éxito Section */}
       <section id="casos-de-exito" className="bg-white text-black pt-16 pb-16 px-4 md:px-8 w-full">
         <div className="w-[98%] md:w-[80%] mx-auto">
-          <div className="flex justify-between items-start mb-4">
+          <motion.div 
+            className="flex justify-between items-start mb-4"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+          >
             <p className="text-sm text-gray-500">/Casos de éxito</p>
             <p className="text-sm text-gray-500">(04)</p>
-          </div>
-          <h2 className="text-4xl sm:text-5xl md:text-4xl lg:text-5xl font-medium mb-12" style={{ letterSpacing: '-0.08em' }}>
+          </motion.div>
+          <motion.h2 
+            className="text-4xl sm:text-5xl md:text-4xl lg:text-5xl font-medium mb-12" 
+            style={{ letterSpacing: '-0.08em' }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
+          >
             Empresas que eligieron transformarse digitalmente.
-          </h2>
+          </motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Caso 1 */}
             <div 
@@ -1065,11 +1135,23 @@ export default function HomePage() {
       {/* Servicios Section */}
       <section id="servicios" className="bg-white text-black w-full pt-16 pb-16 px-4 md:px-8">
         <div className="w-[98%] md:w-[80%] mx-auto flex flex-col">
-          <div className="flex justify-between items-start mb-4">
+          <motion.div 
+            className="flex justify-between items-start mb-4"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+          >
             <p className="text-sm text-gray-500">/Servicios</p>
             <p className="text-sm text-gray-500">(05)</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-10 gap-6 mb-4">
+          </motion.div>
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-10 gap-6 mb-4"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
+          >
             <div className="md:col-span-7">
               <h2 className="text-4xl sm:text-5xl md:text-4xl lg:text-5xl font-medium" style={{ letterSpacing: '-0.08em' }}>
                 Transformación digital con sentido estratégico
@@ -1078,10 +1160,16 @@ export default function HomePage() {
             <div className="hidden md:block md:col-span-3">
               {/* Columna derecha del h2 - 30% */}
             </div>
-          </div>
-          <p className="text-lg md:text-xl text-gray-600 mb-12">
+          </motion.div>
+          <motion.p 
+            className="text-lg md:text-xl text-gray-600 mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
+          >
             Estrategia, diseño y ejecución alineadas a objetivos reales.
-          </p>
+          </motion.p>
 
           <div className="rounded-2xl overflow-hidden">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -1671,12 +1759,23 @@ export default function HomePage() {
       {/* FAQ Section */}
       <section id="preguntas-frecuentes" className="bg-white text-black py-16 px-4 md:px-8 w-full">
         <div className="w-[98%] md:w-[80%] mx-auto">
-          <div className="flex justify-between items-start mb-4">
+          <motion.div 
+            className="flex justify-between items-start mb-4"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+          >
             <p className="text-sm text-gray-500">/Preguntas frecuentes</p>
             <p className="text-sm text-gray-500">(06)</p>
-          </div>
+          </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
+            >
               <h2 className="text-4xl sm:text-5xl md:text-4xl lg:text-5xl font-medium mb-4" style={{ letterSpacing: '-0.08em' }}>
                 ¿Cómo podemos trabajar juntos?
               </h2>
@@ -1687,7 +1786,7 @@ export default function HomePage() {
                 <span className="text-white font-medium">Hablemos!</span>
                 <ArrowUpRight className="w-4 h-4 md:w-5 md:h-5 text-[#CCFF00]" />
               </button>
-            </div>
+            </motion.div>
             <div className="flex flex-col gap-1 rounded-2xl overflow-hidden bg-[#EBEBEB] p-1">
               {preguntasFrecuentes.map((item, idx) => {
                 const itemValue = `faq-${idx}`
