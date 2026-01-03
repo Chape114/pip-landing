@@ -3,7 +3,6 @@
 import { motion, useInView } from "framer-motion"
 import { ArrowRight, ArrowUpRight, ChevronRight, ChevronDown, Ghost, Users, Lightbulb, Heart, Circle, Plus, X, Instagram, Facebook } from "lucide-react"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import { Dialog, DialogContent, DialogOverlay, DialogTitle } from "@/components/ui/dialog"
 import Image from "next/image"
 import Link from "next/link"
 import { Inter, MuseoModerno } from "next/font/google"
@@ -109,8 +108,6 @@ export default function HomePage() {
   const [openAccordionItem, setOpenAccordionItem] = useState<string | undefined>(undefined)
   const [openFAQItem, setOpenFAQItem] = useState<string | undefined>(undefined)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [isSanCayetanoModalOpen, setIsSanCayetanoModalOpen] = useState(false)
-  const [isFogliaModalOpen, setIsFogliaModalOpen] = useState(false)
   const [expandedServiceCards, setExpandedServiceCards] = useState<Set<string>>(new Set())
   const [isMounted, setIsMounted] = useState(false)
   const [hoveredAccordionItem, setHoveredAccordionItem] = useState<number | null>(null)
@@ -988,9 +985,8 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Caso 1 */}
             <div 
-              className="flex flex-col rounded-2xl overflow-hidden bg-[#EBEBEB] hover:bg-[#141414] p-1 cursor-pointer group"
+              className="flex flex-col rounded-2xl overflow-hidden bg-[#EBEBEB] hover:bg-[#141414] p-1 group"
               style={{ transition: 'background-color 0.5s cubic-bezier(0.25, 0.1, 0.25, 1)' }}
-              onClick={() => setIsSanCayetanoModalOpen(true)}
             >
               <div className="aspect-[4/3] bg-gray-800 rounded-xl overflow-hidden mb-4 relative">
                 <div 
@@ -1046,9 +1042,8 @@ export default function HomePage() {
 
             {/* Caso 2 */}
             <div 
-              className="flex flex-col rounded-2xl overflow-hidden bg-[#EBEBEB] hover:bg-[#141414] p-1 cursor-pointer group"
+              className="flex flex-col rounded-2xl overflow-hidden bg-[#EBEBEB] hover:bg-[#141414] p-1 group"
               style={{ transition: 'background-color 0.5s cubic-bezier(0.25, 0.1, 0.25, 1)' }}
-              onClick={() => setIsFogliaModalOpen(true)}
             >
               <div className="aspect-[4/3] bg-gray-800 rounded-xl overflow-hidden mb-4 relative">
                 <div 
@@ -1210,21 +1205,14 @@ export default function HomePage() {
               {/* Columna Izquierda */}
               <div className="flex flex-col gap-1 rounded-2xl overflow-hidden bg-[#EBEBEB] p-1">
               {/* Caja superior */}
-              <motion.div
-                className="p-4 rounded-xl relative flex flex-col justify-between overflow-hidden"
-                animate={{
-                  backgroundColor: expandedServiceCards.has(serviciosCards[0].id) ? '#ffffff' : '#2a2a2a',
-                }}
-                transition={{
-                  duration: 0.6,
-                  ease: [0.22, 1, 0.36, 1],
-                }}
+              <div
+                className={`p-4 rounded-xl relative flex flex-col justify-between overflow-hidden transition-colors duration-600 ${expandedServiceCards.has(serviciosCards[0].id) ? 'bg-white' : 'bg-[#2a2a2a]'}`}
                 style={{
-                  backgroundColor: expandedServiceCards.has(serviciosCards[0].id) ? '#ffffff' : '#2a2a2a',
                   backgroundImage: expandedServiceCards.has(serviciosCards[0].id) ? 'none' : `url('/pipstudio2/Diseño sin título (8).png')`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
-                  backgroundRepeat: 'no-repeat'
+                  backgroundRepeat: 'no-repeat',
+                  transition: 'background-color 0.6s cubic-bezier(0.22, 1, 0.36, 1)'
                 }}
               >
                 {/* Overlay oscuro para legibilidad - solo cuando está cerrada */}
@@ -1236,16 +1224,11 @@ export default function HomePage() {
                     {serviciosCards[0].title}
                   </h3>
                   
-                  <motion.div
-                    initial={false}
-                    animate={{
-                      height: expandedServiceCards.has(serviciosCards[0].id) ? "auto" : 0,
+                  <div
+                    className={`overflow-hidden transition-all duration-1200 ${expandedServiceCards.has(serviciosCards[0].id) ? 'max-h-[2000px]' : 'max-h-0'}`}
+                    style={{
+                      transition: 'max-height 1.2s cubic-bezier(0.22, 1, 0.36, 1)'
                     }}
-                    transition={{
-                      duration: 1.2,
-                      ease: [0.22, 1, 0.36, 1],
-                    }}
-                    style={{ overflow: 'hidden' }}
                   >
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
@@ -1277,7 +1260,7 @@ export default function HomePage() {
                         </p>
                       )}
                     </motion.div>
-                  </motion.div>
+                  </div>
                   
                   <div className="flex justify-end mt-6">
                     <button 
@@ -1308,21 +1291,14 @@ export default function HomePage() {
               </motion.div>
 
               {/* Caja inferior */}
-              <motion.div
-                className="p-4 rounded-xl flex flex-col overflow-hidden flex-1 relative"
-                animate={{
-                  backgroundColor: expandedServiceCards.has(serviciosCards[1].id) ? '#ffffff' : '#2a2a2a',
-                }}
-                transition={{
-                  duration: 0.6,
-                  ease: [0.22, 1, 0.36, 1],
-                }}
+              <div
+                className={`p-4 rounded-xl flex flex-col overflow-hidden flex-1 relative transition-colors duration-600 ${expandedServiceCards.has(serviciosCards[1].id) ? 'bg-white' : 'bg-[#2a2a2a]'}`}
                 style={{
-                  backgroundColor: expandedServiceCards.has(serviciosCards[1].id) ? '#ffffff' : '#2a2a2a',
                   backgroundImage: expandedServiceCards.has(serviciosCards[1].id) ? 'none' : `url('/pipstudio2/Diseño sin título (8).png')`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
-                  backgroundRepeat: 'no-repeat'
+                  backgroundRepeat: 'no-repeat',
+                  transition: 'background-color 0.6s cubic-bezier(0.22, 1, 0.36, 1)'
                 }}
               >
                 {/* Overlay oscuro para legibilidad - solo cuando está cerrada */}
@@ -1334,16 +1310,11 @@ export default function HomePage() {
                     {serviciosCards[1].title}
                   </h3>
                   
-                  <motion.div
-                    initial={false}
-                    animate={{
-                      height: expandedServiceCards.has(serviciosCards[1].id) ? "auto" : 0,
+                  <div
+                    className={`overflow-hidden transition-all duration-1200 ${expandedServiceCards.has(serviciosCards[1].id) ? 'max-h-[2000px]' : 'max-h-0'}`}
+                    style={{
+                      transition: 'max-height 1.2s cubic-bezier(0.22, 1, 0.36, 1)'
                     }}
-                    transition={{
-                      duration: 1.2,
-                      ease: [0.22, 1, 0.36, 1],
-                    }}
-                    style={{ overflow: 'hidden' }}
                   >
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
@@ -1374,7 +1345,7 @@ export default function HomePage() {
                         </p>
                       )}
                     </motion.div>
-                  </motion.div>
+                  </div>
                   
                   <div className="flex justify-end mt-auto">
                     <button 
@@ -1408,21 +1379,14 @@ export default function HomePage() {
               {/* Columna Media - Tres cajas apiladas */}
               <div className="flex flex-col gap-1 rounded-2xl overflow-hidden bg-[#EBEBEB] p-1">
               {/* Caja 1 - Material comercial */}
-              <motion.div
-                className="p-4 rounded-xl flex flex-col overflow-hidden relative"
-                animate={{
-                  backgroundColor: expandedServiceCards.has(serviciosCards[2].id) ? '#ffffff' : '#2a2a2a',
-                }}
-                transition={{
-                  duration: 0.6,
-                  ease: [0.22, 1, 0.36, 1],
-                }}
+              <div
+                className={`p-4 rounded-xl flex flex-col overflow-hidden relative transition-colors duration-600 ${expandedServiceCards.has(serviciosCards[2].id) ? 'bg-white' : 'bg-[#2a2a2a]'}`}
                 style={{
-                  backgroundColor: expandedServiceCards.has(serviciosCards[2].id) ? '#ffffff' : '#2a2a2a',
                   backgroundImage: expandedServiceCards.has(serviciosCards[2].id) ? 'none' : `url('/pipstudio2/Diseño sin título (8).png')`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
-                  backgroundRepeat: 'no-repeat'
+                  backgroundRepeat: 'no-repeat',
+                  transition: 'background-color 0.6s cubic-bezier(0.22, 1, 0.36, 1)'
                 }}
               >
                 {/* Overlay oscuro para legibilidad - solo cuando está cerrada */}
@@ -1434,16 +1398,11 @@ export default function HomePage() {
                     {serviciosCards[2].title}
                   </h3>
                   
-                  <motion.div
-                    initial={false}
-                    animate={{
-                      height: expandedServiceCards.has(serviciosCards[2].id) ? "auto" : 0,
+                  <div
+                    className={`overflow-hidden transition-all duration-1200 ${expandedServiceCards.has(serviciosCards[2].id) ? 'max-h-[2000px]' : 'max-h-0'}`}
+                    style={{
+                      transition: 'max-height 1.2s cubic-bezier(0.22, 1, 0.36, 1)'
                     }}
-                    transition={{
-                      duration: 1.2,
-                      ease: [0.22, 1, 0.36, 1],
-                    }}
-                    style={{ overflow: 'hidden' }}
                   >
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
@@ -1469,7 +1428,7 @@ export default function HomePage() {
                         ))}
                       </ul>
                     </motion.div>
-                  </motion.div>
+                  </div>
                   
                   <div className="flex justify-end mt-6">
                     <button 
@@ -1500,21 +1459,14 @@ export default function HomePage() {
               </motion.div>
 
               {/* Caja 2 - Marca, coherencia */}
-              <motion.div
-                className="p-4 rounded-xl flex flex-col overflow-hidden flex-1 relative"
-                animate={{
-                  backgroundColor: expandedServiceCards.has(serviciosCards[3].id) ? '#ffffff' : '#2a2a2a',
-                }}
-                transition={{
-                  duration: 0.6,
-                  ease: [0.22, 1, 0.36, 1],
-                }}
+              <div
+                className={`p-4 rounded-xl flex flex-col overflow-hidden flex-1 relative transition-colors duration-600 ${expandedServiceCards.has(serviciosCards[3].id) ? 'bg-white' : 'bg-[#2a2a2a]'}`}
                 style={{
-                  backgroundColor: expandedServiceCards.has(serviciosCards[3].id) ? '#ffffff' : '#2a2a2a',
                   backgroundImage: expandedServiceCards.has(serviciosCards[3].id) ? 'none' : `url('/pipstudio2/Diseño sin título (8).png')`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
-                  backgroundRepeat: 'no-repeat'
+                  backgroundRepeat: 'no-repeat',
+                  transition: 'background-color 0.6s cubic-bezier(0.22, 1, 0.36, 1)'
                 }}
               >
                 {/* Overlay oscuro para legibilidad - solo cuando está cerrada */}
@@ -1526,16 +1478,11 @@ export default function HomePage() {
                     {serviciosCards[3].title}
                   </h3>
                   
-                  <motion.div
-                    initial={false}
-                    animate={{
-                      height: expandedServiceCards.has(serviciosCards[3].id) ? "auto" : 0,
+                  <div
+                    className={`overflow-hidden transition-all duration-1200 ${expandedServiceCards.has(serviciosCards[3].id) ? 'max-h-[2000px]' : 'max-h-0'}`}
+                    style={{
+                      transition: 'max-height 1.2s cubic-bezier(0.22, 1, 0.36, 1)'
                     }}
-                    transition={{
-                      duration: 1.2,
-                      ease: [0.22, 1, 0.36, 1],
-                    }}
-                    style={{ overflow: 'hidden' }}
                   >
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
@@ -1566,7 +1513,7 @@ export default function HomePage() {
                         </p>
                       )}
                     </motion.div>
-                  </motion.div>
+                  </div>
                   
                   <div className="flex justify-end mt-auto">
                     <button 
@@ -1594,27 +1541,20 @@ export default function HomePage() {
                     </button>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             </div>
 
               {/* Columna Derecha */}
               <div className="flex flex-col gap-1 rounded-2xl overflow-hidden bg-[#EBEBEB] p-1">
               {/* Caja superior */}
-              <motion.div
-                className="p-4 rounded-xl relative flex flex-col justify-between overflow-hidden"
-                animate={{
-                  backgroundColor: expandedServiceCards.has(serviciosCards[4].id) ? '#ffffff' : '#2a2a2a',
-                }}
-                transition={{
-                  duration: 0.6,
-                  ease: [0.22, 1, 0.36, 1],
-                }}
+              <div
+                className={`p-4 rounded-xl relative flex flex-col justify-between overflow-hidden transition-colors duration-600 ${expandedServiceCards.has(serviciosCards[4].id) ? 'bg-white' : 'bg-[#2a2a2a]'}`}
                 style={{
-                  backgroundColor: expandedServiceCards.has(serviciosCards[4].id) ? '#ffffff' : '#2a2a2a',
                   backgroundImage: expandedServiceCards.has(serviciosCards[4].id) ? 'none' : `url('/pipstudio2/Diseño sin título (8).png')`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
-                  backgroundRepeat: 'no-repeat'
+                  backgroundRepeat: 'no-repeat',
+                  transition: 'background-color 0.6s cubic-bezier(0.22, 1, 0.36, 1)'
                 }}
               >
                 {/* Overlay oscuro para legibilidad - solo cuando está cerrada */}
@@ -1626,16 +1566,11 @@ export default function HomePage() {
                     {serviciosCards[4].title}
                   </h3>
                   
-                  <motion.div
-                    initial={false}
-                    animate={{
-                      height: expandedServiceCards.has(serviciosCards[4].id) ? "auto" : 0,
+                  <div
+                    className={`overflow-hidden transition-all duration-1200 ${expandedServiceCards.has(serviciosCards[4].id) ? 'max-h-[2000px]' : 'max-h-0'}`}
+                    style={{
+                      transition: 'max-height 1.2s cubic-bezier(0.22, 1, 0.36, 1)'
                     }}
-                    transition={{
-                      duration: 1.2,
-                      ease: [0.22, 1, 0.36, 1],
-                    }}
-                    style={{ overflow: 'hidden' }}
                   >
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
@@ -1692,24 +1627,17 @@ export default function HomePage() {
                     </button>
                   </div>
                 </div>
-              </motion.div>
+              </div>
 
               {/* Caja inferior */}
-              <motion.div
-                className="p-4 rounded-xl flex flex-col overflow-hidden flex-1 relative"
-                animate={{
-                  backgroundColor: expandedServiceCards.has(serviciosCards[5].id) ? '#ffffff' : '#2a2a2a',
-                }}
-                transition={{
-                  duration: 0.6,
-                  ease: [0.22, 1, 0.36, 1],
-                }}
+              <div
+                className={`p-4 rounded-xl flex flex-col overflow-hidden flex-1 relative transition-colors duration-600 ${expandedServiceCards.has(serviciosCards[5].id) ? 'bg-white' : 'bg-[#2a2a2a]'}`}
                 style={{
-                  backgroundColor: expandedServiceCards.has(serviciosCards[5].id) ? '#ffffff' : '#2a2a2a',
                   backgroundImage: expandedServiceCards.has(serviciosCards[5].id) ? 'none' : `url('/pipstudio2/Diseño sin título (8).png')`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
-                  backgroundRepeat: 'no-repeat'
+                  backgroundRepeat: 'no-repeat',
+                  transition: 'background-color 0.6s cubic-bezier(0.22, 1, 0.36, 1)'
                 }}
               >
                 {/* Overlay oscuro para legibilidad - solo cuando está cerrada */}
@@ -1721,16 +1649,11 @@ export default function HomePage() {
                     {serviciosCards[5].title}
                   </h3>
                   
-                  <motion.div
-                    initial={false}
-                    animate={{
-                      height: expandedServiceCards.has(serviciosCards[5].id) ? "auto" : 0,
+                  <div
+                    className={`overflow-hidden transition-all duration-1200 ${expandedServiceCards.has(serviciosCards[5].id) ? 'max-h-[2000px]' : 'max-h-0'}`}
+                    style={{
+                      transition: 'max-height 1.2s cubic-bezier(0.22, 1, 0.36, 1)'
                     }}
-                    transition={{
-                      duration: 1.2,
-                      ease: [0.22, 1, 0.36, 1],
-                    }}
-                    style={{ overflow: 'hidden' }}
                   >
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
@@ -1761,7 +1684,7 @@ export default function HomePage() {
                         </p>
                       )}
                     </motion.div>
-                  </motion.div>
+                  </div>
                   
                   <div className="flex justify-end mt-auto">
                     <button 
@@ -1789,7 +1712,7 @@ export default function HomePage() {
                     </button>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             </div>
             </div>
           </div>
@@ -1856,21 +1779,18 @@ export default function HomePage() {
                         </motion.div>
                       </div>
                     </button>
-                    <motion.div
-                      initial={false}
-                      animate={{
-                        height: isOpen ? "auto" : 0,
-                        opacity: isOpen ? 1 : 0,
+                    <div
+                      className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0'}`}
+                      style={{
+                        transition: 'max-height 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), opacity 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)'
                       }}
-                      transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-                      className="overflow-hidden"
                     >
                       <div className="px-4 md:px-6 pb-4 md:pb-6">
                         <p className="text-sm md:text-base text-gray-600 leading-relaxed whitespace-pre-line">
                           {item.description}
                         </p>
                       </div>
-                    </motion.div>
+                    </div>
                   </div>
                 )
               })}
@@ -2067,312 +1987,6 @@ export default function HomePage() {
         </div>
       </footer>
 
-      {/* Modal San Cayetano */}
-      <Dialog open={isSanCayetanoModalOpen} onOpenChange={setIsSanCayetanoModalOpen}>
-        <DialogContent 
-          className="max-w-4xl w-[95%] md:w-full p-0 bg-[#141414] border border-gray-800/50 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.8)] overflow-hidden rounded-2xl data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] duration-500 [&>button]:text-gray-300 [&>button]:hover:text-white [&>button]:hover:bg-gray-800/30 [&>button]:transition-all [&>button]:duration-300 [&>button]:rounded-full [&>button]:w-8 [&>button]:h-8 [&>button]:flex [&>button]:items-center [&>button]:justify-center [&>button]:right-6 [&>button]:top-6 [&_>div:first-child]:bg-black/70 [&_>div:first-child]:backdrop-blur-md [&_>div:first-child]:duration-500"
-        >
-          {/* Efecto de gradiente sutil en el fondo del modal */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.6 }}
-            className="absolute inset-0 pointer-events-none z-0"
-            style={{
-              background: 'radial-gradient(circle at 50% 50%, rgba(204, 255, 0, 0.03) 0%, transparent 70%)',
-            }}
-          />
-          
-          <motion.div
-            initial={{ opacity: 0, scale: 0.96, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.96, y: 20 }}
-            transition={{ 
-              duration: 0.5, 
-              ease: [0.25, 0.1, 0.25, 1]
-            }}
-            className="relative p-5 md:p-8 lg:p-12 text-white overflow-y-auto max-h-[90vh] md:max-h-[85vh]"
-          >
-            <DialogTitle className="sr-only">San Cayetano Aberturas</DialogTitle>
-            
-            {/* Header */}
-            <motion.div 
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
-              className="mb-6 md:mb-10"
-              style={{ opacity: 1 }}
-            >
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2" style={{ letterSpacing: '-0.02em' }}>
-                San Cayetano
-              </h2>
-              <p className="text-base md:text-lg text-gray-400">
-                Orden y transformación de su comunicación digital
-              </p>
-            </motion.div>
-
-            {/* Problema */}
-            <motion.div 
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
-              className="mb-6 md:mb-10"
-              style={{ opacity: 1 }}
-            >
-              <h3 className="text-base md:text-lg font-semibold text-[#CCFF00] mb-3 md:mb-4 flex items-center gap-2">
-                <span className="w-1 h-5 md:h-6 bg-[#CCFF00] rounded-full"></span>
-                Problema
-              </h3>
-              <p className="text-sm md:text-base text-gray-300 leading-relaxed pl-3">
-                San Cayetano contaba con buenos productos y trayectoria, pero con una estructura digital desordenada: comunicación poco coherente, catálogo disperso, falta de contenidos técnicos claros y ausencia de una estrategia que conecte marca, producto y proceso comercial.
-              </p>
-            </motion.div>
-
-            {/* Desarrollo */}
-            <motion.div 
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-              className="mb-6 md:mb-10"
-              style={{ opacity: 1 }}
-            >
-              <h3 className="text-base md:text-lg font-semibold text-[#CCFF00] mb-3 md:mb-4 flex items-center gap-2">
-                <span className="w-1 h-5 md:h-6 bg-[#CCFF00] rounded-full"></span>
-                Desarrollo
-              </h3>
-              <div className="pl-3 space-y-2 md:space-y-3">
-                <p className="text-sm md:text-base text-gray-300 leading-relaxed">
-                  Desde PiP Studio asumí el rol de área de comunicación y marketing, trabajando de forma unipersonal en el orden y la construcción de su ecosistema digital:
-                </p>
-                <p className="text-sm md:text-base text-gray-300 leading-relaxed">
-                  estrategia, organización de líneas de producto, contenidos técnicos y comerciales, producción audiovisual, redes sociales, catálogo digital, web y canales de contacto.
-                </p>
-                <p className="text-sm md:text-base text-gray-300 leading-relaxed">
-                  Todo orientado a profesionalizar la marca y sentar bases reales de crecimiento.
-                </p>
-              </div>
-            </motion.div>
-
-            {/* Progreso */}
-            <motion.div 
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-              className="pt-6 md:pt-8 border-t border-gray-800 mb-6 md:mb-8"
-              style={{ opacity: 1 }}
-            >
-              <h3 className="text-base md:text-lg font-semibold text-[#CCFF00] mb-3 md:mb-4 flex items-center gap-2">
-                <span className="w-1 h-5 md:h-6 bg-[#CCFF00] rounded-full"></span>
-                Progreso
-              </h3>
-              <p className="text-sm md:text-base text-gray-300 leading-relaxed pl-3">
-                Hoy San Cayetano cuenta con una presencia digital más clara, coherente y funcional, con productos mejor explicados, contenidos alineados a su propuesta de valor y una estructura preparada para escalar acciones comerciales y publicitarias.
-              </p>
-            </motion.div>
-
-            {/* Redes Sociales */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
-              className="pt-6 md:pt-8 border-t border-gray-800"
-              style={{ opacity: 1 }}
-            >
-              <h3 className="text-base md:text-lg font-semibold text-[#CCFF00] mb-3 md:mb-4 flex items-center gap-2">
-                <span className="w-1 h-5 md:h-6 bg-[#CCFF00] rounded-full"></span>
-                Redes Sociales
-              </h3>
-              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 pl-3">
-                <motion.a
-                  href="https://www.instagram.com/san_cayetano_aberturas/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.4, delay: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-                  whileHover={{ scale: 1.1, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors duration-300 group"
-                >
-                  <div className="w-9 h-9 md:w-10 md:h-10 rounded-lg bg-gray-800/50 flex items-center justify-center group-hover:bg-gray-700/50 transition-colors duration-300">
-                    <Instagram className="w-4 h-4 md:w-5 md:h-5" />
-                  </div>
-                  <span className="text-xs md:text-sm">Instagram</span>
-                </motion.a>
-                <motion.a
-                  href="https://www.facebook.com/SanCayetanoAberturas"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.4, delay: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
-                  whileHover={{ scale: 1.1, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors duration-300 group"
-                >
-                  <div className="w-9 h-9 md:w-10 md:h-10 rounded-lg bg-gray-800/50 flex items-center justify-center group-hover:bg-gray-700/50 transition-colors duration-300">
-                    <Facebook className="w-4 h-4 md:w-5 md:h-5" />
-                  </div>
-                  <span className="text-xs md:text-sm">Facebook</span>
-                </motion.a>
-              </div>
-            </motion.div>
-          </motion.div>
-        </DialogContent>
-      </Dialog>
-
-      {/* Modal Foglia Válvulas */}
-      <Dialog open={isFogliaModalOpen} onOpenChange={setIsFogliaModalOpen}>
-        <DialogContent 
-          className="max-w-4xl w-[95%] md:w-full max-h-[90vh] md:max-h-[85vh] p-0 bg-[#141414] border border-gray-800/50 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.8)] overflow-hidden rounded-xl md:rounded-2xl data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] duration-500 [&>button]:text-gray-300 [&>button]:hover:text-white [&>button]:hover:bg-gray-800/30 [&>button]:transition-all [&>button]:duration-300 [&>button]:rounded-full [&>button]:w-7 [&>button]:h-7 [&>button]:md:w-8 [&>button]:md:h-8 [&>button]:flex [&>button]:items-center [&>button]:justify-center [&>button]:right-4 [&>button]:top-4 [&>button]:md:right-6 [&>button]:md:top-6 [&_>div:first-child]:bg-black/70 [&_>div:first-child]:backdrop-blur-md [&_>div:first-child]:duration-500"
-        >
-          {/* Efecto de gradiente sutil en el fondo del modal */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.6 }}
-            className="absolute inset-0 pointer-events-none z-0"
-            style={{
-              background: 'radial-gradient(circle at 50% 50%, rgba(204, 255, 0, 0.03) 0%, transparent 70%)',
-            }}
-          />
-          
-          <motion.div
-            initial={{ opacity: 0, scale: 0.96, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.96, y: 20 }}
-            transition={{ 
-              duration: 0.5, 
-              ease: [0.25, 0.1, 0.25, 1]
-            }}
-            className="relative p-5 md:p-8 lg:p-12 text-white overflow-y-auto max-h-[90vh] md:max-h-[85vh]"
-          >
-            <DialogTitle className="sr-only">Foglia Válvulas</DialogTitle>
-            
-            {/* Header */}
-            <motion.div 
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
-              className="mb-6 md:mb-10"
-              style={{ opacity: 1 }}
-            >
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2" style={{ letterSpacing: '-0.02em' }}>
-                Foglia Válvulas
-              </h2>
-              <p className="text-base md:text-lg text-gray-400">
-                Comunicación y transformación digital
-              </p>
-            </motion.div>
-
-            {/* Problema */}
-            <motion.div 
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
-              className="mb-6 md:mb-10"
-              style={{ opacity: 1 }}
-            >
-              <h3 className="text-base md:text-lg font-semibold text-[#CCFF00] mb-3 md:mb-4 flex items-center gap-2">
-                <span className="w-1 h-5 md:h-6 bg-[#CCFF00] rounded-full"></span>
-                Problema
-              </h3>
-              <p className="text-sm md:text-base text-gray-300 leading-relaxed pl-3">
-                Foglia cuenta con una trayectoria sólida y un portfolio técnico muy amplio, pero con una estructura digital poco ordenada: mensajes fragmentados, líneas de producto sin una jerarquía clara, escasez de contenidos técnicos explicativos y una comunicación que no acompañaba su verdadero posicionamiento industrial y agro.
-              </p>
-            </motion.div>
-
-            {/* Desarrollo */}
-            <motion.div 
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-              className="mb-6 md:mb-10"
-              style={{ opacity: 1 }}
-            >
-              <h3 className="text-base md:text-lg font-semibold text-[#CCFF00] mb-3 md:mb-4 flex items-center gap-2">
-                <span className="w-1 h-5 md:h-6 bg-[#CCFF00] rounded-full"></span>
-                Desarrollo
-              </h3>
-              <div className="pl-3 space-y-2 md:space-y-3">
-                <p className="text-sm md:text-base text-gray-300 leading-relaxed">
-                  Desde PiP Studio asumí el rol de área de comunicación y marketing, trabajando de forma unipersonal en el orden y la construcción de su ecosistema digital:
-                </p>
-                <p className="text-sm md:text-base text-gray-300 leading-relaxed">
-                  diagnóstico del negocio, definición de posicionamiento, organización de líneas (industrial, agro e importada), desarrollo de contenidos técnicos y comerciales, producción audiovisual, redes sociales, web y estructura de comunicación orientada a ventas.
-                </p>
-              </div>
-            </motion.div>
-
-            {/* Progreso */}
-            <motion.div 
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-              className="pt-6 md:pt-8 border-t border-gray-800 mb-6 md:mb-8"
-              style={{ opacity: 1 }}
-            >
-              <h3 className="text-base md:text-lg font-semibold text-[#CCFF00] mb-3 md:mb-4 flex items-center gap-2">
-                <span className="w-1 h-5 md:h-6 bg-[#CCFF00] rounded-full"></span>
-                Progreso
-              </h3>
-              <p className="text-sm md:text-base text-gray-300 leading-relaxed pl-3">
-                Hoy Foglia cuenta con una presencia digital más sólida, clara y profesional, con productos mejor explicados, una narrativa coherente entre todas sus líneas y una base digital preparada para potenciar acciones comerciales, captar nuevos mercados y sostener su crecimiento.
-              </p>
-            </motion.div>
-
-            {/* Redes Sociales */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
-              className="pt-6 md:pt-8 border-t border-gray-800"
-              style={{ opacity: 1 }}
-            >
-              <h3 className="text-base md:text-lg font-semibold text-[#CCFF00] mb-3 md:mb-4 flex items-center gap-2">
-                <span className="w-1 h-5 md:h-6 bg-[#CCFF00] rounded-full"></span>
-                Redes Sociales
-              </h3>
-              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 pl-3">
-                <motion.a
-                  href="https://www.instagram.com/valvulasfoglia/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.4, delay: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-                  whileHover={{ scale: 1.1, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors duration-300 group"
-                >
-                  <div className="w-9 h-9 md:w-10 md:h-10 rounded-lg bg-gray-800/50 flex items-center justify-center group-hover:bg-gray-700/50 transition-colors duration-300">
-                    <Instagram className="w-4 h-4 md:w-5 md:h-5" />
-                  </div>
-                  <span className="text-xs md:text-sm">Instagram</span>
-                </motion.a>
-                <motion.a
-                  href="https://www.facebook.com/profile.php?id=61584436814012"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.4, delay: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
-                  whileHover={{ scale: 1.1, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors duration-300 group"
-                >
-                  <div className="w-9 h-9 md:w-10 md:h-10 rounded-lg bg-gray-800/50 flex items-center justify-center group-hover:bg-gray-700/50 transition-colors duration-300">
-                    <Facebook className="w-4 h-4 md:w-5 md:h-5" />
-                  </div>
-                  <span className="text-xs md:text-sm">Facebook</span>
-                </motion.a>
-              </div>
-            </motion.div>
-          </motion.div>
-        </DialogContent>
-      </Dialog>
     </div>
   )
 }
