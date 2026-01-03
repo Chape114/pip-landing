@@ -1161,25 +1161,11 @@ export default function HomePage() {
       {/* Servicios Section */}
       <section id="servicios" className="bg-white text-black w-full pt-16 pb-16 px-4 md:px-8">
         <div className="w-[98%] md:w-[80%] mx-auto flex flex-col">
-          <motion.div 
-            className="flex justify-between items-start mb-4"
-            initial={{ opacity: 1, y: 0 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-            style={{ opacity: 1 }}
-          >
+          <div className="flex justify-between items-start mb-4">
             <p className="text-sm text-gray-500">/Servicios</p>
             <p className="text-sm text-gray-500">(05)</p>
-          </motion.div>
-          <motion.div 
-            className="grid grid-cols-1 md:grid-cols-10 gap-6 mb-4"
-            initial={{ opacity: 1, y: 0 }}
-            whileInView={isMounted ? { opacity: 1, y: 0 } : undefined}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
-            style={{ opacity: 1 }}
-          >
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-10 gap-6 mb-4">
             <div className="md:col-span-7">
               <h2 className="text-4xl sm:text-5xl md:text-4xl lg:text-5xl font-medium" style={{ letterSpacing: '-0.08em' }}>
                 Transformación digital con sentido estratégico
@@ -1188,17 +1174,10 @@ export default function HomePage() {
             <div className="hidden md:block md:col-span-3">
               {/* Columna derecha del h2 - 30% */}
             </div>
-          </motion.div>
-          <motion.p 
-            className="text-lg md:text-xl text-gray-600 mb-12"
-            initial={{ opacity: 1, y: 0 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
-            style={{ opacity: 1 }}
-          >
+          </div>
+          <p className="text-lg md:text-xl text-gray-600 mb-12">
             Estrategia, diseño y ejecución alineadas a objetivos reales.
-          </motion.p>
+          </p>
 
           <div className="rounded-2xl overflow-hidden">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -1230,15 +1209,8 @@ export default function HomePage() {
                       transition: 'max-height 1.2s cubic-bezier(0.22, 1, 0.36, 1)'
                     }}
                   >
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={expandedServiceCards.has(serviciosCards[0].id) ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                      transition={{
-                        duration: expandedServiceCards.has(serviciosCards[0].id) ? 1.5 : 1.2,
-                        ease: [0.22, 1, 0.36, 1],
-                        delay: expandedServiceCards.has(serviciosCards[0].id) ? 0.15 : 0
-                      }}
-                      className="mb-4"
+                    <div
+                      className={`mb-4 transition-opacity duration-300 ${expandedServiceCards.has(serviciosCards[0].id) ? 'opacity-100' : 'opacity-0'}`}
                     >
                       <p className={`text-sm mb-4 leading-relaxed ${expandedServiceCards.has(serviciosCards[0].id) ? 'text-gray-700' : 'text-gray-300'}`}>
                         {serviciosCards[0].description}
@@ -1259,7 +1231,7 @@ export default function HomePage() {
                           {serviciosCards[0].conclusion}
                         </p>
                       )}
-                    </motion.div>
+                    </div>
                   </div>
                   
                   <div className="flex justify-end mt-6">
@@ -1316,15 +1288,8 @@ export default function HomePage() {
                       transition: 'max-height 1.2s cubic-bezier(0.22, 1, 0.36, 1)'
                     }}
                   >
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={expandedServiceCards.has(serviciosCards[1].id) ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                      transition={{
-                        duration: expandedServiceCards.has(serviciosCards[1].id) ? 1.5 : 1.2,
-                        ease: [0.22, 1, 0.36, 1],
-                        delay: expandedServiceCards.has(serviciosCards[1].id) ? 0.15 : 0
-                      }}
-                      className="mb-4"
+                    <div
+                      className={`mb-4 transition-opacity duration-300 ${expandedServiceCards.has(serviciosCards[1].id) ? 'opacity-100' : 'opacity-0'}`}
                     >
                       <p className={`text-sm mb-4 leading-relaxed ${expandedServiceCards.has(serviciosCards[1].id) ? 'text-gray-700' : 'text-gray-300'}`}>
                         {serviciosCards[1].description}
@@ -1344,7 +1309,7 @@ export default function HomePage() {
                           {serviciosCards[1].conclusion}
                         </p>
                       )}
-                    </motion.div>
+                    </div>
                   </div>
                   
                   <div className="flex justify-end mt-auto">
@@ -1404,15 +1369,8 @@ export default function HomePage() {
                       transition: 'max-height 1.2s cubic-bezier(0.22, 1, 0.36, 1)'
                     }}
                   >
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={expandedServiceCards.has(serviciosCards[2].id) ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                      transition={{
-                        duration: expandedServiceCards.has(serviciosCards[2].id) ? 1.5 : 1.2,
-                        ease: [0.22, 1, 0.36, 1],
-                        delay: expandedServiceCards.has(serviciosCards[2].id) ? 0.15 : 0
-                      }}
-                      className="mb-4"
+                    <div
+                      className={`mb-4 transition-opacity duration-300 ${expandedServiceCards.has(serviciosCards[2].id) ? 'opacity-100' : 'opacity-0'}`}
                     >
                       <p className={`text-sm mb-4 leading-relaxed ${expandedServiceCards.has(serviciosCards[2].id) ? 'text-gray-700' : 'text-gray-300'}`}>
                         {serviciosCards[2].description}
@@ -1427,7 +1385,7 @@ export default function HomePage() {
                           </li>
                         ))}
                       </ul>
-                    </motion.div>
+                    </div>
                   </div>
                   
                   <div className="flex justify-end mt-6">
@@ -1484,15 +1442,8 @@ export default function HomePage() {
                       transition: 'max-height 1.2s cubic-bezier(0.22, 1, 0.36, 1)'
                     }}
                   >
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={expandedServiceCards.has(serviciosCards[3].id) ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                      transition={{
-                        duration: expandedServiceCards.has(serviciosCards[3].id) ? 1.5 : 1.2,
-                        ease: [0.22, 1, 0.36, 1],
-                        delay: expandedServiceCards.has(serviciosCards[3].id) ? 0.15 : 0
-                      }}
-                      className="mb-4"
+                    <div
+                      className={`mb-4 transition-opacity duration-300 ${expandedServiceCards.has(serviciosCards[3].id) ? 'opacity-100' : 'opacity-0'}`}
                     >
                       <p className={`text-sm mb-4 leading-relaxed ${expandedServiceCards.has(serviciosCards[3].id) ? 'text-gray-700' : 'text-gray-300'}`}>
                         {serviciosCards[3].description}
@@ -1512,7 +1463,7 @@ export default function HomePage() {
                           {serviciosCards[3].conclusion}
                         </p>
                       )}
-                    </motion.div>
+                    </div>
                   </div>
                   
                   <div className="flex justify-end mt-auto">
@@ -1572,15 +1523,8 @@ export default function HomePage() {
                       transition: 'max-height 1.2s cubic-bezier(0.22, 1, 0.36, 1)'
                     }}
                   >
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={expandedServiceCards.has(serviciosCards[4].id) ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                      transition={{
-                        duration: expandedServiceCards.has(serviciosCards[4].id) ? 1.5 : 1.2,
-                        ease: [0.22, 1, 0.36, 1],
-                        delay: expandedServiceCards.has(serviciosCards[4].id) ? 0.15 : 0
-                      }}
-                      className="mb-4"
+                    <div
+                      className={`mb-4 transition-opacity duration-300 ${expandedServiceCards.has(serviciosCards[4].id) ? 'opacity-100' : 'opacity-0'}`}
                     >
                       <p className={`text-sm mb-4 leading-relaxed ${expandedServiceCards.has(serviciosCards[4].id) ? 'text-gray-700' : 'text-gray-300'}`}>
                         {serviciosCards[4].description}
@@ -1598,7 +1542,7 @@ export default function HomePage() {
                           {serviciosCards[4].conclusion}
                         </p>
                       )}
-                    </motion.div>
+                    </div>
                   </div>
                   
                   <div className="flex justify-end mt-6">
@@ -1655,15 +1599,8 @@ export default function HomePage() {
                       transition: 'max-height 1.2s cubic-bezier(0.22, 1, 0.36, 1)'
                     }}
                   >
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={expandedServiceCards.has(serviciosCards[5].id) ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                      transition={{
-                        duration: expandedServiceCards.has(serviciosCards[5].id) ? 1.5 : 1.2,
-                        ease: [0.22, 1, 0.36, 1],
-                        delay: expandedServiceCards.has(serviciosCards[5].id) ? 0.15 : 0
-                      }}
-                      className="mb-4"
+                    <div
+                      className={`mb-4 transition-opacity duration-300 ${expandedServiceCards.has(serviciosCards[5].id) ? 'opacity-100' : 'opacity-0'}`}
                     >
                       <p className={`text-sm mb-4 leading-relaxed ${expandedServiceCards.has(serviciosCards[5].id) ? 'text-gray-700' : 'text-gray-300'}`}>
                         {serviciosCards[5].description}
@@ -1683,7 +1620,7 @@ export default function HomePage() {
                           {serviciosCards[5].conclusion}
                         </p>
                       )}
-                    </motion.div>
+                    </div>
                   </div>
                   
                   <div className="flex justify-end mt-auto">
