@@ -112,7 +112,14 @@ export default function HomePage() {
   const [isSanCayetanoModalOpen, setIsSanCayetanoModalOpen] = useState(false)
   const [isFogliaModalOpen, setIsFogliaModalOpen] = useState(false)
   const [expandedServiceCards, setExpandedServiceCards] = useState<Set<string>>(new Set())
+  const [isMounted, setIsMounted] = useState(false)
+  const [hoveredAccordionItem, setHoveredAccordionItem] = useState<number | null>(null)
   const mobileMenuRef = useRef<HTMLDivElement>(null)
+
+  // Detectar montaje del cliente para evitar problemas de hidratación
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
 
   // Generar ruido en canvas
   useEffect(() => {
@@ -696,22 +703,22 @@ export default function HomePage() {
         <div className="w-[98%] md:w-[80%] mx-auto flex flex-col">
           <motion.div 
             className="flex justify-between items-start mb-4"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={isMounted ? { opacity: 0, y: 20 } : { opacity: 1, y: 0 }}
+            whileInView={isMounted ? { opacity: 1, y: 0 } : undefined}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-            style={{ opacity: 1 }}
+            style={{ opacity: isMounted ? undefined : 1 }}
           >
             <p className="text-sm text-gray-500">/Soluciones digitales</p>
             <p className="text-sm text-gray-500">(02)</p>
           </motion.div>
           <motion.div 
             className="grid grid-cols-1 md:grid-cols-10 gap-6 mb-4"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={isMounted ? { opacity: 0, y: 20 } : { opacity: 1, y: 0 }}
+            whileInView={isMounted ? { opacity: 1, y: 0 } : undefined}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
-            style={{ opacity: 1 }}
+            style={{ opacity: isMounted ? undefined : 1 }}
           >
             <div className="md:col-span-7">
               <h2 className="text-4xl sm:text-5xl md:text-4xl lg:text-5xl font-medium" style={{ letterSpacing: '-0.08em' }}>
@@ -876,11 +883,11 @@ export default function HomePage() {
                 {/* Header */}
                 <motion.div 
                   className="flex justify-between items-start mb-8 md:mb-12 lg:mb-16"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={isMounted ? { opacity: 0, y: 20 } : { opacity: 1, y: 0 }}
+                  whileInView={isMounted ? { opacity: 1, y: 0 } : undefined}
                   viewport={{ once: true, margin: "-100px" }}
                   transition={{ duration: 0.6, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
-                  style={{ opacity: 1 }}
+                  style={{ opacity: isMounted ? undefined : 1 }}
                 >
                   <p className="text-xs md:text-sm text-gray-400">/Sistema</p>
                   <p className="text-xs md:text-sm text-gray-400">(03)</p>
@@ -893,16 +900,16 @@ export default function HomePage() {
                   onValueChange={(value) => setOpenAccordionItem(value)}
                 >
                   {servicios.map((item, idx) => {
-                    const [isHovered, setIsHovered] = useState(false)
                     const itemValue = `item-${idx}`
                     const isOpen = openAccordionItem === itemValue
+                    const isHovered = hoveredAccordionItem === idx
 
                     return (
                       <AccordionItem key={idx} value={itemValue} className="border-none group/item">
                         <AccordionTrigger 
                           className="flex items-center justify-between py-2 md:py-3 hover:no-underline [&>svg]:hidden group w-full"
-                          onMouseEnter={() => setIsHovered(true)}
-                          onMouseLeave={() => setIsHovered(false)}
+                          onMouseEnter={() => setHoveredAccordionItem(idx)}
+                          onMouseLeave={() => setHoveredAccordionItem(null)}
                         >
                           <span className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-[64px] text-white transition-transform duration-1000 ease-in-out whitespace-nowrap flex-1 min-w-0 text-left ${isOpen || isHovered ? 'translate-x-1 sm:translate-x-2 md:translate-x-4 lg:translate-x-8' : 'translate-x-0'}`} style={{ transitionTimingFunction: 'cubic-bezier(0.25, 0.1, 0.25, 1)', letterSpacing: '-0.032em', fontWeight: 600 }}>
                             {item.text}
@@ -915,28 +922,9 @@ export default function HomePage() {
                             <X className={`w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 lg:w-10 lg:h-10 xl:w-12 xl:h-12 text-gray-400 absolute transition-all duration-1000 ease-in-out ${isOpen ? 'opacity-100 scale-100 rotate-0' : 'opacity-0 scale-0 rotate-90'}`} style={{ transitionTimingFunction: 'cubic-bezier(0.25, 0.1, 0.25, 1)' }} />
                           </div>
                         </AccordionTrigger>
-                      <motion.div
-                        initial={false}
-                        animate={{
-                          height: isOpen ? "auto" : 0,
-                        }}
-                        transition={{
-                          duration: 1.2,
-                          ease: [0.22, 1, 0.36, 1],
-                        }}
-                        style={{ overflow: 'hidden' }}
-                      >
                         <AccordionContent className="pt-2 md:pt-3 pb-6 md:pb-8">
-                            <motion.div 
-                              initial={false}
-                              animate={isOpen ? { opacity: 1, y: 0 } : { opacity: isOpen ? 1 : 0, y: 0 }}
-                              transition={{ 
-                                duration: 1.2, 
-                                ease: [0.22, 1, 0.36, 1],
-                                delay: isOpen ? 0.15 : 0
-                              }}
-                              className="ml-2 md:ml-4 lg:ml-6 xl:ml-8"
-                              style={{ opacity: isOpen ? 1 : 0 }}
+                            <div 
+                              className={`ml-2 md:ml-4 lg:ml-6 xl:ml-8 transition-opacity duration-300 ${isOpen ? 'opacity-100' : 'opacity-0'}`}
                             >
                             <p className="text-white text-sm sm:text-base md:text-lg mb-6 md:mb-8 max-w-3xl leading-relaxed">
                               {item.description}
@@ -948,10 +936,9 @@ export default function HomePage() {
                                 </span>
                               ))}
                             </div>
-                          </motion.div>
+                          </div>
                         </AccordionContent>
-                      </motion.div>
-                    </AccordionItem>
+                      </AccordionItem>
                     )
                   })}
                 </Accordion>
@@ -1193,7 +1180,7 @@ export default function HomePage() {
           <motion.div 
             className="grid grid-cols-1 md:grid-cols-10 gap-6 mb-4"
             initial={{ opacity: 1, y: 0 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            whileInView={isMounted ? { opacity: 1, y: 0 } : undefined}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
             style={{ opacity: 1 }}
