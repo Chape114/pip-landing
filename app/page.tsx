@@ -1288,7 +1288,7 @@ export default function HomePage() {
                     </button>
                   </div>
                 </div>
-              </motion.div>
+              </div>
 
               {/* Caja inferior */}
               <div
@@ -1373,7 +1373,7 @@ export default function HomePage() {
                     </button>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             </div>
 
               {/* Columna Media - Tres cajas apiladas */}
@@ -1456,7 +1456,7 @@ export default function HomePage() {
                     </button>
                   </div>
                 </div>
-              </motion.div>
+              </div>
 
               {/* Caja 2 - Marca, coherencia */}
               <div
@@ -1599,7 +1599,7 @@ export default function HomePage() {
                         </p>
                       )}
                     </motion.div>
-                  </motion.div>
+                  </div>
                   
                   <div className="flex justify-end mt-6">
                     <button 
