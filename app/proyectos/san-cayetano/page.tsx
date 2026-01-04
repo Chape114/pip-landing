@@ -386,9 +386,9 @@ export default function SanCayetanoPage() {
         <div className="w-[98%] md:w-[80%] mx-auto">
           {/* Breadcrumb */}
           <motion.div 
-            className="mb-6"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
+            className="mb-6 opacity-100 translate-y-0"
+            initial={false}
+            animate={isHeroInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
             <p className="text-sm text-gray-500">
@@ -398,19 +398,19 @@ export default function SanCayetanoPage() {
 
           {/* Title */}
           <motion.h1 
-            className="text-5xl md:text-7xl font-bold mb-4"
+            className="text-5xl md:text-7xl font-bold mb-4 opacity-100 translate-y-0"
             style={{ letterSpacing: '-0.08em' }}
-            initial={{ opacity: 0, y: 20 }}
-            animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
+            initial={false}
+            animate={isHeroInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
             San Cayetano Aberturas
           </motion.h1>
 
           <motion.p 
-            className="text-xl md:text-2xl text-gray-600 mb-8"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
+            className="text-xl md:text-2xl text-gray-600 mb-8 opacity-100 translate-y-0"
+            initial={false}
+            animate={isHeroInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             Comunicación y transformación digital para PyMEs industriales
@@ -418,9 +418,9 @@ export default function SanCayetanoPage() {
 
           {/* Project Info */}
           <motion.div 
-            className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
+            className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 opacity-100 translate-y-0"
+            initial={false}
+            animate={isHeroInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.25 }}
           >
             <div>
@@ -439,9 +439,9 @@ export default function SanCayetanoPage() {
 
           {/* Hero Image */}
           <motion.div 
-            className="aspect-[21/9] rounded-2xl overflow-hidden mb-16"
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={isHeroInView ? { opacity: 1, scale: 1 } : {}}
+            className="aspect-[21/9] rounded-2xl overflow-hidden mb-16 opacity-100 scale-100"
+            initial={false}
+            animate={isHeroInView ? { opacity: 1, scale: 1 } : { opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
             <div 
