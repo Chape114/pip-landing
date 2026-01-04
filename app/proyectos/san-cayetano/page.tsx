@@ -462,8 +462,8 @@ export default function SanCayetanoPage() {
         <div className="w-[98%] md:w-[80%] mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <motion.div 
-              className="text-center"
-              initial={{ opacity: 0, y: 20 }}
+              className="text-center opacity-100 translate-y-0"
+              initial={false}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
@@ -479,8 +479,8 @@ export default function SanCayetanoPage() {
               <p className="text-sm text-gray-600">Mejora en comunicación</p>
             </motion.div>
             <motion.div 
-              className="text-center"
-              initial={{ opacity: 0, y: 20 }}
+              className="text-center opacity-100 translate-y-0"
+              initial={false}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
@@ -496,8 +496,8 @@ export default function SanCayetanoPage() {
               <p className="text-sm text-gray-600">Aumento en presencia digital</p>
             </motion.div>
             <motion.div 
-              className="text-center"
-              initial={{ opacity: 0, y: 20 }}
+              className="text-center opacity-100 translate-y-0"
+              initial={false}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
@@ -520,8 +520,8 @@ export default function SanCayetanoPage() {
       <section className="py-16 px-4 md:px-8 bg-gray-50">
         <div className="w-[98%] md:w-[80%] mx-auto">
           <motion.div
-            className="mb-4"
-            initial={{ opacity: 0 }}
+            className="mb-4 opacity-100"
+            initial={false}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
@@ -529,9 +529,9 @@ export default function SanCayetanoPage() {
             <p className="text-sm text-gray-500">(01)</p>
           </motion.div>
           <motion.h2 
-            className="text-4xl md:text-5xl font-bold mb-6"
+            className="text-4xl md:text-5xl font-bold mb-6 opacity-100 translate-y-0"
             style={{ letterSpacing: '-0.08em' }}
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
@@ -539,8 +539,8 @@ export default function SanCayetanoPage() {
             Contexto del proyecto
           </motion.h2>
           <motion.p 
-            className="text-lg text-gray-700 mb-4 leading-relaxed"
-            initial={{ opacity: 0, y: 20 }}
+            className="text-lg text-gray-700 mb-4 leading-relaxed opacity-100 translate-y-0"
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
@@ -548,8 +548,8 @@ export default function SanCayetanoPage() {
             Comunicación digital aplicada a una PyME industrial
           </motion.p>
           <motion.p 
-            className="text-base text-gray-600 leading-relaxed max-w-3xl"
-            initial={{ opacity: 0, y: 20 }}
+            className="text-base text-gray-600 leading-relaxed max-w-3xl opacity-100 translate-y-0"
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -557,8 +557,8 @@ export default function SanCayetanoPage() {
             San Cayetano Aberturas es una PyME industrial con trayectoria, productos sólidos y conocimiento técnico real. Como ocurre en muchas empresas del sector, su principal desafío no estaba en lo productivo, sino en cómo comunicar, ordenar y mostrar digitalmente todo ese valor.
           </motion.p>
           <motion.p 
-            className="text-base text-gray-600 leading-relaxed max-w-3xl mt-4"
-            initial={{ opacity: 0, y: 20 }}
+            className="text-base text-gray-600 leading-relaxed max-w-3xl mt-4 opacity-100 translate-y-0"
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
@@ -572,8 +572,8 @@ export default function SanCayetanoPage() {
       <section className="py-16 px-4 md:px-8">
         <div className="w-[98%] md:w-[80%] mx-auto">
           <motion.div
-            className="mb-4"
-            initial={{ opacity: 0 }}
+            className="mb-4 opacity-100"
+            initial={false}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
@@ -581,9 +581,9 @@ export default function SanCayetanoPage() {
             <p className="text-sm text-gray-500">(02)</p>
           </motion.div>
           <motion.h2 
-            className="text-4xl md:text-5xl font-bold mb-6"
+            className="text-4xl md:text-5xl font-bold mb-6 opacity-100 translate-y-0"
             style={{ letterSpacing: '-0.08em' }}
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
@@ -591,8 +591,8 @@ export default function SanCayetanoPage() {
             Desafío
           </motion.h2>
           <motion.p 
-            className="text-lg text-gray-700 mb-4 leading-relaxed"
-            initial={{ opacity: 0, y: 20 }}
+            className="text-lg text-gray-700 mb-4 leading-relaxed opacity-100 translate-y-0"
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
@@ -600,8 +600,8 @@ export default function SanCayetanoPage() {
             Cuando las ventas bajan y la comunicación no ayuda a revertirlo
           </motion.p>
           <motion.p 
-            className="text-base text-gray-600 leading-relaxed max-w-3xl mb-4"
-            initial={{ opacity: 0, y: 20 }}
+            className="text-base text-gray-600 leading-relaxed max-w-3xl mb-4 opacity-100 translate-y-0"
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -609,8 +609,8 @@ export default function SanCayetanoPage() {
             En palabras de la propia empresa, el problema era concreto:
           </motion.p>
           <motion.blockquote 
-            className="text-xl font-semibold text-gray-800 mb-6 pl-6 border-l-4 border-[#CCFF00]"
-            initial={{ opacity: 0, y: 20 }}
+            className="text-xl font-semibold text-gray-800 mb-6 pl-6 border-l-4 border-[#CCFF00] opacity-100 translate-y-0"
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
@@ -618,8 +618,8 @@ export default function SanCayetanoPage() {
             "Las ventas estaban en baja y seguían bajando."
           </motion.blockquote>
           <motion.p 
-            className="text-base text-gray-600 leading-relaxed max-w-3xl mb-4"
-            initial={{ opacity: 0, y: 20 }}
+            className="text-base text-gray-600 leading-relaxed max-w-3xl mb-4 opacity-100 translate-y-0"
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.4 }}
@@ -627,8 +627,8 @@ export default function SanCayetanoPage() {
             Si bien San Cayetano contaba con buenos productos y experiencia, su comunicación digital no estaba alineada para acompañar ni sostener el proceso comercial. La información estaba dispersa, los productos no se explicaban correctamente y no existía una estrategia digital clara.
           </motion.p>
           <motion.p 
-            className="text-base text-gray-600 leading-relaxed max-w-3xl mb-4"
-            initial={{ opacity: 0, y: 20 }}
+            className="text-base text-gray-600 leading-relaxed max-w-3xl mb-4 opacity-100 translate-y-0"
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.5 }}
@@ -636,8 +636,8 @@ export default function SanCayetanoPage() {
             Este escenario es habitual en PyMEs industriales:
           </motion.p>
           <motion.ul 
-            className="list-disc list-inside space-y-2 text-base text-gray-600 max-w-3xl mb-8"
-            initial={{ opacity: 0, y: 20 }}
+            className="list-disc list-inside space-y-2 text-base text-gray-600 max-w-3xl mb-8 opacity-100 translate-y-0"
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.6 }}
@@ -647,8 +647,8 @@ export default function SanCayetanoPage() {
             <li>pero una presencia digital débil, desordenada o incoherente</li>
           </motion.ul>
           <motion.p 
-            className="text-base text-gray-600 leading-relaxed max-w-3xl"
-            initial={{ opacity: 0, y: 20 }}
+            className="text-base text-gray-600 leading-relaxed max-w-3xl opacity-100 translate-y-0"
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.7 }}
@@ -662,8 +662,8 @@ export default function SanCayetanoPage() {
       <section className="py-16 px-4 md:px-8 bg-gray-50">
         <div className="w-[98%] md:w-[80%] mx-auto">
           <motion.div
-            className="mb-4"
-            initial={{ opacity: 0 }}
+            className="mb-4 opacity-100"
+            initial={false}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
@@ -671,9 +671,9 @@ export default function SanCayetanoPage() {
             <p className="text-sm text-gray-500">(03)</p>
           </motion.div>
           <motion.h2 
-            className="text-4xl md:text-5xl font-bold mb-6"
+            className="text-4xl md:text-5xl font-bold mb-6 opacity-100 translate-y-0"
             style={{ letterSpacing: '-0.08em' }}
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
@@ -681,8 +681,8 @@ export default function SanCayetanoPage() {
             Enfoque de trabajo
           </motion.h2>
           <motion.p 
-            className="text-lg text-gray-700 mb-4 leading-relaxed"
-            initial={{ opacity: 0, y: 20 }}
+            className="text-lg text-gray-700 mb-4 leading-relaxed opacity-100 translate-y-0"
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
@@ -690,8 +690,8 @@ export default function SanCayetanoPage() {
             Estrategia digital antes que acciones aisladas
           </motion.p>
           <motion.p 
-            className="text-base text-gray-600 leading-relaxed max-w-3xl mb-4"
-            initial={{ opacity: 0, y: 20 }}
+            className="text-base text-gray-600 leading-relaxed max-w-3xl mb-4 opacity-100 translate-y-0"
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -699,8 +699,8 @@ export default function SanCayetanoPage() {
             El trabajo de PiP Studio no se planteó como marketing tradicional ni como gestión de redes sociales. Se abordó como un proceso de estrategia digital y orden comunicacional, actuando como área de comunicación y marketing externa de la empresa.
           </motion.p>
           <motion.p 
-            className="text-base text-gray-600 leading-relaxed max-w-3xl mb-4"
-            initial={{ opacity: 0, y: 20 }}
+            className="text-base text-gray-600 leading-relaxed max-w-3xl mb-4 opacity-100 translate-y-0"
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
@@ -708,8 +708,8 @@ export default function SanCayetanoPage() {
             Las primeras etapas se centraron en:
           </motion.p>
           <motion.ul 
-            className="list-disc list-inside space-y-2 text-base text-gray-600 max-w-3xl mb-8"
-            initial={{ opacity: 0, y: 20 }}
+            className="list-disc list-inside space-y-2 text-base text-gray-600 max-w-3xl mb-8 opacity-100 translate-y-0"
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.4 }}
@@ -720,8 +720,8 @@ export default function SanCayetanoPage() {
             <li>Alineación entre identidad, contenidos y canales digitales</li>
           </motion.ul>
           <motion.p 
-            className="text-base text-gray-600 leading-relaxed max-w-3xl"
-            initial={{ opacity: 0, y: 20 }}
+            className="text-base text-gray-600 leading-relaxed max-w-3xl opacity-100 translate-y-0"
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.5 }}
@@ -735,8 +735,8 @@ export default function SanCayetanoPage() {
       <section className="py-16 px-4 md:px-8">
         <div className="w-[98%] md:w-[80%] mx-auto">
           <motion.div
-            className="mb-4"
-            initial={{ opacity: 0 }}
+            className="mb-4 opacity-100"
+            initial={false}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
@@ -744,9 +744,9 @@ export default function SanCayetanoPage() {
             <p className="text-sm text-gray-500">(04)</p>
           </motion.div>
           <motion.h2 
-            className="text-4xl md:text-5xl font-bold mb-6"
+            className="text-4xl md:text-5xl font-bold mb-6 opacity-100 translate-y-0"
             style={{ letterSpacing: '-0.08em' }}
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
@@ -754,8 +754,8 @@ export default function SanCayetanoPage() {
             Solución implementada
           </motion.h2>
           <motion.p 
-            className="text-lg text-gray-700 mb-4 leading-relaxed"
-            initial={{ opacity: 0, y: 20 }}
+            className="text-lg text-gray-700 mb-4 leading-relaxed opacity-100 translate-y-0"
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
@@ -763,8 +763,8 @@ export default function SanCayetanoPage() {
             Comunicación digital estructurada para una PyME industrial
           </motion.p>
           <motion.p 
-            className="text-base text-gray-600 leading-relaxed max-w-3xl mb-4"
-            initial={{ opacity: 0, y: 20 }}
+            className="text-base text-gray-600 leading-relaxed max-w-3xl mb-4 opacity-100 translate-y-0"
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -772,8 +772,8 @@ export default function SanCayetanoPage() {
             A partir del diagnóstico, se desarrolló una estructura digital integral que incluyó:
           </motion.p>
           <motion.ul 
-            className="list-disc list-inside space-y-2 text-base text-gray-600 max-w-3xl mb-8"
-            initial={{ opacity: 0, y: 20 }}
+            className="list-disc list-inside space-y-2 text-base text-gray-600 max-w-3xl mb-8 opacity-100 translate-y-0"
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
@@ -786,8 +786,8 @@ export default function SanCayetanoPage() {
             <li>Integración de canales de contacto y consultas</li>
           </motion.ul>
           <motion.p 
-            className="text-base text-gray-600 leading-relaxed max-w-3xl"
-            initial={{ opacity: 0, y: 20 }}
+            className="text-base text-gray-600 leading-relaxed max-w-3xl opacity-100 translate-y-0"
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.4 }}
@@ -801,8 +801,8 @@ export default function SanCayetanoPage() {
       <section className="py-16 px-4 md:px-8 bg-gray-50">
         <div className="w-[98%] md:w-[80%] mx-auto">
           <motion.div
-            className="mb-4"
-            initial={{ opacity: 0 }}
+            className="mb-4 opacity-100"
+            initial={false}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
@@ -810,9 +810,9 @@ export default function SanCayetanoPage() {
             <p className="text-sm text-gray-500">(05)</p>
           </motion.div>
           <motion.h2 
-            className="text-4xl md:text-5xl font-bold mb-6"
+            className="text-4xl md:text-5xl font-bold mb-6 opacity-100 translate-y-0"
             style={{ letterSpacing: '-0.08em' }}
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
@@ -820,8 +820,8 @@ export default function SanCayetanoPage() {
             Resultados
           </motion.h2>
           <motion.p 
-            className="text-lg text-gray-700 mb-4 leading-relaxed"
-            initial={{ opacity: 0, y: 20 }}
+            className="text-lg text-gray-700 mb-4 leading-relaxed opacity-100 translate-y-0"
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
@@ -829,8 +829,8 @@ export default function SanCayetanoPage() {
             Una base digital sólida para crecer de forma sostenida
           </motion.p>
           <motion.p 
-            className="text-base text-gray-600 leading-relaxed max-w-3xl mb-4"
-            initial={{ opacity: 0, y: 20 }}
+            className="text-base text-gray-600 leading-relaxed max-w-3xl mb-4 opacity-100 translate-y-0"
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -838,8 +838,8 @@ export default function SanCayetanoPage() {
             Hoy San Cayetano cuenta con:
           </motion.p>
           <motion.ul 
-            className="list-disc list-inside space-y-2 text-base text-gray-600 max-w-3xl mb-8"
-            initial={{ opacity: 0, y: 20 }}
+            className="list-disc list-inside space-y-2 text-base text-gray-600 max-w-3xl mb-8 opacity-100 translate-y-0"
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
@@ -850,8 +850,8 @@ export default function SanCayetanoPage() {
             <li>Una presencia digital preparada para acompañar ventas y crecimiento</li>
           </motion.ul>
           <motion.p 
-            className="text-base text-gray-600 leading-relaxed max-w-3xl"
-            initial={{ opacity: 0, y: 20 }}
+            className="text-base text-gray-600 leading-relaxed max-w-3xl opacity-100 translate-y-0"
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.4 }}
@@ -865,8 +865,8 @@ export default function SanCayetanoPage() {
       <section className="py-16 px-4 md:px-8">
         <div className="w-[98%] md:w-[80%] mx-auto">
           <motion.div
-            className="mb-4"
-            initial={{ opacity: 0 }}
+            className="mb-4 opacity-100"
+            initial={false}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
@@ -874,9 +874,9 @@ export default function SanCayetanoPage() {
             <p className="text-sm text-gray-500">(06)</p>
           </motion.div>
           <motion.h2 
-            className="text-4xl md:text-5xl font-bold mb-6"
+            className="text-4xl md:text-5xl font-bold mb-6 opacity-100 translate-y-0"
             style={{ letterSpacing: '-0.08em' }}
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
@@ -884,8 +884,8 @@ export default function SanCayetanoPage() {
             Caso real de transformación digital en PyMEs
           </motion.h2>
           <motion.p 
-            className="text-base text-gray-600 leading-relaxed max-w-3xl mb-4"
-            initial={{ opacity: 0, y: 20 }}
+            className="text-base text-gray-600 leading-relaxed max-w-3xl mb-4 opacity-100 translate-y-0"
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
@@ -893,8 +893,8 @@ export default function SanCayetanoPage() {
             Este proyecto demuestra cómo una estrategia de comunicación y transformación digital para PyMEs industriales puede generar cambios reales cuando se trabaja desde el diagnóstico, el criterio y la coherencia, y no desde acciones aisladas.
           </motion.p>
           <motion.p 
-            className="text-base text-gray-600 leading-relaxed max-w-3xl"
-            initial={{ opacity: 0, y: 20 }}
+            className="text-base text-gray-600 leading-relaxed max-w-3xl opacity-100 translate-y-0"
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -908,9 +908,9 @@ export default function SanCayetanoPage() {
       <section className="py-16 px-4 md:px-8 bg-gray-50">
         <div className="w-[98%] md:w-[80%] mx-auto">
           <motion.h2 
-            className="text-4xl md:text-5xl font-bold mb-6"
+            className="text-4xl md:text-5xl font-bold mb-6 opacity-100 translate-y-0"
             style={{ letterSpacing: '-0.08em' }}
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
@@ -918,8 +918,8 @@ export default function SanCayetanoPage() {
             Cierre estratégico (SEO + posicionamiento)
           </motion.h2>
           <motion.p 
-            className="text-base text-gray-600 leading-relaxed max-w-3xl mb-4"
-            initial={{ opacity: 0, y: 20 }}
+            className="text-base text-gray-600 leading-relaxed max-w-3xl mb-4 opacity-100 translate-y-0"
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
@@ -927,8 +927,8 @@ export default function SanCayetanoPage() {
             PiP Studio trabaja con PyMEs que tienen buenos productos, pero necesitan ordenar y profesionalizar su comunicación digital para obtener resultados reales.
           </motion.p>
           <motion.p 
-            className="text-base text-gray-600 leading-relaxed max-w-3xl"
-            initial={{ opacity: 0, y: 20 }}
+            className="text-base text-gray-600 leading-relaxed max-w-3xl opacity-100 translate-y-0"
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -943,17 +943,18 @@ export default function SanCayetanoPage() {
         <div className="w-[98%] md:w-[80%] mx-auto">
           <div className="flex justify-between items-center mb-8">
             <motion.h2 
-              className="text-4xl md:text-5xl font-bold"
+              className="text-4xl md:text-5xl font-bold opacity-100 translate-y-0"
               style={{ letterSpacing: '-0.08em' }}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+            initial={false}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
             >
               Proyectos Recientes.
             </motion.h2>
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              className="opacity-100 translate-y-0"
+              initial={false}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
@@ -969,11 +970,11 @@ export default function SanCayetanoPage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <motion.div
-              className="rounded-2xl overflow-hidden bg-[#EBEBEB] p-1"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              className="rounded-2xl overflow-hidden bg-[#EBEBEB] p-1 opacity-100 translate-y-0"
+            initial={false}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
             >
               <div className="aspect-video bg-gray-800 rounded-xl mb-4">
                 <div 
@@ -994,8 +995,8 @@ export default function SanCayetanoPage() {
               </div>
             </motion.div>
             <motion.div
-              className="rounded-2xl overflow-hidden bg-[#EBEBEB] p-1"
-              initial={{ opacity: 0, y: 20 }}
+              className="rounded-2xl overflow-hidden bg-[#EBEBEB] p-1 opacity-100 translate-y-0"
+              initial={false}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
