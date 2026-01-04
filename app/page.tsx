@@ -118,17 +118,10 @@ export default function HomePage() {
     setIsMounted(true)
   }, [])
 
-  // Variants para las animaciones del header (definidos dentro del componente)
-  const headerLinkVariants = {
-    initial: { y: 0, opacity: 1 },
-    hover: { y: -20, opacity: 0 }
-  }
+  // Estado para controlar hover de cada enlace (más robusto para producción)
+  const [hoveredLink, setHoveredLink] = useState<string | null>(null)
 
-  const headerLinkVariantsSecondary = {
-    initial: { y: 20, opacity: 0 },
-    hover: { y: 0, opacity: 1 }
-  }
-
+  // Transición para las animaciones
   const headerTransition = {
     duration: 0.4,
     ease: [0.25, 0.1, 0.25, 1] as const
@@ -386,27 +379,19 @@ export default function HomePage() {
                 <motion.a 
                   href="#soluciones-digitales" 
                   className="text-[#282828] text-xs md:text-sm font-medium relative overflow-hidden block h-5"
-                  whileHover="hover"
-                  initial="initial"
-                  onMouseEnter={(e) => {
-                    if (isMounted) {
-                      e.currentTarget.style.willChange = 'transform'
-                    }
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.willChange = 'auto'
-                  }}
+                  onMouseEnter={() => setHoveredLink('soluciones')}
+                  onMouseLeave={() => setHoveredLink(null)}
                 >
                   <motion.span
                     className="block"
-                    variants={headerLinkVariants}
+                    animate={hoveredLink === 'soluciones' ? { y: -20, opacity: 0 } : { y: 0, opacity: 1 }}
                     transition={headerTransition}
                   >
                     Soluciones digitales
                   </motion.span>
                   <motion.span
                     className="absolute top-0 left-0 block w-full"
-                    variants={headerLinkVariantsSecondary}
+                    animate={hoveredLink === 'soluciones' ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
                     transition={headerTransition}
                   >
                     Soluciones digitales
@@ -415,27 +400,19 @@ export default function HomePage() {
                 <motion.a 
                   href="#sistema" 
                   className="text-[#282828] text-xs md:text-sm font-medium relative overflow-hidden block h-5"
-                  whileHover="hover"
-                  initial="initial"
-                  onMouseEnter={(e) => {
-                    if (isMounted) {
-                      e.currentTarget.style.willChange = 'transform'
-                    }
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.willChange = 'auto'
-                  }}
+                  onMouseEnter={() => setHoveredLink('sistema')}
+                  onMouseLeave={() => setHoveredLink(null)}
                 >
                   <motion.span
                     className="block"
-                    variants={headerLinkVariants}
+                    animate={hoveredLink === 'sistema' ? { y: -20, opacity: 0 } : { y: 0, opacity: 1 }}
                     transition={headerTransition}
                   >
                     Sistema
                   </motion.span>
                   <motion.span
                     className="absolute top-0 left-0 block w-full"
-                    variants={headerLinkVariantsSecondary}
+                    animate={hoveredLink === 'sistema' ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
                     transition={headerTransition}
                   >
                     Sistema
@@ -444,27 +421,19 @@ export default function HomePage() {
                 <motion.a 
                   href="#casos-de-exito" 
                   className="text-[#282828] text-xs md:text-sm font-medium relative overflow-hidden block h-5"
-                  whileHover="hover"
-                  initial="initial"
-                  onMouseEnter={(e) => {
-                    if (isMounted) {
-                      e.currentTarget.style.willChange = 'transform'
-                    }
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.willChange = 'auto'
-                  }}
+                  onMouseEnter={() => setHoveredLink('casos')}
+                  onMouseLeave={() => setHoveredLink(null)}
                 >
                   <motion.span
                     className="block"
-                    variants={headerLinkVariants}
+                    animate={hoveredLink === 'casos' ? { y: -20, opacity: 0 } : { y: 0, opacity: 1 }}
                     transition={headerTransition}
                   >
                     Casos de éxito
                   </motion.span>
                   <motion.span
                     className="absolute top-0 left-0 block w-full"
-                    variants={headerLinkVariantsSecondary}
+                    animate={hoveredLink === 'casos' ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
                     transition={headerTransition}
                   >
                     Casos de éxito
@@ -473,27 +442,19 @@ export default function HomePage() {
                 <motion.a 
                   href="#servicios" 
                   className="text-[#282828] text-xs md:text-sm font-medium relative overflow-hidden block h-5"
-                  whileHover="hover"
-                  initial="initial"
-                  onMouseEnter={(e) => {
-                    if (isMounted) {
-                      e.currentTarget.style.willChange = 'transform'
-                    }
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.willChange = 'auto'
-                  }}
+                  onMouseEnter={() => setHoveredLink('servicios')}
+                  onMouseLeave={() => setHoveredLink(null)}
                 >
                   <motion.span
                     className="block"
-                    variants={headerLinkVariants}
+                    animate={hoveredLink === 'servicios' ? { y: -20, opacity: 0 } : { y: 0, opacity: 1 }}
                     transition={headerTransition}
                   >
                     Servicios
                   </motion.span>
                   <motion.span
                     className="absolute top-0 left-0 block w-full"
-                    variants={headerLinkVariantsSecondary}
+                    animate={hoveredLink === 'servicios' ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
                     transition={headerTransition}
                   >
                     Servicios
@@ -502,27 +463,19 @@ export default function HomePage() {
                 <motion.a 
                   href="#preguntas-frecuentes" 
                   className="text-[#282828] text-xs md:text-sm font-medium relative overflow-hidden block h-5"
-                  whileHover="hover"
-                  initial="initial"
-                  onMouseEnter={(e) => {
-                    if (isMounted) {
-                      e.currentTarget.style.willChange = 'transform'
-                    }
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.willChange = 'auto'
-                  }}
+                  onMouseEnter={() => setHoveredLink('preguntas')}
+                  onMouseLeave={() => setHoveredLink(null)}
                 >
                   <motion.span
                     className="block"
-                    variants={headerLinkVariants}
+                    animate={hoveredLink === 'preguntas' ? { y: -20, opacity: 0 } : { y: 0, opacity: 1 }}
                     transition={headerTransition}
                   >
                     Preguntas frecuentes
                   </motion.span>
                   <motion.span
                     className="absolute top-0 left-0 block w-full"
-                    variants={headerLinkVariantsSecondary}
+                    animate={hoveredLink === 'preguntas' ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
                     transition={headerTransition}
                   >
                     Preguntas frecuentes
@@ -533,20 +486,12 @@ export default function HomePage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-[#CCFF00] text-[#282828] py-1.5 md:py-2 px-4 md:px-5 rounded-full font-medium text-xs md:text-sm relative overflow-hidden block"
-                  whileHover="hover"
-                  initial="initial"
-                  onMouseEnter={(e) => {
-                    if (isMounted) {
-                      e.currentTarget.style.willChange = 'transform'
-                    }
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.willChange = 'auto'
-                  }}
+                  onMouseEnter={() => setHoveredLink('hablemos')}
+                  onMouseLeave={() => setHoveredLink(null)}
                 >
                   <motion.span
                     className="flex items-center gap-1.5 whitespace-nowrap"
-                    variants={headerLinkVariants}
+                    animate={hoveredLink === 'hablemos' ? { y: -20, opacity: 0 } : { y: 0, opacity: 1 }}
                     transition={headerTransition}
                   >
                     Hablemos!
@@ -554,7 +499,7 @@ export default function HomePage() {
                   </motion.span>
                   <motion.span
                     className="absolute inset-0 flex items-center justify-center gap-1.5 whitespace-nowrap"
-                    variants={headerLinkVariantsSecondary}
+                    animate={hoveredLink === 'hablemos' ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
                     transition={headerTransition}
                   >
                     Hablemos!
