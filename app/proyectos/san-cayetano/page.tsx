@@ -97,8 +97,9 @@ export default function SanCayetanoPage() {
               <motion.a 
                 href="/#soluciones-digitales" 
                 className="text-[#282828] text-xs md:text-sm font-medium relative overflow-hidden block h-5"
-                whileHover="hover"
                 initial="initial"
+                animate="initial"
+                whileHover="hover"
               >
                 <motion.span
                   className="block"
@@ -124,8 +125,9 @@ export default function SanCayetanoPage() {
               <motion.a 
                 href="/#sistema" 
                 className="text-[#282828] text-xs md:text-sm font-medium relative overflow-hidden block h-5"
-                whileHover="hover"
                 initial="initial"
+                animate="initial"
+                whileHover="hover"
               >
                 <motion.span
                   className="block"
@@ -151,8 +153,9 @@ export default function SanCayetanoPage() {
               <motion.a 
                 href="/#casos-de-exito" 
                 className="text-[#282828] text-xs md:text-sm font-medium relative overflow-hidden block h-5"
-                whileHover="hover"
                 initial="initial"
+                animate="initial"
+                whileHover="hover"
               >
                 <motion.span
                   className="block"
@@ -178,8 +181,9 @@ export default function SanCayetanoPage() {
               <motion.a 
                 href="/#servicios" 
                 className="text-[#282828] text-xs md:text-sm font-medium relative overflow-hidden block h-5"
-                whileHover="hover"
                 initial="initial"
+                animate="initial"
+                whileHover="hover"
               >
                 <motion.span
                   className="block"
@@ -205,8 +209,9 @@ export default function SanCayetanoPage() {
               <motion.a 
                 href="/#preguntas-frecuentes" 
                 className="text-[#282828] text-xs md:text-sm font-medium relative overflow-hidden block h-5"
-                whileHover="hover"
                 initial="initial"
+                animate="initial"
+                whileHover="hover"
               >
                 <motion.span
                   className="block"
