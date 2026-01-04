@@ -118,6 +118,22 @@ export default function HomePage() {
     setIsMounted(true)
   }, [])
 
+  // Variants para las animaciones del header (definidos dentro del componente)
+  const headerLinkVariants = {
+    initial: { y: 0, opacity: 1 },
+    hover: { y: -20, opacity: 0 }
+  }
+
+  const headerLinkVariantsSecondary = {
+    initial: { y: 20, opacity: 0 },
+    hover: { y: 0, opacity: 1 }
+  }
+
+  const headerTransition = {
+    duration: 0.4,
+    ease: [0.25, 0.1, 0.25, 1] as const
+  }
+
   // Generar ruido en canvas
   useEffect(() => {
     if (noiseCanvasRef.current) {
@@ -372,24 +388,26 @@ export default function HomePage() {
                   className="text-[#282828] text-xs md:text-sm font-medium relative overflow-hidden block h-5"
                   whileHover="hover"
                   initial="initial"
+                  onMouseEnter={(e) => {
+                    if (isMounted) {
+                      e.currentTarget.style.willChange = 'transform'
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.willChange = 'auto'
+                  }}
                 >
                   <motion.span
                     className="block"
-                    variants={{
-                      initial: { y: 0, opacity: 1 },
-                      hover: { y: -20, opacity: 0 }
-                    }}
-                    transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+                    variants={headerLinkVariants}
+                    transition={headerTransition}
                   >
                     Soluciones digitales
                   </motion.span>
                   <motion.span
                     className="absolute top-0 left-0 block w-full"
-                    variants={{
-                      initial: { y: 20, opacity: 0 },
-                      hover: { y: 0, opacity: 1 }
-                    }}
-                    transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+                    variants={headerLinkVariantsSecondary}
+                    transition={headerTransition}
                   >
                     Soluciones digitales
                   </motion.span>
@@ -399,24 +417,26 @@ export default function HomePage() {
                   className="text-[#282828] text-xs md:text-sm font-medium relative overflow-hidden block h-5"
                   whileHover="hover"
                   initial="initial"
+                  onMouseEnter={(e) => {
+                    if (isMounted) {
+                      e.currentTarget.style.willChange = 'transform'
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.willChange = 'auto'
+                  }}
                 >
                   <motion.span
                     className="block"
-                    variants={{
-                      initial: { y: 0, opacity: 1 },
-                      hover: { y: -20, opacity: 0 }
-                    }}
-                    transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+                    variants={headerLinkVariants}
+                    transition={headerTransition}
                   >
                     Sistema
                   </motion.span>
                   <motion.span
                     className="absolute top-0 left-0 block w-full"
-                    variants={{
-                      initial: { y: 20, opacity: 0 },
-                      hover: { y: 0, opacity: 1 }
-                    }}
-                    transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+                    variants={headerLinkVariantsSecondary}
+                    transition={headerTransition}
                   >
                     Sistema
                   </motion.span>
@@ -426,24 +446,26 @@ export default function HomePage() {
                   className="text-[#282828] text-xs md:text-sm font-medium relative overflow-hidden block h-5"
                   whileHover="hover"
                   initial="initial"
+                  onMouseEnter={(e) => {
+                    if (isMounted) {
+                      e.currentTarget.style.willChange = 'transform'
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.willChange = 'auto'
+                  }}
                 >
                   <motion.span
                     className="block"
-                    variants={{
-                      initial: { y: 0, opacity: 1 },
-                      hover: { y: -20, opacity: 0 }
-                    }}
-                    transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+                    variants={headerLinkVariants}
+                    transition={headerTransition}
                   >
                     Casos de éxito
                   </motion.span>
                   <motion.span
                     className="absolute top-0 left-0 block w-full"
-                    variants={{
-                      initial: { y: 20, opacity: 0 },
-                      hover: { y: 0, opacity: 1 }
-                    }}
-                    transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+                    variants={headerLinkVariantsSecondary}
+                    transition={headerTransition}
                   >
                     Casos de éxito
                   </motion.span>
@@ -453,24 +475,26 @@ export default function HomePage() {
                   className="text-[#282828] text-xs md:text-sm font-medium relative overflow-hidden block h-5"
                   whileHover="hover"
                   initial="initial"
+                  onMouseEnter={(e) => {
+                    if (isMounted) {
+                      e.currentTarget.style.willChange = 'transform'
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.willChange = 'auto'
+                  }}
                 >
                   <motion.span
                     className="block"
-                    variants={{
-                      initial: { y: 0, opacity: 1 },
-                      hover: { y: -20, opacity: 0 }
-                    }}
-                    transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+                    variants={headerLinkVariants}
+                    transition={headerTransition}
                   >
                     Servicios
                   </motion.span>
                   <motion.span
                     className="absolute top-0 left-0 block w-full"
-                    variants={{
-                      initial: { y: 20, opacity: 0 },
-                      hover: { y: 0, opacity: 1 }
-                    }}
-                    transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+                    variants={headerLinkVariantsSecondary}
+                    transition={headerTransition}
                   >
                     Servicios
                   </motion.span>
@@ -480,24 +504,26 @@ export default function HomePage() {
                   className="text-[#282828] text-xs md:text-sm font-medium relative overflow-hidden block h-5"
                   whileHover="hover"
                   initial="initial"
+                  onMouseEnter={(e) => {
+                    if (isMounted) {
+                      e.currentTarget.style.willChange = 'transform'
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.willChange = 'auto'
+                  }}
                 >
                   <motion.span
                     className="block"
-                    variants={{
-                      initial: { y: 0, opacity: 1 },
-                      hover: { y: -20, opacity: 0 }
-                    }}
-                    transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+                    variants={headerLinkVariants}
+                    transition={headerTransition}
                   >
                     Preguntas frecuentes
                   </motion.span>
                   <motion.span
                     className="absolute top-0 left-0 block w-full"
-                    variants={{
-                      initial: { y: 20, opacity: 0 },
-                      hover: { y: 0, opacity: 1 }
-                    }}
-                    transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+                    variants={headerLinkVariantsSecondary}
+                    transition={headerTransition}
                   >
                     Preguntas frecuentes
                   </motion.span>
@@ -506,16 +532,34 @@ export default function HomePage() {
                   href="https://wa.me/5493493415669"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-[#CCFF00] text-[#282828] py-1.5 md:py-2 rounded-full font-medium text-xs md:text-sm flex items-center group"
-                  initial={{ paddingLeft: "0.75rem", paddingRight: "0" }}
-                  whileHover={{ 
-                    paddingRight: "1.5rem",
-                    boxShadow: "0 4px 12px rgba(204, 255, 0, 0.3)"
+                  className="bg-[#CCFF00] text-[#282828] py-1.5 md:py-2 px-4 md:px-5 rounded-full font-medium text-xs md:text-sm relative overflow-hidden block"
+                  whileHover="hover"
+                  initial="initial"
+                  onMouseEnter={(e) => {
+                    if (isMounted) {
+                      e.currentTarget.style.willChange = 'transform'
+                    }
                   }}
-                  transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.willChange = 'auto'
+                  }}
                 >
-                  <span className="whitespace-nowrap">Hablemos!</span>
-                  <ArrowUpRight className="w-4 h-4 md:w-5 md:h-5 text-[#282828] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex-shrink-0 ml-1.5" />
+                  <motion.span
+                    className="flex items-center gap-1.5 whitespace-nowrap"
+                    variants={headerLinkVariants}
+                    transition={headerTransition}
+                  >
+                    Hablemos!
+                    <ArrowUpRight className="w-4 h-4 md:w-5 md:h-5 text-[#282828] flex-shrink-0" />
+                  </motion.span>
+                  <motion.span
+                    className="absolute inset-0 flex items-center justify-center gap-1.5 whitespace-nowrap"
+                    variants={headerLinkVariantsSecondary}
+                    transition={headerTransition}
+                  >
+                    Hablemos!
+                    <ArrowUpRight className="w-4 h-4 md:w-5 md:h-5 text-[#282828] flex-shrink-0" />
+                  </motion.span>
                 </motion.a>
               </nav>
               {/* Mobile menu button */}
@@ -984,8 +1028,9 @@ export default function HomePage() {
           </motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Caso 1 */}
-            <div 
-              className="flex flex-col rounded-2xl overflow-hidden bg-[#EBEBEB] hover:bg-[#141414] p-1 group"
+            <Link 
+              href="/proyectos/san-cayetano"
+              className="flex flex-col rounded-2xl overflow-hidden bg-[#EBEBEB] hover:bg-[#141414] p-1 group cursor-pointer"
               style={{ transition: 'background-color 0.5s cubic-bezier(0.25, 0.1, 0.25, 1)' }}
             >
               <div className="aspect-[4/3] bg-gray-800 rounded-xl overflow-hidden mb-4 relative">
@@ -1016,11 +1061,11 @@ export default function HomePage() {
                     <p 
                       className="text-xs text-gray-500 group-hover:-translate-y-full"
                       style={{ transition: 'transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1)' }}
-                    >2023 - 2024</p>
+                    >2024 – Presente</p>
                     <p 
                       className="text-xs text-white absolute top-0 right-0 translate-y-full group-hover:translate-y-0"
                       style={{ transition: 'transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1)' }}
-                    >2023 - 2024</p>
+                    >2024 – Presente</p>
                   </div>
                 </div>
                 <div className="relative overflow-hidden">
@@ -1038,7 +1083,7 @@ export default function HomePage() {
                   </p>
                 </div>
               </div>
-            </div>
+            </Link>
 
             {/* Caso 2 */}
             <div 
