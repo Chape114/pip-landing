@@ -1112,492 +1112,128 @@ export default function HomePage() {
             Estrategia, diseño y ejecución alineadas a objetivos reales.
           </p>
 
-          <div className="rounded-2xl overflow-hidden">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {/* Columna Izquierda */}
-              <div className="flex flex-col gap-1 rounded-2xl overflow-hidden bg-[#EBEBEB] p-1">
-              {/* Caja superior */}
-              <div
-                className={`p-4 rounded-xl relative flex flex-col justify-between overflow-hidden transition-colors duration-600 ${expandedServiceCards.has(serviciosCards[0].id) ? 'bg-white' : 'bg-[#2a2a2a]'}`}
-                style={{
-                  backgroundImage: expandedServiceCards.has(serviciosCards[0].id) ? 'none' : `url('/pipstudio2/Diseño sin título (8).png')`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                  backgroundRepeat: 'no-repeat',
-                  transition: 'background-color 0.6s cubic-bezier(0.22, 1, 0.36, 1)'
-                }}
-              >
-                {/* Overlay oscuro para legibilidad - solo cuando está cerrada */}
-                {!expandedServiceCards.has(serviciosCards[0].id) && (
-                  <div className="absolute inset-0 bg-[#2a2a2a]/80 rounded-xl"></div>
-                )}
-                <div className="relative z-10 flex flex-col">
-                  <h3 className={`text-xl font-bold mb-6 transition-colors duration-600 ${expandedServiceCards.has(serviciosCards[0].id) ? 'text-black' : 'text-white'}`}>
-                    {serviciosCards[0].title}
-                  </h3>
-                  
-                  <div
-                    className={`grid transition-all duration-1200 ease-[cubic-bezier(0.22,1,0.36,1)] ${expandedServiceCards.has(serviciosCards[0].id) ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
-                    style={{
-                      transition: 'grid-template-rows 1.2s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s cubic-bezier(0.22, 1, 0.36, 1)'
-                    }}
-                  >
-                    <div className="overflow-hidden">
-                      <div
-                        className={`mb-4 transition-opacity duration-300 ${expandedServiceCards.has(serviciosCards[0].id) ? 'opacity-100' : 'opacity-0'}`}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-1">
+            {serviciosCards.map((card, idx) => {
+              const isExpanded = expandedServiceCards.has(card.id)
+              const usePlusIcon = idx === 1 || idx === 2 || idx === 3 || idx === 5
+              
+              return (
+                <div 
+                  key={card.id} 
+                  className={`rounded-xl relative overflow-hidden transition-all duration-600 ${isExpanded ? 'bg-white border border-gray-200' : 'bg-[#2a2a2a]'}`}
+                  style={{
+                    backgroundImage: isExpanded ? 'none' : `url('/pipstudio2/Diseño sin título (8).png')`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat',
+                    transition: 'background-color 0.6s cubic-bezier(0.22, 1, 0.36, 1)'
+                  }}
+                >
+                    {/* Overlay oscuro para legibilidad - solo cuando está cerrada */}
+                    {!isExpanded && (
+                      <div className="absolute inset-0 bg-[#2a2a2a]/80 rounded-xl"></div>
+                    )}
+                    
+                    {/* Botón cuando está cerrada - compacto */}
+                    {!isExpanded && (
+                      <button
+                        onClick={() => {
+                          setExpandedServiceCards(prev => {
+                            const newSet = new Set(prev)
+                            if (newSet.has(card.id)) {
+                              newSet.delete(card.id)
+                            } else {
+                              newSet.add(card.id)
+                            }
+                            return newSet
+                          })
+                        }}
+                        className="w-full flex items-center justify-between px-4 py-2.5 text-left relative z-10"
                       >
-                      <p className={`text-sm mb-4 leading-relaxed ${expandedServiceCards.has(serviciosCards[0].id) ? 'text-gray-700' : 'text-gray-300'}`}>
-                        {serviciosCards[0].description}
-                      </p>
-                      <p className={`text-xs mb-3 font-medium ${expandedServiceCards.has(serviciosCards[0].id) ? 'text-gray-600' : 'text-gray-400'}`}>
-                        {serviciosCards[0].subtitle}
-                      </p>
-                      <ul className="space-y-2 mb-4">
-                        {serviciosCards[0].items?.map((item, idx) => (
-                          <li key={idx} className="flex items-start gap-2">
-                            <div className={`w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0 ${expandedServiceCards.has(serviciosCards[0].id) ? 'bg-gray-700' : 'bg-[#CCFF00]'}`}></div>
-                            <span className={`text-xs ${expandedServiceCards.has(serviciosCards[0].id) ? 'text-gray-700' : 'text-gray-300'}`}>{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                      {serviciosCards[0].conclusion && (
-                        <p className={`text-xs italic ${expandedServiceCards.has(serviciosCards[0].id) ? 'text-gray-600' : 'text-gray-400'}`}>
-                          {serviciosCards[0].conclusion}
-                        </p>
-                      )}
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div className="flex justify-end mt-6">
-                    <button 
-                      onClick={() => {
-                        setExpandedServiceCards(prev => {
-                          const newSet = new Set(prev)
-                          if (newSet.has(serviciosCards[0].id)) {
-                            newSet.delete(serviciosCards[0].id)
-                          } else {
-                            newSet.add(serviciosCards[0].id)
-                          }
-                          return newSet
-                        })
+                        <h3 className={`text-sm md:text-base font-medium flex-1 transition-colors duration-600 text-white`} style={{ fontFamily: 'Inter, sans-serif' }}>
+                          {card.title}
+                        </h3>
+                        <div className="flex-shrink-0 ml-3">
+                          <ChevronDown 
+                            className="w-4 h-4 text-[#CCFF00]"
+                          />
+                        </div>
+                      </button>
+                    )}
+                    
+                    {/* Contenido expandible - siempre presente para animación */}
+                    <div
+                      className={`grid transition-all duration-300 ease-[cubic-bezier(0.25,0.1,0.25,1)] ${isExpanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
+                      style={{
+                        transition: 'grid-template-rows 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), opacity 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)'
                       }}
-                      className="relative w-8 h-8 md:w-10 md:h-10 flex items-center justify-center cursor-pointer"
                     >
-                      <ChevronDown 
-                        className={`w-5 h-5 md:w-6 md:h-6 absolute transition-all duration-500 ease-in-out ${expandedServiceCards.has(serviciosCards[0].id) ? 'opacity-0 scale-0 rotate-90 text-gray-600' : 'opacity-100 scale-100 rotate-0 text-[#CCFF00]'}`}
-                        style={{ transitionTimingFunction: 'cubic-bezier(0.25, 0.1, 0.25, 1)' }}
-                      />
-                      <X 
-                        className={`w-5 h-5 md:w-6 md:h-6 absolute transition-all duration-500 ease-in-out ${expandedServiceCards.has(serviciosCards[0].id) ? 'opacity-100 scale-100 rotate-0 text-gray-600' : 'opacity-0 scale-0 rotate-90 text-[#CCFF00]'}`}
-                        style={{ transitionTimingFunction: 'cubic-bezier(0.25, 0.1, 0.25, 1)' }}
-                      />
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              {/* Caja inferior */}
-              <div
-                className={`p-4 rounded-xl flex flex-col overflow-hidden flex-1 relative transition-colors duration-600 ${expandedServiceCards.has(serviciosCards[1].id) ? 'bg-white' : 'bg-[#2a2a2a]'}`}
-                style={{
-                  backgroundImage: expandedServiceCards.has(serviciosCards[1].id) ? 'none' : `url('/pipstudio2/Diseño sin título (8).png')`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                  backgroundRepeat: 'no-repeat',
-                  transition: 'background-color 0.6s cubic-bezier(0.22, 1, 0.36, 1)'
-                }}
-              >
-                {/* Overlay oscuro para legibilidad - solo cuando está cerrada */}
-                {!expandedServiceCards.has(serviciosCards[1].id) && (
-                  <div className="absolute inset-0 bg-[#2a2a2a]/80 rounded-xl"></div>
-                )}
-                <div className="relative z-10 flex flex-col h-full justify-between">
-                  <h3 className={`text-xl font-bold mb-6 transition-colors duration-600 ${expandedServiceCards.has(serviciosCards[1].id) ? 'text-black' : 'text-white'}`}>
-                    {serviciosCards[1].title}
-                  </h3>
-                  
-                  <div
-                    className={`grid transition-all duration-1200 ease-[cubic-bezier(0.22,1,0.36,1)] ${expandedServiceCards.has(serviciosCards[1].id) ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
-                    style={{
-                      transition: 'grid-template-rows 1.2s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s cubic-bezier(0.22, 1, 0.36, 1)'
-                    }}
-                  >
-                    <div className="overflow-hidden">
-                      <div
-                        className={`mb-4 transition-opacity duration-300 ${expandedServiceCards.has(serviciosCards[1].id) ? 'opacity-100' : 'opacity-0'}`}
-                      >
-                      <p className={`text-sm mb-4 leading-relaxed ${expandedServiceCards.has(serviciosCards[1].id) ? 'text-gray-700' : 'text-gray-300'}`}>
-                        {serviciosCards[1].description}
-                      </p>
-                      <ul className="space-y-2 mb-4">
-                        {serviciosCards[1].items?.map((item, idx) => (
-                          <li key={idx} className="flex items-start gap-3">
-                            <div className={`w-5 h-5 rounded-full flex items-center justify-center mt-0.5 flex-shrink-0 ${expandedServiceCards.has(serviciosCards[1].id) ? 'bg-gray-700' : 'bg-[#CCFF00]'}`}>
-                              <Plus className={`w-3 h-3 ${expandedServiceCards.has(serviciosCards[1].id) ? 'text-white' : 'text-black'}`} />
+                      <div className="overflow-hidden">
+                        <div className="relative z-10 flex flex-col p-4 min-h-[400px] justify-between">
+                          <div>
+                            <h3 className={`text-xl font-bold mb-6 transition-colors duration-600 text-black`}>
+                              {card.title}
+                            </h3>
+                          
+                            <div className="mb-4">
+                              <p className={`text-sm mb-4 leading-relaxed text-gray-700`}>
+                                {card.description}
+                              </p>
+                              {card.subtitle && (
+                                <p className={`text-xs mb-3 font-medium text-gray-600`}>
+                                  {card.subtitle}
+                                </p>
+                              )}
+                              <ul className="space-y-2 mb-4">
+                                {card.items?.map((item, itemIdx) => (
+                                  <li key={itemIdx} className="flex items-start gap-2">
+                                    {usePlusIcon ? (
+                                      <div className="w-5 h-5 rounded-full flex items-center justify-center mt-0.5 flex-shrink-0 bg-gray-700">
+                                        <Plus className="w-3 h-3 text-white" />
+                                      </div>
+                                    ) : (
+                                      <div className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0 bg-gray-700"></div>
+                                    )}
+                                    <span className={`${usePlusIcon ? 'text-sm' : 'text-xs'} text-gray-700`}>{item}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                              {card.conclusion && (
+                                <p className={`text-xs italic text-gray-600`}>
+                                  {card.conclusion}
+                                </p>
+                              )}
                             </div>
-                            <span className={`text-sm ${expandedServiceCards.has(serviciosCards[1].id) ? 'text-gray-700' : 'text-gray-300'}`}>{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                      {serviciosCards[1].conclusion && (
-                        <p className={`text-xs italic ${expandedServiceCards.has(serviciosCards[1].id) ? 'text-gray-600' : 'text-gray-400'}`}>
-                          {serviciosCards[1].conclusion}
-                        </p>
-                      )}
-                    </div>
-                  </div>
-                  
-                  <div className="flex justify-end mt-auto">
-                    <button 
-                      onClick={() => {
-                        setExpandedServiceCards(prev => {
-                          const newSet = new Set(prev)
-                          if (newSet.has(serviciosCards[1].id)) {
-                            newSet.delete(serviciosCards[1].id)
-                          } else {
-                            newSet.add(serviciosCards[1].id)
-                          }
-                          return newSet
-                        })
-                      }}
-                      className="relative w-8 h-8 md:w-10 md:h-10 flex items-center justify-center cursor-pointer"
-                    >
-                      <ChevronDown 
-                        className={`w-5 h-5 md:w-6 md:h-6 absolute transition-all duration-500 ease-in-out ${expandedServiceCards.has(serviciosCards[1].id) ? 'opacity-0 scale-0 rotate-90 text-gray-600' : 'opacity-100 scale-100 rotate-0 text-[#CCFF00]'}`}
-                        style={{ transitionTimingFunction: 'cubic-bezier(0.25, 0.1, 0.25, 1)' }}
-                      />
-                      <X 
-                        className={`w-5 h-5 md:w-6 md:h-6 absolute transition-all duration-500 ease-in-out ${expandedServiceCards.has(serviciosCards[1].id) ? 'opacity-100 scale-100 rotate-0 text-gray-600' : 'opacity-0 scale-0 rotate-90 text-[#CCFF00]'}`}
-                        style={{ transitionTimingFunction: 'cubic-bezier(0.25, 0.1, 0.25, 1)' }}
-                      />
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-              {/* Columna Media - Tres cajas apiladas */}
-              <div className="flex flex-col gap-1 rounded-2xl overflow-hidden bg-[#EBEBEB] p-1">
-              {/* Caja 1 - Material comercial */}
-              <div
-                className={`p-4 rounded-xl flex flex-col overflow-hidden relative transition-colors duration-600 ${expandedServiceCards.has(serviciosCards[2].id) ? 'bg-white' : 'bg-[#2a2a2a]'}`}
-                style={{
-                  backgroundImage: expandedServiceCards.has(serviciosCards[2].id) ? 'none' : `url('/pipstudio2/Diseño sin título (8).png')`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                  backgroundRepeat: 'no-repeat',
-                  transition: 'background-color 0.6s cubic-bezier(0.22, 1, 0.36, 1)'
-                }}
-              >
-                {/* Overlay oscuro para legibilidad - solo cuando está cerrada */}
-                {!expandedServiceCards.has(serviciosCards[2].id) && (
-                  <div className="absolute inset-0 bg-[#2a2a2a]/80 rounded-xl"></div>
-                )}
-                <div className="relative z-10 flex flex-col">
-                  <h3 className={`text-xl font-bold mb-6 transition-colors duration-600 ${expandedServiceCards.has(serviciosCards[2].id) ? 'text-black' : 'text-white'}`}>
-                    {serviciosCards[2].title}
-                  </h3>
-                  
-                  <div
-                    className={`grid transition-all duration-1200 ease-[cubic-bezier(0.22,1,0.36,1)] ${expandedServiceCards.has(serviciosCards[2].id) ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
-                    style={{
-                      transition: 'grid-template-rows 1.2s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s cubic-bezier(0.22, 1, 0.36, 1)'
-                    }}
-                  >
-                    <div className="overflow-hidden">
-                      <div
-                        className={`mb-4 transition-opacity duration-300 ${expandedServiceCards.has(serviciosCards[2].id) ? 'opacity-100' : 'opacity-0'}`}
-                      >
-                      <p className={`text-sm mb-4 leading-relaxed ${expandedServiceCards.has(serviciosCards[2].id) ? 'text-gray-700' : 'text-gray-300'}`}>
-                        {serviciosCards[2].description}
-                      </p>
-                      <ul className="space-y-2 mb-4">
-                        {serviciosCards[2].items?.map((item, idx) => (
-                          <li key={idx} className="flex items-start gap-3">
-                            <div className={`w-5 h-5 rounded-full flex items-center justify-center mt-0.5 flex-shrink-0 ${expandedServiceCards.has(serviciosCards[2].id) ? 'bg-gray-700' : 'bg-[#CCFF00]'}`}>
-                              <Plus className={`w-3 h-3 ${expandedServiceCards.has(serviciosCards[2].id) ? 'text-white' : 'text-black'}`} />
-                            </div>
-                            <span className={`text-sm ${expandedServiceCards.has(serviciosCards[2].id) ? 'text-gray-700' : 'text-gray-300'}`}>{item}</span>
-                          </li>
-                        ))}
-                      </ul>
+                          </div>
+                        
+                          <div className="flex justify-end">
+                            <button 
+                              onClick={() => {
+                                setExpandedServiceCards(prev => {
+                                  const newSet = new Set(prev)
+                                  if (newSet.has(card.id)) {
+                                    newSet.delete(card.id)
+                                  } else {
+                                    newSet.add(card.id)
+                                  }
+                                  return newSet
+                                })
+                              }}
+                              className="relative w-8 h-8 md:w-10 md:h-10 flex items-center justify-center cursor-pointer"
+                            >
+                              <X 
+                                className="w-5 h-5 md:w-6 md:h-6 absolute transition-all duration-500 ease-in-out opacity-100 scale-100 rotate-0 text-gray-600"
+                                style={{ transitionTimingFunction: 'cubic-bezier(0.25, 0.1, 0.25, 1)' }}
+                              />
+                            </button>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  
-                  <div className="flex justify-end mt-6">
-                    <button 
-                      onClick={() => {
-                        setExpandedServiceCards(prev => {
-                          const newSet = new Set(prev)
-                          if (newSet.has(serviciosCards[2].id)) {
-                            newSet.delete(serviciosCards[2].id)
-                          } else {
-                            newSet.add(serviciosCards[2].id)
-                          }
-                          return newSet
-                        })
-                      }}
-                      className="relative w-8 h-8 md:w-10 md:h-10 flex items-center justify-center cursor-pointer"
-                    >
-                      <ChevronDown 
-                        className={`w-5 h-5 md:w-6 md:h-6 absolute transition-all duration-500 ease-in-out ${expandedServiceCards.has(serviciosCards[2].id) ? 'opacity-0 scale-0 rotate-90 text-gray-600' : 'opacity-100 scale-100 rotate-0 text-[#CCFF00]'}`}
-                        style={{ transitionTimingFunction: 'cubic-bezier(0.25, 0.1, 0.25, 1)' }}
-                      />
-                      <X 
-                        className={`w-5 h-5 md:w-6 md:h-6 absolute transition-all duration-500 ease-in-out ${expandedServiceCards.has(serviciosCards[2].id) ? 'opacity-100 scale-100 rotate-0 text-gray-600' : 'opacity-0 scale-0 rotate-90 text-[#CCFF00]'}`}
-                        style={{ transitionTimingFunction: 'cubic-bezier(0.25, 0.1, 0.25, 1)' }}
-                      />
-                    </button>
-                  </div>
                 </div>
-              </div>
-
-              {/* Caja 2 - Marca, coherencia */}
-              <div
-                className={`p-4 rounded-xl flex flex-col overflow-hidden flex-1 relative transition-colors duration-600 ${expandedServiceCards.has(serviciosCards[3].id) ? 'bg-white' : 'bg-[#2a2a2a]'}`}
-                style={{
-                  backgroundImage: expandedServiceCards.has(serviciosCards[3].id) ? 'none' : `url('/pipstudio2/Diseño sin título (8).png')`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                  backgroundRepeat: 'no-repeat',
-                  transition: 'background-color 0.6s cubic-bezier(0.22, 1, 0.36, 1)'
-                }}
-              >
-                {/* Overlay oscuro para legibilidad - solo cuando está cerrada */}
-                {!expandedServiceCards.has(serviciosCards[3].id) && (
-                  <div className="absolute inset-0 bg-[#2a2a2a]/80 rounded-xl"></div>
-                )}
-                <div className="relative z-10 flex flex-col h-full justify-between">
-                  <h3 className={`text-xl font-bold mb-6 transition-colors duration-600 ${expandedServiceCards.has(serviciosCards[3].id) ? 'text-black' : 'text-white'}`}>
-                    {serviciosCards[3].title}
-                  </h3>
-                  
-                  <div
-                    className={`grid transition-all duration-1200 ease-[cubic-bezier(0.22,1,0.36,1)] ${expandedServiceCards.has(serviciosCards[3].id) ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
-                    style={{
-                      transition: 'grid-template-rows 1.2s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s cubic-bezier(0.22, 1, 0.36, 1)'
-                    }}
-                  >
-                    <div className="overflow-hidden">
-                      <div
-                        className={`mb-4 transition-opacity duration-300 ${expandedServiceCards.has(serviciosCards[3].id) ? 'opacity-100' : 'opacity-0'}`}
-                      >
-                      <p className={`text-sm mb-4 leading-relaxed ${expandedServiceCards.has(serviciosCards[3].id) ? 'text-gray-700' : 'text-gray-300'}`}>
-                        {serviciosCards[3].description}
-                      </p>
-                      <ul className="space-y-2 mb-4">
-                        {serviciosCards[3].items?.map((item, idx) => (
-                          <li key={idx} className="flex items-start gap-3">
-                            <div className={`w-5 h-5 rounded-full flex items-center justify-center mt-0.5 flex-shrink-0 ${expandedServiceCards.has(serviciosCards[3].id) ? 'bg-gray-700' : 'bg-[#CCFF00]'}`}>
-                              <Plus className={`w-3 h-3 ${expandedServiceCards.has(serviciosCards[3].id) ? 'text-white' : 'text-black'}`} />
-                            </div>
-                            <span className={`text-sm ${expandedServiceCards.has(serviciosCards[3].id) ? 'text-gray-700' : 'text-gray-300'}`}>{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                      {serviciosCards[3].conclusion && (
-                        <p className={`text-xs italic ${expandedServiceCards.has(serviciosCards[3].id) ? 'text-gray-600' : 'text-gray-400'}`}>
-                          {serviciosCards[3].conclusion}
-                        </p>
-                      )}
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div className="flex justify-end mt-auto">
-                    <button 
-                      onClick={() => {
-                        setExpandedServiceCards(prev => {
-                          const newSet = new Set(prev)
-                          if (newSet.has(serviciosCards[3].id)) {
-                            newSet.delete(serviciosCards[3].id)
-                          } else {
-                            newSet.add(serviciosCards[3].id)
-                          }
-                          return newSet
-                        })
-                      }}
-                      className="relative w-8 h-8 md:w-10 md:h-10 flex items-center justify-center cursor-pointer"
-                    >
-                      <ChevronDown 
-                        className={`w-5 h-5 md:w-6 md:h-6 absolute transition-all duration-500 ease-in-out ${expandedServiceCards.has(serviciosCards[3].id) ? 'opacity-0 scale-0 rotate-90 text-gray-600' : 'opacity-100 scale-100 rotate-0 text-[#CCFF00]'}`}
-                        style={{ transitionTimingFunction: 'cubic-bezier(0.25, 0.1, 0.25, 1)' }}
-                      />
-                      <X 
-                        className={`w-5 h-5 md:w-6 md:h-6 absolute transition-all duration-500 ease-in-out ${expandedServiceCards.has(serviciosCards[3].id) ? 'opacity-100 scale-100 rotate-0 text-gray-600' : 'opacity-0 scale-0 rotate-90 text-[#CCFF00]'}`}
-                        style={{ transitionTimingFunction: 'cubic-bezier(0.25, 0.1, 0.25, 1)' }}
-                      />
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-              {/* Columna Derecha */}
-              <div className="flex flex-col gap-1 rounded-2xl overflow-hidden bg-[#EBEBEB] p-1">
-              {/* Caja superior */}
-              <div
-                className={`p-4 rounded-xl relative flex flex-col justify-between overflow-hidden transition-colors duration-600 ${expandedServiceCards.has(serviciosCards[4].id) ? 'bg-white' : 'bg-[#2a2a2a]'}`}
-                style={{
-                  backgroundImage: expandedServiceCards.has(serviciosCards[4].id) ? 'none' : `url('/pipstudio2/Diseño sin título (8).png')`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                  backgroundRepeat: 'no-repeat',
-                  transition: 'background-color 0.6s cubic-bezier(0.22, 1, 0.36, 1)'
-                }}
-              >
-                {/* Overlay oscuro para legibilidad - solo cuando está cerrada */}
-                {!expandedServiceCards.has(serviciosCards[4].id) && (
-                  <div className="absolute inset-0 bg-[#2a2a2a]/80 rounded-xl"></div>
-                )}
-                <div className="relative z-10 flex flex-col">
-                  <h3 className={`text-xl font-bold mb-6 transition-colors duration-600 ${expandedServiceCards.has(serviciosCards[4].id) ? 'text-black' : 'text-white'}`}>
-                    {serviciosCards[4].title}
-                  </h3>
-                  
-                  <div
-                    className={`grid transition-all duration-1200 ease-[cubic-bezier(0.22,1,0.36,1)] ${expandedServiceCards.has(serviciosCards[4].id) ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
-                    style={{
-                      transition: 'grid-template-rows 1.2s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s cubic-bezier(0.22, 1, 0.36, 1)'
-                    }}
-                  >
-                    <div className="overflow-hidden">
-                      <div
-                        className={`mb-4 transition-opacity duration-300 ${expandedServiceCards.has(serviciosCards[4].id) ? 'opacity-100' : 'opacity-0'}`}
-                      >
-                      <p className={`text-sm mb-4 leading-relaxed ${expandedServiceCards.has(serviciosCards[4].id) ? 'text-gray-700' : 'text-gray-300'}`}>
-                        {serviciosCards[4].description}
-                      </p>
-                      <ul className="space-y-2 mb-4">
-                        {serviciosCards[4].items?.map((item, idx) => (
-                          <li key={idx} className="flex items-start gap-2">
-                            <div className={`w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0 ${expandedServiceCards.has(serviciosCards[4].id) ? 'bg-gray-700' : 'bg-[#CCFF00]'}`}></div>
-                            <span className={`text-xs ${expandedServiceCards.has(serviciosCards[4].id) ? 'text-gray-700' : 'text-gray-300'}`}>{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                      {serviciosCards[4].conclusion && (
-                        <p className={`text-xs italic ${expandedServiceCards.has(serviciosCards[4].id) ? 'text-gray-600' : 'text-gray-400'}`}>
-                          {serviciosCards[4].conclusion}
-                        </p>
-                      )}
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div className="flex justify-end mt-6">
-                    <button 
-                      onClick={() => {
-                        setExpandedServiceCards(prev => {
-                          const newSet = new Set(prev)
-                          if (newSet.has(serviciosCards[4].id)) {
-                            newSet.delete(serviciosCards[4].id)
-                          } else {
-                            newSet.add(serviciosCards[4].id)
-                          }
-                          return newSet
-                        })
-                      }}
-                      className="relative w-8 h-8 md:w-10 md:h-10 flex items-center justify-center cursor-pointer"
-                    >
-                      <ChevronDown 
-                        className={`w-5 h-5 md:w-6 md:h-6 absolute transition-all duration-500 ease-in-out ${expandedServiceCards.has(serviciosCards[4].id) ? 'opacity-0 scale-0 rotate-90 text-gray-600' : 'opacity-100 scale-100 rotate-0 text-[#CCFF00]'}`}
-                        style={{ transitionTimingFunction: 'cubic-bezier(0.25, 0.1, 0.25, 1)' }}
-                      />
-                      <X 
-                        className={`w-5 h-5 md:w-6 md:h-6 absolute transition-all duration-500 ease-in-out ${expandedServiceCards.has(serviciosCards[4].id) ? 'opacity-100 scale-100 rotate-0 text-gray-600' : 'opacity-0 scale-0 rotate-90 text-[#CCFF00]'}`}
-                        style={{ transitionTimingFunction: 'cubic-bezier(0.25, 0.1, 0.25, 1)' }}
-                      />
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              {/* Caja inferior */}
-              <div
-                className={`p-4 rounded-xl flex flex-col overflow-hidden flex-1 relative transition-colors duration-600 ${expandedServiceCards.has(serviciosCards[5].id) ? 'bg-white' : 'bg-[#2a2a2a]'}`}
-                style={{
-                  backgroundImage: expandedServiceCards.has(serviciosCards[5].id) ? 'none' : `url('/pipstudio2/Diseño sin título (8).png')`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                  backgroundRepeat: 'no-repeat',
-                  transition: 'background-color 0.6s cubic-bezier(0.22, 1, 0.36, 1)'
-                }}
-              >
-                {/* Overlay oscuro para legibilidad - solo cuando está cerrada */}
-                {!expandedServiceCards.has(serviciosCards[5].id) && (
-                  <div className="absolute inset-0 bg-[#2a2a2a]/80 rounded-xl"></div>
-                )}
-                <div className="relative z-10 flex flex-col h-full justify-between">
-                  <h3 className={`text-xl font-bold mb-6 transition-colors duration-600 ${expandedServiceCards.has(serviciosCards[5].id) ? 'text-black' : 'text-white'}`}>
-                    {serviciosCards[5].title}
-                  </h3>
-                  
-                  <div
-                    className={`grid transition-all duration-1200 ease-[cubic-bezier(0.22,1,0.36,1)] ${expandedServiceCards.has(serviciosCards[5].id) ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
-                    style={{
-                      transition: 'grid-template-rows 1.2s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s cubic-bezier(0.22, 1, 0.36, 1)'
-                    }}
-                  >
-                    <div className="overflow-hidden">
-                      <div
-                        className={`mb-4 transition-opacity duration-300 ${expandedServiceCards.has(serviciosCards[5].id) ? 'opacity-100' : 'opacity-0'}`}
-                      >
-                      <p className={`text-sm mb-4 leading-relaxed ${expandedServiceCards.has(serviciosCards[5].id) ? 'text-gray-700' : 'text-gray-300'}`}>
-                        {serviciosCards[5].description}
-                      </p>
-                      <ul className="space-y-2 mb-4">
-                        {serviciosCards[5].items?.map((item, idx) => (
-                          <li key={idx} className="flex items-start gap-3">
-                            <div className={`w-5 h-5 rounded-full flex items-center justify-center mt-0.5 flex-shrink-0 ${expandedServiceCards.has(serviciosCards[5].id) ? 'bg-gray-700' : 'bg-[#CCFF00]'}`}>
-                              <Plus className={`w-3 h-3 ${expandedServiceCards.has(serviciosCards[5].id) ? 'text-white' : 'text-black'}`} />
-                            </div>
-                            <span className={`text-sm ${expandedServiceCards.has(serviciosCards[5].id) ? 'text-gray-700' : 'text-gray-300'}`}>{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                      {serviciosCards[5].conclusion && (
-                        <p className={`text-xs italic ${expandedServiceCards.has(serviciosCards[5].id) ? 'text-gray-600' : 'text-gray-400'}`}>
-                          {serviciosCards[5].conclusion}
-                        </p>
-                      )}
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div className="flex justify-end mt-auto">
-                    <button 
-                      onClick={() => {
-                        setExpandedServiceCards(prev => {
-                          const newSet = new Set(prev)
-                          if (newSet.has(serviciosCards[5].id)) {
-                            newSet.delete(serviciosCards[5].id)
-                          } else {
-                            newSet.add(serviciosCards[5].id)
-                          }
-                          return newSet
-                        })
-                      }}
-                      className="relative w-8 h-8 md:w-10 md:h-10 flex items-center justify-center cursor-pointer"
-                    >
-                      <ChevronDown 
-                        className={`w-5 h-5 md:w-6 md:h-6 absolute transition-all duration-500 ease-in-out ${expandedServiceCards.has(serviciosCards[5].id) ? 'opacity-0 scale-0 rotate-90 text-gray-600' : 'opacity-100 scale-100 rotate-0 text-[#CCFF00]'}`}
-                        style={{ transitionTimingFunction: 'cubic-bezier(0.25, 0.1, 0.25, 1)' }}
-                      />
-                      <X 
-                        className={`w-5 h-5 md:w-6 md:h-6 absolute transition-all duration-500 ease-in-out ${expandedServiceCards.has(serviciosCards[5].id) ? 'opacity-100 scale-100 rotate-0 text-gray-600' : 'opacity-0 scale-0 rotate-90 text-[#CCFF00]'}`}
-                        style={{ transitionTimingFunction: 'cubic-bezier(0.25, 0.1, 0.25, 1)' }}
-                      />
-                    </button>
-                  </div>
-                </div>
-              </div>
-              </div>
-            </div>
+              )
+            })}
           </div>
-        </div>
         </div>
       </section>
 
