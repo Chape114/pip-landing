@@ -118,13 +118,14 @@ export default function HomePage() {
     setIsMounted(true)
   }, [])
 
-  // Variants para las animaciones del header (definidos dentro del componente)
-  const headerLinkVariants = {
-    initial: { y: 0, opacity: 1 },
-    hover: { y: -20, opacity: 0 }
+  // Variants para las animaciones del header (wrapper interno se anima)
+  const headerWrapperVariants = {
+    initial: { y: 0 },
+    hover: { y: -20 }
   }
 
-  const headerLinkVariantsSecondary = {
+  // Variants para el segundo span del botón (aparece desde abajo)
+  const headerSecondarySpanVariants = {
     initial: { y: 20, opacity: 0 },
     hover: { y: 0, opacity: 1 }
   }
@@ -387,134 +388,83 @@ export default function HomePage() {
                 <nav className="hidden md:flex items-center gap-4 lg:gap-6">
                   <motion.a 
                     href="#soluciones-digitales" 
-                    className="text-[#282828] text-xs md:text-sm font-medium relative overflow-hidden block h-5"
-                    initial="initial"
+                    className="text-[#282828] text-xs md:text-sm font-medium relative block h-5 overflow-hidden"
                     whileHover={isMounted ? "hover" : "initial"}
                   >
-                    <motion.span
-                      className="block"
-                      variants={headerLinkVariants}
+                    <motion.div
+                      className="relative"
+                      variants={headerWrapperVariants}
                       transition={headerTransition}
                     >
-                      Soluciones digitales
-                    </motion.span>
-                    <motion.span
-                      className="absolute top-0 left-0 block w-full"
-                      variants={headerLinkVariantsSecondary}
-                      transition={headerTransition}
-                    >
-                      Soluciones digitales
-                    </motion.span>
+                      <span className="block">Soluciones digitales</span>
+                      <span className="block absolute top-full left-0 w-full">Soluciones digitales</span>
+                    </motion.div>
                   </motion.a>
                   <motion.a 
                     href="#sistema" 
-                    className="text-[#282828] text-xs md:text-sm font-medium relative overflow-hidden block h-5"
-                    initial="initial"
+                    className="text-[#282828] text-xs md:text-sm font-medium relative block h-5 overflow-hidden"
                     whileHover={isMounted ? "hover" : "initial"}
                   >
-                    <motion.span
-                      className="block"
-                      variants={headerLinkVariants}
+                    <motion.div
+                      className="relative"
+                      variants={headerWrapperVariants}
                       transition={headerTransition}
                     >
-                      Sistema
-                    </motion.span>
-                    <motion.span
-                      className="absolute top-0 left-0 block w-full"
-                      variants={headerLinkVariantsSecondary}
-                      transition={headerTransition}
-                    >
-                      Sistema
-                    </motion.span>
+                      <span className="block">Sistema</span>
+                      <span className="block absolute top-full left-0 w-full">Sistema</span>
+                    </motion.div>
                   </motion.a>
                   <motion.a 
                     href="#casos-de-exito" 
-                    className="text-[#282828] text-xs md:text-sm font-medium relative overflow-hidden block h-5"
-                    initial="initial"
+                    className="text-[#282828] text-xs md:text-sm font-medium relative block h-5 overflow-hidden"
                     whileHover={isMounted ? "hover" : "initial"}
                   >
-                    <motion.span
-                      className="block"
-                      variants={headerLinkVariants}
+                    <motion.div
+                      className="relative"
+                      variants={headerWrapperVariants}
                       transition={headerTransition}
                     >
-                      Casos de éxito
-                    </motion.span>
-                    <motion.span
-                      className="absolute top-0 left-0 block w-full"
-                      variants={headerLinkVariantsSecondary}
-                      transition={headerTransition}
-                    >
-                      Casos de éxito
-                    </motion.span>
+                      <span className="block">Casos de éxito</span>
+                      <span className="block absolute top-full left-0 w-full">Casos de éxito</span>
+                    </motion.div>
                   </motion.a>
                   <motion.a 
                     href="#servicios" 
-                    className="text-[#282828] text-xs md:text-sm font-medium relative overflow-hidden block h-5"
-                    initial="initial"
+                    className="text-[#282828] text-xs md:text-sm font-medium relative block h-5 overflow-hidden"
                     whileHover={isMounted ? "hover" : "initial"}
                   >
-                    <motion.span
-                      className="block"
-                      variants={headerLinkVariants}
+                    <motion.div
+                      className="relative"
+                      variants={headerWrapperVariants}
                       transition={headerTransition}
                     >
-                      Servicios
-                    </motion.span>
-                    <motion.span
-                      className="absolute top-0 left-0 block w-full"
-                      variants={headerLinkVariantsSecondary}
-                      transition={headerTransition}
-                    >
-                      Servicios
-                    </motion.span>
+                      <span className="block">Servicios</span>
+                      <span className="block absolute top-full left-0 w-full">Servicios</span>
+                    </motion.div>
                   </motion.a>
                   <motion.a 
                     href="#preguntas-frecuentes" 
-                    className="text-[#282828] text-xs md:text-sm font-medium relative overflow-hidden block h-5"
-                    initial="initial"
+                    className="text-[#282828] text-xs md:text-sm font-medium relative block h-5 overflow-hidden"
                     whileHover={isMounted ? "hover" : "initial"}
                   >
-                    <motion.span
-                      className="block"
-                      variants={headerLinkVariants}
+                    <motion.div
+                      className="relative"
+                      variants={headerWrapperVariants}
                       transition={headerTransition}
                     >
-                      Preguntas frecuentes
-                    </motion.span>
-                    <motion.span
-                      className="absolute top-0 left-0 block w-full"
-                      variants={headerLinkVariantsSecondary}
-                      transition={headerTransition}
-                    >
-                      Preguntas frecuentes
-                    </motion.span>
+                      <span className="block">Preguntas frecuentes</span>
+                      <span className="block absolute top-full left-0 w-full">Preguntas frecuentes</span>
+                    </motion.div>
                   </motion.a>
-                  <motion.a
+                  <a
                     href="https://wa.me/5493493415669"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-[#CCFF00] text-[#282828] py-1.5 md:py-2 px-4 md:px-5 rounded-full font-medium text-xs md:text-sm relative overflow-hidden block"
-                    initial="initial"
-                    whileHover={isMounted ? "hover" : "initial"}
+                    className="bg-[#CCFF00] text-[#282828] py-1.5 md:py-2 px-4 md:px-5 rounded-full font-medium text-xs md:text-sm flex items-center gap-1.5 whitespace-nowrap"
                   >
-                    <motion.span
-                      className="flex items-center gap-1.5 whitespace-nowrap"
-                      variants={headerLinkVariants}
-                      transition={headerTransition}
-                    >
-                      Hablemos!
-                      <ArrowUpRight className="w-4 h-4 md:w-5 md:h-5 text-[#282828] flex-shrink-0" />
-                    </motion.span>
-                    <motion.span
-                      className="absolute inset-0 flex items-center justify-center gap-1.5 whitespace-nowrap"
-                      variants={headerLinkVariantsSecondary}
-                      transition={headerTransition}
-                    >
-                      Hablemos!
-                      <ArrowUpRight className="w-4 h-4 md:w-5 md:h-5 text-[#282828] flex-shrink-0" />
-                    </motion.span>
-                  </motion.a>
+                    Hablemos!
+                    <ArrowUpRight className="w-4 h-4 md:w-5 md:h-5 text-[#282828] flex-shrink-0" />
+                  </a>
                 </nav>
                 {/* Mobile menu button */}
                 <button 
