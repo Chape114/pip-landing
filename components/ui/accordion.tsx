@@ -47,12 +47,20 @@ const AccordionContent = React.forwardRef<
   <AccordionPrimitive.Content
     ref={ref}
     className={cn(
-      "overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down",
+      "grid text-sm transition-all duration-300 ease-[cubic-bezier(0.25,0.1,0.25,1)] data-[state=closed]:grid-rows-[0fr] data-[state=open]:grid-rows-[1fr]",
+      "[&>div>div]:transition-opacity [&>div>div]:duration-300 [&>div>div]:ease-[cubic-bezier(0.25,0.1,0.25,1)] [&[data-state=closed]>div>div]:opacity-0 [&[data-state=open]>div>div]:opacity-100",
       className
     )}
+    style={{
+      transition: 'grid-template-rows 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)'
+    }}
     {...props}
   >
-    <div className="pb-4 pt-0">{children}</div>
+    <div className="overflow-hidden">
+      <div className="pb-4 pt-0">
+        {children}
+      </div>
+    </div>
   </AccordionPrimitive.Content>
 ))
 

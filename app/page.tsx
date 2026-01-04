@@ -846,22 +846,27 @@ export default function HomePage() {
                             <X className={`w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 lg:w-10 lg:h-10 xl:w-12 xl:h-12 text-gray-400 absolute transition-all duration-1000 ease-in-out ${isOpen ? 'opacity-100 scale-100 rotate-0' : 'opacity-0 scale-0 rotate-90'}`} style={{ transitionTimingFunction: 'cubic-bezier(0.25, 0.1, 0.25, 1)' }} />
                           </div>
                         </AccordionTrigger>
-                        <AccordionContent className="pt-2 md:pt-3 pb-6 md:pb-8">
-                            <div 
-                              className={`ml-2 md:ml-4 lg:ml-6 xl:ml-8 transition-opacity duration-300 ${isOpen ? 'opacity-100' : 'opacity-0'}`}
-                            >
-                            <p className="text-white text-sm sm:text-base md:text-lg mb-6 md:mb-8 max-w-3xl leading-relaxed">
-                              {item.description}
-                            </p>
-                            <div className="flex flex-wrap gap-2 md:gap-3">
-                              {item.tags.map((tag, tagIdx) => (
-                                <span key={tagIdx} className="bg-gray-600 text-white px-3 py-1.5 md:px-4 md:py-2 rounded-full text-xs md:text-sm">
-                                  {tag}
-                                </span>
-                              ))}
+                        <div
+                          className={`grid transition-all duration-300 ease-[cubic-bezier(0.25,0.1,0.25,1)] ${isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
+                          style={{
+                            transition: 'grid-template-rows 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), opacity 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)'
+                          }}
+                        >
+                          <div className="overflow-hidden">
+                            <div className="pt-2 md:pt-3 pb-6 md:pb-8 ml-2 md:ml-4 lg:ml-6 xl:ml-8">
+                              <p className="text-white text-sm sm:text-base md:text-lg mb-6 md:mb-8 max-w-3xl leading-relaxed">
+                                {item.description}
+                              </p>
+                              <div className="flex flex-wrap gap-2 md:gap-3">
+                                {item.tags.map((tag, tagIdx) => (
+                                  <span key={tagIdx} className="bg-gray-600 text-white px-3 py-1.5 md:px-4 md:py-2 rounded-full text-xs md:text-sm">
+                                    {tag}
+                                  </span>
+                                ))}
+                              </div>
                             </div>
                           </div>
-                        </AccordionContent>
+                        </div>
                       </AccordionItem>
                     )
                   })}
@@ -1132,14 +1137,15 @@ export default function HomePage() {
                   </h3>
                   
                   <div
-                    className={`overflow-hidden transition-all duration-1200 ${expandedServiceCards.has(serviciosCards[0].id) ? 'max-h-[2000px]' : 'max-h-0'}`}
+                    className={`grid transition-all duration-1200 ease-[cubic-bezier(0.22,1,0.36,1)] ${expandedServiceCards.has(serviciosCards[0].id) ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
                     style={{
-                      transition: 'max-height 1.2s cubic-bezier(0.22, 1, 0.36, 1)'
+                      transition: 'grid-template-rows 1.2s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s cubic-bezier(0.22, 1, 0.36, 1)'
                     }}
                   >
-                    <div
-                      className={`mb-4 transition-opacity duration-300 ${expandedServiceCards.has(serviciosCards[0].id) ? 'opacity-100' : 'opacity-0'}`}
-                    >
+                    <div className="overflow-hidden">
+                      <div
+                        className={`mb-4 transition-opacity duration-300 ${expandedServiceCards.has(serviciosCards[0].id) ? 'opacity-100' : 'opacity-0'}`}
+                      >
                       <p className={`text-sm mb-4 leading-relaxed ${expandedServiceCards.has(serviciosCards[0].id) ? 'text-gray-700' : 'text-gray-300'}`}>
                         {serviciosCards[0].description}
                       </p>
@@ -1159,6 +1165,7 @@ export default function HomePage() {
                           {serviciosCards[0].conclusion}
                         </p>
                       )}
+                      </div>
                     </div>
                   </div>
                   
@@ -1211,14 +1218,15 @@ export default function HomePage() {
                   </h3>
                   
                   <div
-                    className={`overflow-hidden transition-all duration-1200 ${expandedServiceCards.has(serviciosCards[1].id) ? 'max-h-[2000px]' : 'max-h-0'}`}
+                    className={`grid transition-all duration-1200 ease-[cubic-bezier(0.22,1,0.36,1)] ${expandedServiceCards.has(serviciosCards[1].id) ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
                     style={{
-                      transition: 'max-height 1.2s cubic-bezier(0.22, 1, 0.36, 1)'
+                      transition: 'grid-template-rows 1.2s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s cubic-bezier(0.22, 1, 0.36, 1)'
                     }}
                   >
-                    <div
-                      className={`mb-4 transition-opacity duration-300 ${expandedServiceCards.has(serviciosCards[1].id) ? 'opacity-100' : 'opacity-0'}`}
-                    >
+                    <div className="overflow-hidden">
+                      <div
+                        className={`mb-4 transition-opacity duration-300 ${expandedServiceCards.has(serviciosCards[1].id) ? 'opacity-100' : 'opacity-0'}`}
+                      >
                       <p className={`text-sm mb-4 leading-relaxed ${expandedServiceCards.has(serviciosCards[1].id) ? 'text-gray-700' : 'text-gray-300'}`}>
                         {serviciosCards[1].description}
                       </p>
@@ -1292,14 +1300,15 @@ export default function HomePage() {
                   </h3>
                   
                   <div
-                    className={`overflow-hidden transition-all duration-1200 ${expandedServiceCards.has(serviciosCards[2].id) ? 'max-h-[2000px]' : 'max-h-0'}`}
+                    className={`grid transition-all duration-1200 ease-[cubic-bezier(0.22,1,0.36,1)] ${expandedServiceCards.has(serviciosCards[2].id) ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
                     style={{
-                      transition: 'max-height 1.2s cubic-bezier(0.22, 1, 0.36, 1)'
+                      transition: 'grid-template-rows 1.2s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s cubic-bezier(0.22, 1, 0.36, 1)'
                     }}
                   >
-                    <div
-                      className={`mb-4 transition-opacity duration-300 ${expandedServiceCards.has(serviciosCards[2].id) ? 'opacity-100' : 'opacity-0'}`}
-                    >
+                    <div className="overflow-hidden">
+                      <div
+                        className={`mb-4 transition-opacity duration-300 ${expandedServiceCards.has(serviciosCards[2].id) ? 'opacity-100' : 'opacity-0'}`}
+                      >
                       <p className={`text-sm mb-4 leading-relaxed ${expandedServiceCards.has(serviciosCards[2].id) ? 'text-gray-700' : 'text-gray-300'}`}>
                         {serviciosCards[2].description}
                       </p>
@@ -1313,6 +1322,7 @@ export default function HomePage() {
                           </li>
                         ))}
                       </ul>
+                      </div>
                     </div>
                   </div>
                   
@@ -1365,14 +1375,15 @@ export default function HomePage() {
                   </h3>
                   
                   <div
-                    className={`overflow-hidden transition-all duration-1200 ${expandedServiceCards.has(serviciosCards[3].id) ? 'max-h-[2000px]' : 'max-h-0'}`}
+                    className={`grid transition-all duration-1200 ease-[cubic-bezier(0.22,1,0.36,1)] ${expandedServiceCards.has(serviciosCards[3].id) ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
                     style={{
-                      transition: 'max-height 1.2s cubic-bezier(0.22, 1, 0.36, 1)'
+                      transition: 'grid-template-rows 1.2s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s cubic-bezier(0.22, 1, 0.36, 1)'
                     }}
                   >
-                    <div
-                      className={`mb-4 transition-opacity duration-300 ${expandedServiceCards.has(serviciosCards[3].id) ? 'opacity-100' : 'opacity-0'}`}
-                    >
+                    <div className="overflow-hidden">
+                      <div
+                        className={`mb-4 transition-opacity duration-300 ${expandedServiceCards.has(serviciosCards[3].id) ? 'opacity-100' : 'opacity-0'}`}
+                      >
                       <p className={`text-sm mb-4 leading-relaxed ${expandedServiceCards.has(serviciosCards[3].id) ? 'text-gray-700' : 'text-gray-300'}`}>
                         {serviciosCards[3].description}
                       </p>
@@ -1391,6 +1402,7 @@ export default function HomePage() {
                           {serviciosCards[3].conclusion}
                         </p>
                       )}
+                      </div>
                     </div>
                   </div>
                   
@@ -1446,14 +1458,15 @@ export default function HomePage() {
                   </h3>
                   
                   <div
-                    className={`overflow-hidden transition-all duration-1200 ${expandedServiceCards.has(serviciosCards[4].id) ? 'max-h-[2000px]' : 'max-h-0'}`}
+                    className={`grid transition-all duration-1200 ease-[cubic-bezier(0.22,1,0.36,1)] ${expandedServiceCards.has(serviciosCards[4].id) ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
                     style={{
-                      transition: 'max-height 1.2s cubic-bezier(0.22, 1, 0.36, 1)'
+                      transition: 'grid-template-rows 1.2s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s cubic-bezier(0.22, 1, 0.36, 1)'
                     }}
                   >
-                    <div
-                      className={`mb-4 transition-opacity duration-300 ${expandedServiceCards.has(serviciosCards[4].id) ? 'opacity-100' : 'opacity-0'}`}
-                    >
+                    <div className="overflow-hidden">
+                      <div
+                        className={`mb-4 transition-opacity duration-300 ${expandedServiceCards.has(serviciosCards[4].id) ? 'opacity-100' : 'opacity-0'}`}
+                      >
                       <p className={`text-sm mb-4 leading-relaxed ${expandedServiceCards.has(serviciosCards[4].id) ? 'text-gray-700' : 'text-gray-300'}`}>
                         {serviciosCards[4].description}
                       </p>
@@ -1470,6 +1483,7 @@ export default function HomePage() {
                           {serviciosCards[4].conclusion}
                         </p>
                       )}
+                      </div>
                     </div>
                   </div>
                   
@@ -1522,14 +1536,15 @@ export default function HomePage() {
                   </h3>
                   
                   <div
-                    className={`overflow-hidden transition-all duration-1200 ${expandedServiceCards.has(serviciosCards[5].id) ? 'max-h-[2000px]' : 'max-h-0'}`}
+                    className={`grid transition-all duration-1200 ease-[cubic-bezier(0.22,1,0.36,1)] ${expandedServiceCards.has(serviciosCards[5].id) ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
                     style={{
-                      transition: 'max-height 1.2s cubic-bezier(0.22, 1, 0.36, 1)'
+                      transition: 'grid-template-rows 1.2s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s cubic-bezier(0.22, 1, 0.36, 1)'
                     }}
                   >
-                    <div
-                      className={`mb-4 transition-opacity duration-300 ${expandedServiceCards.has(serviciosCards[5].id) ? 'opacity-100' : 'opacity-0'}`}
-                    >
+                    <div className="overflow-hidden">
+                      <div
+                        className={`mb-4 transition-opacity duration-300 ${expandedServiceCards.has(serviciosCards[5].id) ? 'opacity-100' : 'opacity-0'}`}
+                      >
                       <p className={`text-sm mb-4 leading-relaxed ${expandedServiceCards.has(serviciosCards[5].id) ? 'text-gray-700' : 'text-gray-300'}`}>
                         {serviciosCards[5].description}
                       </p>
@@ -1548,6 +1563,7 @@ export default function HomePage() {
                           {serviciosCards[5].conclusion}
                         </p>
                       )}
+                      </div>
                     </div>
                   </div>
                   
@@ -1578,9 +1594,10 @@ export default function HomePage() {
                   </div>
                 </div>
               </div>
-            </div>
+              </div>
             </div>
           </div>
+        </div>
         </div>
       </section>
 
@@ -1636,24 +1653,25 @@ export default function HomePage() {
                         {idx + 1}. {item.text}
                       </span>
                       <div className="flex-shrink-0 ml-4">
-                        <motion.div
-                          animate={{ rotate: isOpen ? 45 : 0 }}
-                          transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+                        <div
+                          className={`transition-transform duration-300 ease-[cubic-bezier(0.25,0.1,0.25,1)] ${isOpen ? 'rotate-45' : 'rotate-0'}`}
                         >
                           <Plus className="w-5 h-5 md:w-6 md:h-6 text-black" />
-                        </motion.div>
+                        </div>
                       </div>
                     </button>
                     <div
-                      className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0'}`}
+                      className={`grid transition-all duration-300 ease-[cubic-bezier(0.25,0.1,0.25,1)] ${isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
                       style={{
-                        transition: 'max-height 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), opacity 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)'
+                        transition: 'grid-template-rows 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), opacity 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)'
                       }}
                     >
-                      <div className="px-4 md:px-6 pb-4 md:pb-6">
-                        <p className="text-sm md:text-base text-gray-600 leading-relaxed whitespace-pre-line">
-                          {item.description}
-                        </p>
+                      <div className="overflow-hidden">
+                        <div className="px-4 md:px-6 pb-4 md:pb-6">
+                          <p className="text-sm md:text-base text-gray-600 leading-relaxed whitespace-pre-line">
+                            {item.description}
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </div>
