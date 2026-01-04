@@ -118,22 +118,6 @@ export default function HomePage() {
     setIsMounted(true)
   }, [])
 
-  // Variants para las animaciones del header (wrapper interno se anima)
-  const headerWrapperVariants = {
-    initial: { y: 0 },
-    hover: { y: -20 }
-  }
-
-  // Variants para el segundo span del botón (aparece desde abajo)
-  const headerSecondarySpanVariants = {
-    initial: { y: 20, opacity: 0 },
-    hover: { y: 0, opacity: 1 }
-  }
-
-  const headerTransition = {
-    duration: 0.4,
-    ease: [0.25, 0.1, 0.25, 1] as const
-  }
 
   // Generar ruido en canvas
   useEffect(() => {
@@ -386,76 +370,71 @@ export default function HomePage() {
                 
                 {/* Navigation */}
                 <nav className="hidden md:flex items-center gap-4 lg:gap-6">
-                  <motion.a 
+                  <a 
                     href="#soluciones-digitales" 
-                    className="text-[#282828] text-xs md:text-sm font-medium relative block h-5 overflow-hidden"
-                    whileHover={isMounted ? "hover" : "initial"}
+                    className="text-[#282828] text-xs md:text-sm font-medium relative block h-5 overflow-hidden group"
                   >
-                    <motion.div
-                      className="relative"
-                      variants={headerWrapperVariants}
-                      transition={headerTransition}
-                    >
-                      <span className="block">Soluciones digitales</span>
-                      <span className="block absolute top-full left-0 w-full">Soluciones digitales</span>
-                    </motion.div>
-                  </motion.a>
-                  <motion.a 
+                    <div className="relative">
+                      <span className="block group-hover:-translate-y-5" style={{ transition: 'transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1)' }}>
+                        Soluciones digitales
+                      </span>
+                      <span className="block absolute top-0 left-0 w-full translate-y-5 group-hover:translate-y-0" style={{ transition: 'transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1)' }}>
+                        Soluciones digitales
+                      </span>
+                    </div>
+                  </a>
+                  <a 
                     href="#sistema" 
-                    className="text-[#282828] text-xs md:text-sm font-medium relative block h-5 overflow-hidden"
-                    whileHover={isMounted ? "hover" : "initial"}
+                    className="text-[#282828] text-xs md:text-sm font-medium relative block h-5 overflow-hidden group"
                   >
-                    <motion.div
-                      className="relative"
-                      variants={headerWrapperVariants}
-                      transition={headerTransition}
-                    >
-                      <span className="block">Sistema</span>
-                      <span className="block absolute top-full left-0 w-full">Sistema</span>
-                    </motion.div>
-                  </motion.a>
-                  <motion.a 
+                    <div className="relative">
+                      <span className="block group-hover:-translate-y-5" style={{ transition: 'transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1)' }}>
+                        Sistema
+                      </span>
+                      <span className="block absolute top-0 left-0 w-full translate-y-5 group-hover:translate-y-0" style={{ transition: 'transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1)' }}>
+                        Sistema
+                      </span>
+                    </div>
+                  </a>
+                  <a 
                     href="#casos-de-exito" 
-                    className="text-[#282828] text-xs md:text-sm font-medium relative block h-5 overflow-hidden"
-                    whileHover={isMounted ? "hover" : "initial"}
+                    className="text-[#282828] text-xs md:text-sm font-medium relative block h-5 overflow-hidden group"
                   >
-                    <motion.div
-                      className="relative"
-                      variants={headerWrapperVariants}
-                      transition={headerTransition}
-                    >
-                      <span className="block">Casos de éxito</span>
-                      <span className="block absolute top-full left-0 w-full">Casos de éxito</span>
-                    </motion.div>
-                  </motion.a>
-                  <motion.a 
+                    <div className="relative">
+                      <span className="block group-hover:-translate-y-5" style={{ transition: 'transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1)' }}>
+                        Casos de éxito
+                      </span>
+                      <span className="block absolute top-0 left-0 w-full translate-y-5 group-hover:translate-y-0" style={{ transition: 'transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1)' }}>
+                        Casos de éxito
+                      </span>
+                    </div>
+                  </a>
+                  <a 
                     href="#servicios" 
-                    className="text-[#282828] text-xs md:text-sm font-medium relative block h-5 overflow-hidden"
-                    whileHover={isMounted ? "hover" : "initial"}
+                    className="text-[#282828] text-xs md:text-sm font-medium relative block h-5 overflow-hidden group"
                   >
-                    <motion.div
-                      className="relative"
-                      variants={headerWrapperVariants}
-                      transition={headerTransition}
-                    >
-                      <span className="block">Servicios</span>
-                      <span className="block absolute top-full left-0 w-full">Servicios</span>
-                    </motion.div>
-                  </motion.a>
-                  <motion.a 
+                    <div className="relative">
+                      <span className="block group-hover:-translate-y-5" style={{ transition: 'transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1)' }}>
+                        Servicios
+                      </span>
+                      <span className="block absolute top-0 left-0 w-full translate-y-5 group-hover:translate-y-0" style={{ transition: 'transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1)' }}>
+                        Servicios
+                      </span>
+                    </div>
+                  </a>
+                  <a 
                     href="#preguntas-frecuentes" 
-                    className="text-[#282828] text-xs md:text-sm font-medium relative block h-5 overflow-hidden"
-                    whileHover={isMounted ? "hover" : "initial"}
+                    className="text-[#282828] text-xs md:text-sm font-medium relative block h-5 overflow-hidden group"
                   >
-                    <motion.div
-                      className="relative"
-                      variants={headerWrapperVariants}
-                      transition={headerTransition}
-                    >
-                      <span className="block">Preguntas frecuentes</span>
-                      <span className="block absolute top-full left-0 w-full">Preguntas frecuentes</span>
-                    </motion.div>
-                  </motion.a>
+                    <div className="relative">
+                      <span className="block group-hover:-translate-y-5" style={{ transition: 'transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1)' }}>
+                        Preguntas frecuentes
+                      </span>
+                      <span className="block absolute top-0 left-0 w-full translate-y-5 group-hover:translate-y-0" style={{ transition: 'transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1)' }}>
+                        Preguntas frecuentes
+                      </span>
+                    </div>
+                  </a>
                   <a
                     href="https://wa.me/5493493415669"
                     target="_blank"
