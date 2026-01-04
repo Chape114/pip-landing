@@ -118,10 +118,17 @@ export default function HomePage() {
     setIsMounted(true)
   }, [])
 
-  // Estado para controlar hover de cada enlace (más robusto para producción)
-  const [hoveredLink, setHoveredLink] = useState<string | null>(null)
+  // Variants para las animaciones del header (definidos dentro del componente)
+  const headerLinkVariants = {
+    initial: { y: 0, opacity: 1 },
+    hover: { y: -20, opacity: 0 }
+  }
 
-  // Transición para las animaciones
+  const headerLinkVariantsSecondary = {
+    initial: { y: 20, opacity: 0 },
+    hover: { y: 0, opacity: 1 }
+  }
+
   const headerTransition = {
     duration: 0.4,
     ease: [0.25, 0.1, 0.25, 1] as const
@@ -349,300 +356,302 @@ export default function HomePage() {
               }}
             />
         {/* Header - Sticky en toda la web */}
-        <header className="fixed top-0 left-0 w-full flex justify-center z-50">
+        <header className="fixed top-0 left-0 w-full flex justify-center z-50" suppressHydrationWarning>
           <motion.div 
             ref={mobileMenuRef}
             className="w-[98%] md:w-[80%] bg-[#e0e0e0] shadow-lg overflow-hidden px-4 md:px-8 rounded-b-[1.5rem]"
             initial={{
               borderRadius: "0 0 1.5rem 1.5rem",
             }}
-            animate={{
+            animate={isMounted ? {
               borderRadius: isMobileMenuOpen ? "0 0 1rem 1rem" : "0 0 1.5rem 1.5rem",
+            } : {
+              borderRadius: "0 0 1.5rem 1.5rem",
             }}
             transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
           >
-            <div className="py-2 md:py-3 flex items-center justify-between">
-              {/* Logo */}
-              <div className="flex items-center">
-                <Image 
-                  src="/pipstudio2/Logo pipstudio.png" 
-                  alt="pipstudio logo" 
-                  width={120} 
-                  height={40} 
-                  className="h-8 md:h-10 w-auto rounded-lg"
-                  priority
-                />
-              </div>
-              
-              {/* Navigation */}
-              <nav className="hidden md:flex items-center gap-4 lg:gap-6">
-                <motion.a 
-                  href="#soluciones-digitales" 
-                  className="text-[#282828] text-xs md:text-sm font-medium relative overflow-hidden block h-5"
-                  onMouseEnter={() => setHoveredLink('soluciones')}
-                  onMouseLeave={() => setHoveredLink(null)}
-                >
-                  <motion.span
-                    className="block"
-                    animate={hoveredLink === 'soluciones' ? { y: -20, opacity: 0 } : { y: 0, opacity: 1 }}
-                    transition={headerTransition}
+              <div className="py-2 md:py-3 flex items-center justify-between">
+                {/* Logo */}
+                <div className="flex items-center">
+                  <Image 
+                    src="/pipstudio2/Logo pipstudio.png" 
+                    alt="pipstudio logo" 
+                    width={120} 
+                    height={40} 
+                    className="h-8 md:h-10 w-auto rounded-lg"
+                    priority
+                  />
+                </div>
+                
+                {/* Navigation */}
+                <nav className="hidden md:flex items-center gap-4 lg:gap-6">
+                  <motion.a 
+                    href="#soluciones-digitales" 
+                    className="text-[#282828] text-xs md:text-sm font-medium relative overflow-hidden block h-5"
+                    initial="initial"
+                    whileHover={isMounted ? "hover" : "initial"}
                   >
-                    Soluciones digitales
-                  </motion.span>
-                  <motion.span
-                    className="absolute top-0 left-0 block w-full"
-                    animate={hoveredLink === 'soluciones' ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
-                    transition={headerTransition}
+                    <motion.span
+                      className="block"
+                      variants={headerLinkVariants}
+                      transition={headerTransition}
+                    >
+                      Soluciones digitales
+                    </motion.span>
+                    <motion.span
+                      className="absolute top-0 left-0 block w-full"
+                      variants={headerLinkVariantsSecondary}
+                      transition={headerTransition}
+                    >
+                      Soluciones digitales
+                    </motion.span>
+                  </motion.a>
+                  <motion.a 
+                    href="#sistema" 
+                    className="text-[#282828] text-xs md:text-sm font-medium relative overflow-hidden block h-5"
+                    initial="initial"
+                    whileHover={isMounted ? "hover" : "initial"}
                   >
-                    Soluciones digitales
-                  </motion.span>
-                </motion.a>
-                <motion.a 
-                  href="#sistema" 
-                  className="text-[#282828] text-xs md:text-sm font-medium relative overflow-hidden block h-5"
-                  onMouseEnter={() => setHoveredLink('sistema')}
-                  onMouseLeave={() => setHoveredLink(null)}
-                >
-                  <motion.span
-                    className="block"
-                    animate={hoveredLink === 'sistema' ? { y: -20, opacity: 0 } : { y: 0, opacity: 1 }}
-                    transition={headerTransition}
+                    <motion.span
+                      className="block"
+                      variants={headerLinkVariants}
+                      transition={headerTransition}
+                    >
+                      Sistema
+                    </motion.span>
+                    <motion.span
+                      className="absolute top-0 left-0 block w-full"
+                      variants={headerLinkVariantsSecondary}
+                      transition={headerTransition}
+                    >
+                      Sistema
+                    </motion.span>
+                  </motion.a>
+                  <motion.a 
+                    href="#casos-de-exito" 
+                    className="text-[#282828] text-xs md:text-sm font-medium relative overflow-hidden block h-5"
+                    initial="initial"
+                    whileHover={isMounted ? "hover" : "initial"}
                   >
-                    Sistema
-                  </motion.span>
-                  <motion.span
-                    className="absolute top-0 left-0 block w-full"
-                    animate={hoveredLink === 'sistema' ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
-                    transition={headerTransition}
+                    <motion.span
+                      className="block"
+                      variants={headerLinkVariants}
+                      transition={headerTransition}
+                    >
+                      Casos de éxito
+                    </motion.span>
+                    <motion.span
+                      className="absolute top-0 left-0 block w-full"
+                      variants={headerLinkVariantsSecondary}
+                      transition={headerTransition}
+                    >
+                      Casos de éxito
+                    </motion.span>
+                  </motion.a>
+                  <motion.a 
+                    href="#servicios" 
+                    className="text-[#282828] text-xs md:text-sm font-medium relative overflow-hidden block h-5"
+                    initial="initial"
+                    whileHover={isMounted ? "hover" : "initial"}
                   >
-                    Sistema
-                  </motion.span>
-                </motion.a>
-                <motion.a 
-                  href="#casos-de-exito" 
-                  className="text-[#282828] text-xs md:text-sm font-medium relative overflow-hidden block h-5"
-                  onMouseEnter={() => setHoveredLink('casos')}
-                  onMouseLeave={() => setHoveredLink(null)}
-                >
-                  <motion.span
-                    className="block"
-                    animate={hoveredLink === 'casos' ? { y: -20, opacity: 0 } : { y: 0, opacity: 1 }}
-                    transition={headerTransition}
+                    <motion.span
+                      className="block"
+                      variants={headerLinkVariants}
+                      transition={headerTransition}
+                    >
+                      Servicios
+                    </motion.span>
+                    <motion.span
+                      className="absolute top-0 left-0 block w-full"
+                      variants={headerLinkVariantsSecondary}
+                      transition={headerTransition}
+                    >
+                      Servicios
+                    </motion.span>
+                  </motion.a>
+                  <motion.a 
+                    href="#preguntas-frecuentes" 
+                    className="text-[#282828] text-xs md:text-sm font-medium relative overflow-hidden block h-5"
+                    initial="initial"
+                    whileHover={isMounted ? "hover" : "initial"}
                   >
-                    Casos de éxito
-                  </motion.span>
-                  <motion.span
-                    className="absolute top-0 left-0 block w-full"
-                    animate={hoveredLink === 'casos' ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
-                    transition={headerTransition}
-                  >
-                    Casos de éxito
-                  </motion.span>
-                </motion.a>
-                <motion.a 
-                  href="#servicios" 
-                  className="text-[#282828] text-xs md:text-sm font-medium relative overflow-hidden block h-5"
-                  onMouseEnter={() => setHoveredLink('servicios')}
-                  onMouseLeave={() => setHoveredLink(null)}
-                >
-                  <motion.span
-                    className="block"
-                    animate={hoveredLink === 'servicios' ? { y: -20, opacity: 0 } : { y: 0, opacity: 1 }}
-                    transition={headerTransition}
-                  >
-                    Servicios
-                  </motion.span>
-                  <motion.span
-                    className="absolute top-0 left-0 block w-full"
-                    animate={hoveredLink === 'servicios' ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
-                    transition={headerTransition}
-                  >
-                    Servicios
-                  </motion.span>
-                </motion.a>
-                <motion.a 
-                  href="#preguntas-frecuentes" 
-                  className="text-[#282828] text-xs md:text-sm font-medium relative overflow-hidden block h-5"
-                  onMouseEnter={() => setHoveredLink('preguntas')}
-                  onMouseLeave={() => setHoveredLink(null)}
-                >
-                  <motion.span
-                    className="block"
-                    animate={hoveredLink === 'preguntas' ? { y: -20, opacity: 0 } : { y: 0, opacity: 1 }}
-                    transition={headerTransition}
-                  >
-                    Preguntas frecuentes
-                  </motion.span>
-                  <motion.span
-                    className="absolute top-0 left-0 block w-full"
-                    animate={hoveredLink === 'preguntas' ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
-                    transition={headerTransition}
-                  >
-                    Preguntas frecuentes
-                  </motion.span>
-                </motion.a>
-                <motion.a
-                  href="https://wa.me/5493493415669"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-[#CCFF00] text-[#282828] py-1.5 md:py-2 px-4 md:px-5 rounded-full font-medium text-xs md:text-sm relative overflow-hidden block"
-                  onMouseEnter={() => setHoveredLink('hablemos')}
-                  onMouseLeave={() => setHoveredLink(null)}
-                >
-                  <motion.span
-                    className="flex items-center gap-1.5 whitespace-nowrap"
-                    animate={hoveredLink === 'hablemos' ? { y: -20, opacity: 0 } : { y: 0, opacity: 1 }}
-                    transition={headerTransition}
-                  >
-                    Hablemos!
-                    <ArrowUpRight className="w-4 h-4 md:w-5 md:h-5 text-[#282828] flex-shrink-0" />
-                  </motion.span>
-                  <motion.span
-                    className="absolute inset-0 flex items-center justify-center gap-1.5 whitespace-nowrap"
-                    animate={hoveredLink === 'hablemos' ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
-                    transition={headerTransition}
-                  >
-                    Hablemos!
-                    <ArrowUpRight className="w-4 h-4 md:w-5 md:h-5 text-[#282828] flex-shrink-0" />
-                  </motion.span>
-                </motion.a>
-              </nav>
-              {/* Mobile menu button */}
-              <button 
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="md:hidden w-10 h-10 rounded-full bg-[#282828] flex items-center justify-center relative overflow-hidden"
-              >
-                <motion.div
-                  initial={false}
-                  animate={{
-                    rotate: isMobileMenuOpen ? 90 : 0,
-                    opacity: isMobileMenuOpen ? 0 : 1,
-                    scale: isMobileMenuOpen ? 0 : 1,
-                  }}
-                  transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-                  className="absolute"
-                >
-                  <Plus className="w-5 h-5 text-white" />
-                </motion.div>
-                <motion.div
-                  initial={false}
-                  animate={{
-                    rotate: isMobileMenuOpen ? 0 : -90,
-                    opacity: isMobileMenuOpen ? 1 : 0,
-                    scale: isMobileMenuOpen ? 1 : 0,
-                  }}
-                  transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-                  className="absolute"
-                >
-                  <X className="w-5 h-5 text-white" />
-                </motion.div>
-              </button>
-            </div>
-            
-            {/* Mobile Menu Content */}
-            <motion.div
-              initial={false}
-              animate={{
-                height: isMobileMenuOpen ? "auto" : 0,
-                opacity: isMobileMenuOpen ? 1 : 0,
-              }}
-              transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-              className="overflow-hidden"
-            >
-              <div className="px-4 pb-6 pt-4 space-y-4 border-t border-gray-300 mt-2">
-                <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ 
-                    opacity: isMobileMenuOpen ? 1 : 0, 
-                    x: isMobileMenuOpen ? 0 : -20 
-                  }}
-                  transition={{ duration: 0.4, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
-                >
-                  <Link href="#soluciones-digitales" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center justify-between py-4 text-[#282828] hover:text-[#CCFF00] transition">
-                    <span className="font-medium text-lg md:text-xl">Soluciones digitales</span>
-                    <span className="text-gray-500 text-base md:text-lg">(02)</span>
-                  </Link>
-                </motion.div>
-                <div className="h-px bg-gray-300"></div>
-                <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ 
-                    opacity: isMobileMenuOpen ? 1 : 0, 
-                    x: isMobileMenuOpen ? 0 : -20 
-                  }}
-                  transition={{ duration: 0.4, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
-                >
-                  <Link href="#sistema" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center justify-between py-4 text-[#282828] hover:text-[#CCFF00] transition">
-                    <span className="font-medium text-lg md:text-xl">Sistema</span>
-                    <span className="text-gray-500 text-base md:text-lg">(03)</span>
-                  </Link>
-                </motion.div>
-                <div className="h-px bg-gray-300"></div>
-                <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ 
-                    opacity: isMobileMenuOpen ? 1 : 0, 
-                    x: isMobileMenuOpen ? 0 : -20 
-                  }}
-                  transition={{ duration: 0.4, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-                >
-                  <Link href="#casos-de-exito" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center justify-between py-4 text-[#282828] hover:text-[#CCFF00] transition">
-                    <span className="font-medium text-lg md:text-xl">Casos de éxito</span>
-                    <span className="text-gray-500 text-base md:text-lg">(04)</span>
-                  </Link>
-                </motion.div>
-                <div className="h-px bg-gray-300"></div>
-                <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ 
-                    opacity: isMobileMenuOpen ? 1 : 0, 
-                    x: isMobileMenuOpen ? 0 : -20 
-                  }}
-                  transition={{ duration: 0.4, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-                >
-                  <Link href="#servicios" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center justify-between py-4 text-[#282828] hover:text-[#CCFF00] transition">
-                    <span className="font-medium text-lg md:text-xl">Servicios</span>
-                    <span className="text-gray-500 text-base md:text-lg">(05)</span>
-                  </Link>
-                </motion.div>
-                <div className="h-px bg-gray-300"></div>
-                <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ 
-                    opacity: isMobileMenuOpen ? 1 : 0, 
-                    x: isMobileMenuOpen ? 0 : -20 
-                  }}
-                  transition={{ duration: 0.4, delay: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
-                >
-                  <Link href="#preguntas-frecuentes" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center justify-between py-4 text-[#282828] hover:text-[#CCFF00] transition">
-                    <span className="font-medium text-lg md:text-xl">Preguntas frecuentes</span>
-                    <span className="text-gray-500 text-base md:text-lg">(06)</span>
-                  </Link>
-                </motion.div>
-                <div className="h-px bg-gray-300"></div>
-                <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ 
-                    opacity: isMobileMenuOpen ? 1 : 0, 
-                    x: isMobileMenuOpen ? 0 : -20 
-                  }}
-                  transition={{ duration: 0.4, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-                  className="flex justify-start mt-6"
-                >
-                  <a 
+                    <motion.span
+                      className="block"
+                      variants={headerLinkVariants}
+                      transition={headerTransition}
+                    >
+                      Preguntas frecuentes
+                    </motion.span>
+                    <motion.span
+                      className="absolute top-0 left-0 block w-full"
+                      variants={headerLinkVariantsSecondary}
+                      transition={headerTransition}
+                    >
+                      Preguntas frecuentes
+                    </motion.span>
+                  </motion.a>
+                  <motion.a
                     href="https://wa.me/5493493415669"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 border border-white bg-[#2a2a2a] hover:bg-[#333] px-4 md:px-6 py-2.5 md:py-3 rounded-full transition group text-sm md:text-base"
+                    className="bg-[#CCFF00] text-[#282828] py-1.5 md:py-2 px-4 md:px-5 rounded-full font-medium text-xs md:text-sm relative overflow-hidden block"
+                    initial="initial"
+                    whileHover={isMounted ? "hover" : "initial"}
                   >
-                    <span className="text-white font-medium">Hablemos!</span>
-                    <ArrowUpRight className="w-4 h-4 md:w-5 md:h-5 text-[#CCFF00]" />
-                  </a>
-                </motion.div>
+                    <motion.span
+                      className="flex items-center gap-1.5 whitespace-nowrap"
+                      variants={headerLinkVariants}
+                      transition={headerTransition}
+                    >
+                      Hablemos!
+                      <ArrowUpRight className="w-4 h-4 md:w-5 md:h-5 text-[#282828] flex-shrink-0" />
+                    </motion.span>
+                    <motion.span
+                      className="absolute inset-0 flex items-center justify-center gap-1.5 whitespace-nowrap"
+                      variants={headerLinkVariantsSecondary}
+                      transition={headerTransition}
+                    >
+                      Hablemos!
+                      <ArrowUpRight className="w-4 h-4 md:w-5 md:h-5 text-[#282828] flex-shrink-0" />
+                    </motion.span>
+                  </motion.a>
+                </nav>
+                {/* Mobile menu button */}
+                <button 
+                  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                  className="md:hidden w-10 h-10 rounded-full bg-[#282828] flex items-center justify-center relative overflow-hidden"
+                >
+                  <motion.div
+                    initial={false}
+                    animate={{
+                      rotate: isMobileMenuOpen ? 90 : 0,
+                      opacity: isMobileMenuOpen ? 0 : 1,
+                      scale: isMobileMenuOpen ? 0 : 1,
+                    }}
+                    transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+                    className="absolute"
+                  >
+                    <Plus className="w-5 h-5 text-white" />
+                  </motion.div>
+                  <motion.div
+                    initial={false}
+                    animate={{
+                      rotate: isMobileMenuOpen ? 0 : -90,
+                      opacity: isMobileMenuOpen ? 1 : 0,
+                      scale: isMobileMenuOpen ? 1 : 0,
+                    }}
+                    transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+                    className="absolute"
+                  >
+                    <X className="w-5 h-5 text-white" />
+                  </motion.div>
+                </button>
               </div>
+              
+              {/* Mobile Menu Content */}
+              <motion.div
+                initial={false}
+                animate={{
+                  height: isMobileMenuOpen ? "auto" : 0,
+                  opacity: isMobileMenuOpen ? 1 : 0,
+                }}
+                transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+                className="overflow-hidden"
+              >
+                <div className="px-4 pb-6 pt-4 space-y-4 border-t border-gray-300 mt-2">
+                  <motion.div
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ 
+                      opacity: isMobileMenuOpen ? 1 : 0, 
+                      x: isMobileMenuOpen ? 0 : -20 
+                    }}
+                    transition={{ duration: 0.4, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
+                  >
+                    <Link href="#soluciones-digitales" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center justify-between py-4 text-[#282828] hover:text-[#CCFF00] transition">
+                      <span className="font-medium text-lg md:text-xl">Soluciones digitales</span>
+                      <span className="text-gray-500 text-base md:text-lg">(02)</span>
+                    </Link>
+                  </motion.div>
+                  <div className="h-px bg-gray-300"></div>
+                  <motion.div
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ 
+                      opacity: isMobileMenuOpen ? 1 : 0, 
+                      x: isMobileMenuOpen ? 0 : -20 
+                    }}
+                    transition={{ duration: 0.4, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
+                  >
+                    <Link href="#sistema" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center justify-between py-4 text-[#282828] hover:text-[#CCFF00] transition">
+                      <span className="font-medium text-lg md:text-xl">Sistema</span>
+                      <span className="text-gray-500 text-base md:text-lg">(03)</span>
+                    </Link>
+                  </motion.div>
+                  <div className="h-px bg-gray-300"></div>
+                  <motion.div
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ 
+                      opacity: isMobileMenuOpen ? 1 : 0, 
+                      x: isMobileMenuOpen ? 0 : -20 
+                    }}
+                    transition={{ duration: 0.4, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+                  >
+                    <Link href="#casos-de-exito" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center justify-between py-4 text-[#282828] hover:text-[#CCFF00] transition">
+                      <span className="font-medium text-lg md:text-xl">Casos de éxito</span>
+                      <span className="text-gray-500 text-base md:text-lg">(04)</span>
+                    </Link>
+                  </motion.div>
+                  <div className="h-px bg-gray-300"></div>
+                  <motion.div
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ 
+                      opacity: isMobileMenuOpen ? 1 : 0, 
+                      x: isMobileMenuOpen ? 0 : -20 
+                    }}
+                    transition={{ duration: 0.4, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+                  >
+                    <Link href="#servicios" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center justify-between py-4 text-[#282828] hover:text-[#CCFF00] transition">
+                      <span className="font-medium text-lg md:text-xl">Servicios</span>
+                      <span className="text-gray-500 text-base md:text-lg">(05)</span>
+                    </Link>
+                  </motion.div>
+                  <div className="h-px bg-gray-300"></div>
+                  <motion.div
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ 
+                      opacity: isMobileMenuOpen ? 1 : 0, 
+                      x: isMobileMenuOpen ? 0 : -20 
+                    }}
+                    transition={{ duration: 0.4, delay: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+                  >
+                    <Link href="#preguntas-frecuentes" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center justify-between py-4 text-[#282828] hover:text-[#CCFF00] transition">
+                      <span className="font-medium text-lg md:text-xl">Preguntas frecuentes</span>
+                      <span className="text-gray-500 text-base md:text-lg">(06)</span>
+                    </Link>
+                  </motion.div>
+                  <div className="h-px bg-gray-300"></div>
+                  <motion.div
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ 
+                      opacity: isMobileMenuOpen ? 1 : 0, 
+                      x: isMobileMenuOpen ? 0 : -20 
+                    }}
+                    transition={{ duration: 0.4, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+                    className="flex justify-start mt-6"
+                  >
+                    <a 
+                      href="https://wa.me/5493493415669"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 border border-white bg-[#2a2a2a] hover:bg-[#333] px-4 md:px-6 py-2.5 md:py-3 rounded-full transition group text-sm md:text-base"
+                    >
+                      <span className="text-white font-medium">Hablemos!</span>
+                      <ArrowUpRight className="w-4 h-4 md:w-5 md:h-5 text-[#CCFF00]" />
+                    </a>
+                  </motion.div>
+                </div>
+              </motion.div>
             </motion.div>
-          </motion.div>
-        </header>
+          </header>
         
         {/* Content - Left aligned */}
         <div className="relative z-10 w-[98%] md:w-[80%] mx-auto px-4 md:px-8 pt-16 md:pt-24">
