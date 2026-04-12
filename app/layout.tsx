@@ -23,6 +23,21 @@ export const metadata: Metadata = {
     siteName: "PiP Studio Comunicaciones",
     locale: "es_AR",
     type: "website",
+    images: [
+      {
+        url: "/logo.png",
+        width: 150,
+        height: 150,
+        alt: "PiP Studio Logo",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary",
+    title: "PiP Studio | Comunicación y transformación digital para PyMEs",
+    description:
+      "Ayudo a PyMEs a ordenar y profesionalizar su presencia digital. Estrategia, comunicación y transformación digital con foco en resultados reales.",
+    images: ["/logo.png"],
   },
   robots: { index: true, follow: true },
   alternates: {
