@@ -264,7 +264,7 @@ export default function PaquetesPage() {
             style={{ letterSpacing: "-0.08em" }}
           >
             Proyectos con inicio y fin.{" "}
-            <span className="text-[#CCFF00]">Claridad comercial</span> antes que humo.
+            <span className="text-[#CCFF00]">Claridad comercial</span> como eje.
           </h1>
           <p className="text-lg md:text-xl text-white/75 max-w-2xl mb-10 leading-relaxed">
             PiP Studio también trabaja por paquetes cerrados: entregables concretos, plazos definidos y criterio estratégico. No todo
